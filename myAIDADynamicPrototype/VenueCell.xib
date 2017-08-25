@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CatalogListCollectionViewController" customModule="myAIDADynamicPrototype" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="venueCell" id="Wla-UE-LJ7" customClass="VenueCell" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="461"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="384" height="461"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qr-Zj-B8f">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="461"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frenchkiss_01" translatesAutoresizingMaskIntoConstraints="NO" id="zYu-jB-Nd7">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="461"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WX2-aJ-n7J" customClass="GradientView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="461"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.56488120720000001" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="midColorLocation">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="topColorLocation">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomColorLocation">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="midColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.21640624999999999" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zYu-jB-Nd7" firstAttribute="top" secondItem="9qr-Zj-B8f" secondAttribute="top" id="6HJ-Ag-ywk"/>
+                            <constraint firstItem="zYu-jB-Nd7" firstAttribute="leading" secondItem="9qr-Zj-B8f" secondAttribute="leading" id="AR2-Hx-r8g"/>
+                            <constraint firstAttribute="trailing" secondItem="zYu-jB-Nd7" secondAttribute="trailing" id="EbM-Op-YHx"/>
+                            <constraint firstAttribute="bottom" secondItem="WX2-aJ-n7J" secondAttribute="bottom" id="FHz-JT-cVQ"/>
+                            <constraint firstItem="zYu-jB-Nd7" firstAttribute="top" secondItem="9qr-Zj-B8f" secondAttribute="top" id="FXR-UG-WPs"/>
+                            <constraint firstItem="WX2-aJ-n7J" firstAttribute="leading" secondItem="9qr-Zj-B8f" secondAttribute="leading" id="IIl-kB-3Xj"/>
+                            <constraint firstAttribute="bottom" secondItem="zYu-jB-Nd7" secondAttribute="bottom" id="LcJ-s1-QDc"/>
+                            <constraint firstAttribute="trailing" secondItem="WX2-aJ-n7J" secondAttribute="trailing" id="MTa-7a-Ual"/>
+                            <constraint firstAttribute="bottom" secondItem="zYu-jB-Nd7" secondAttribute="bottom" id="Yqq-GX-xfq"/>
+                            <constraint firstItem="zYu-jB-Nd7" firstAttribute="leading" secondItem="9qr-Zj-B8f" secondAttribute="leading" id="fbU-q2-guL"/>
+                            <constraint firstAttribute="trailing" secondItem="zYu-jB-Nd7" secondAttribute="trailing" id="sC4-IJ-Fb3"/>
+                            <constraint firstItem="WX2-aJ-n7J" firstAttribute="top" secondItem="9qr-Zj-B8f" secondAttribute="top" id="tNj-4N-tfl"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNm-gD-5ug" customClass="VenueInfoView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="461"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="BNm-gD-5ug" firstAttribute="top" secondItem="Wla-UE-LJ7" secondAttribute="top" id="Fco-ss-GJG"/>
+                <constraint firstAttribute="bottom" secondItem="9qr-Zj-B8f" secondAttribute="bottom" id="IRg-2h-cUi"/>
+                <constraint firstItem="BNm-gD-5ug" firstAttribute="leading" secondItem="Wla-UE-LJ7" secondAttribute="leading" id="JgY-63-jyx"/>
+                <constraint firstAttribute="bottom" secondItem="BNm-gD-5ug" secondAttribute="bottom" id="TUA-cO-Ro4"/>
+                <constraint firstAttribute="trailing" secondItem="BNm-gD-5ug" secondAttribute="trailing" id="Uut-fl-0qN"/>
+                <constraint firstItem="9qr-Zj-B8f" firstAttribute="leading" secondItem="Wla-UE-LJ7" secondAttribute="leading" id="gLP-qB-oA3"/>
+                <constraint firstItem="9qr-Zj-B8f" firstAttribute="top" secondItem="Wla-UE-LJ7" secondAttribute="top" id="tnL-Dv-YmD"/>
+                <constraint firstAttribute="trailing" secondItem="9qr-Zj-B8f" secondAttribute="trailing" id="vso-Vj-tEU"/>
+            </constraints>
+            <size key="customSize" width="384" height="461"/>
+            <connections>
+                <outlet property="gradientView" destination="WX2-aJ-n7J" id="PgI-0D-xRq"/>
+                <outlet property="heroGroup" destination="9qr-Zj-B8f" id="mTx-eN-Nr3"/>
+                <outlet property="venueImage" destination="zYu-jB-Nd7" id="fFH-Ff-Pen"/>
+                <outlet property="venueInfo" destination="BNm-gD-5ug" id="hBV-Ce-G2H"/>
+            </connections>
+            <point key="canvasLocation" x="-295" y="-241.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="frenchkiss_01" width="2032" height="1332"/>
+    </resources>
+</document>
