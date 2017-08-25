@@ -35,7 +35,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="444" height="452"/>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-qu-4hj">
-                    <rect key="frame" x="24" y="330" width="396" height="98"/>
+                    <rect key="frame" x="24" y="326" width="396" height="102"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lj3-Wx-6Aw">
                             <rect key="frame" x="0.0" y="0.0" width="396" height="18"/>
@@ -48,12 +48,12 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRU-cB-h0S">
-                                    <rect key="frame" x="26" y="1" width="370" height="16.5"/>
+                                    <rect key="frame" x="26" y="0.5" width="370" height="17"/>
                                     <attributedString key="attributedText">
                                         <fragment content="Label">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="14"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -67,7 +67,7 @@
                                 <fragment content="Label">
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="24" name="OpenSans-Bold"/>
+                                        <font key="NSFont" metaFont="system" size="24"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="20" maximumLineHeight="28" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
                                 </fragment>
@@ -75,25 +75,25 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBQ-yv-w8E">
-                            <rect key="frame" x="0.0" y="54" width="396" height="20"/>
+                            <rect key="frame" x="0.0" y="54" width="396" height="23.5"/>
                             <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ra-cg-2aQ" customClass="LineBackgroundView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="78" width="396" height="2"/>
+                            <rect key="frame" x="0.0" y="81.5" width="396" height="2"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="v1B-Ch-KOy"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG7-P3-VOq">
-                            <rect key="frame" x="0.0" y="84" width="396" height="14"/>
+                            <rect key="frame" x="0.0" y="87.5" width="396" height="14.5"/>
                             <attributedString key="attributedText">
                                 <fragment content="Label">
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="12" name="OpenSans-Regular"/>
+                                        <font key="NSFont" metaFont="cellTitle"/>
                                     </attributes>
                                 </fragment>
                             </attributedString>
