@@ -23,8 +23,13 @@ import UIKit
     @IBOutlet weak var keyImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    @IBOutlet var openingIcon: UIImageView!
-    @IBOutlet var openingTimeLabel: UILabel!
+    @IBOutlet weak var rating: RatingsStackView!
+    @IBOutlet weak var ratingCount: UILabel!
+    
+    @IBOutlet weak var statusIndicator: statusCircleView!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var textAreaBottomConstraint: NSLayoutConstraint!
     @IBOutlet var containerViewBottom: NSLayoutConstraint!
@@ -47,7 +52,7 @@ import UIKit
             titleLabel.text = viewModel.venueName?.uppercased()
             titleLabel.addTextSpacing()
             descriptionLabel.text = viewModel.typeDescription
-            subtitleLabel.text = viewModel.tagline
+//            subtitleLabel.text = viewModel.tagline
             
             if let keyImageName = viewModel.keyImageName {
                 keyImage.image = UIImage(named: keyImageName)
@@ -95,7 +100,7 @@ import UIKit
             // text alpha
             let textAlpha = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: featureFrameHeight, y1: 0, y2: 1, limit:false)
             self.descriptionLabel.alpha = textAlpha
-            self.subtitleLabel.alpha = textAlpha
+//            self.subtitleLabel.alpha = textAlpha
             self.divisionLine.alpha = textAlpha
  
             
@@ -128,9 +133,9 @@ import UIKit
         contentView.layoutSubviews()
         contentView.updateConstraints()
         
-        // xCode bug
-        openingIcon.tintColor = nil
-        openingIcon.tintColor = UIColor.white
+//        // xCode bug
+//        openingIcon.tintColor = nil
+//        openingIcon.tintColor = UIColor.white
   
     }
     
@@ -170,8 +175,12 @@ import UIKit
         self.timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: (#selector(self.updateOpeningTime)), userInfo: nil, repeats: true)
     }
     func updateOpeningTime() {
-        openingTimeLabel.text =  self.viewModel?.openingMessage.uppercased()
+        statusLabel.text =  self.viewModel?.openingMessage.uppercased()
 //        self.viewModel?.isOpen = self.viewModel?.isOpen
+    }
+    
+    deinit {
+        self.timer.invalidate()
     }
 
 

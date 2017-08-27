@@ -87,8 +87,6 @@
 		89729B411F84EC5D00D7C241 /* VenueCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89729B401F84EC5D00D7C241 /* VenueCoverViewModel.swift */; };
 		8977FE561F52C1E100A38741 /* TimesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977FE541F52C1E000A38741 /* TimesCell.swift */; };
 		8977FE571F52C1E100A38741 /* TimesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8977FE551F52C1E100A38741 /* TimesCell.xib */; };
-		897B69DD1F975CB300CEF2BF /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897B69DC1F975CB300CEF2BF /* RatingsView.swift */; };
-		897B69DF1F975CEA00CEF2BF /* RatingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 897B69DE1F975CEA00CEF2BF /* RatingsView.xib */; };
 		899086ED1F8F846100518465 /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899086EC1F8F846100518465 /* PhotoListViewModel.swift */; };
 		89970BF71F755A9F00A27C25 /* Playground.h in Headers */ = {isa = PBXBuildFile; fileRef = 89970BF51F755A9F00A27C25 /* Playground.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		89970BFA1F755A9F00A27C25 /* Playground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89970BF31F755A9F00A27C25 /* Playground.framework */; };
@@ -99,6 +97,9 @@
 		89BC84B51F7D5AA300AD0D57 /* CatalogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC84B41F7D5AA300AD0D57 /* CatalogDetailViewModel.swift */; };
 		89BC84B71F7E449100AD0D57 /* VenueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC84B61F7E449100AD0D57 /* VenueDetailViewModel.swift */; };
 		89DFD38A1F73CE0A00666866 /* NavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DFD3891F73CE0A00666866 /* NavCell.swift */; };
+		89E857D11F977A8F00A972FC /* RatingsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E857D01F977A8F00A972FC /* RatingsStackView.swift */; };
+		89E857D31F979DFE00A972FC /* statusCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E857D21F979DFE00A972FC /* statusCircleView.swift */; };
+		89E857D51F979DFE00A972FC /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E857D41F979DFE00A972FC /* Rating.swift */; };
 		89F5C0991F7137DF00B98284 /* CatalogNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */; };
 		89F5C09B1F7279A800B98284 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C09A1F7279A700B98284 /* RadialGradientView.swift */; };
 /* End PBXBuildFile section */
@@ -211,8 +212,6 @@
 		89729B401F84EC5D00D7C241 /* VenueCoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCoverViewModel.swift; sourceTree = "<group>"; };
 		8977FE541F52C1E000A38741 /* TimesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesCell.swift; sourceTree = "<group>"; };
 		8977FE551F52C1E100A38741 /* TimesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimesCell.xib; sourceTree = "<group>"; };
-		897B69DC1F975CB300CEF2BF /* RatingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
-		897B69DE1F975CEA00CEF2BF /* RatingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingsView.xib; sourceTree = "<group>"; };
 		899086EC1F8F846100518465 /* PhotoListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
 		89970BED1F755A5500A27C25 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		89970BF31F755A9F00A27C25 /* Playground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Playground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +223,9 @@
 		89BC84B41F7D5AA300AD0D57 /* CatalogDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogDetailViewModel.swift; sourceTree = "<group>"; };
 		89BC84B61F7E449100AD0D57 /* VenueDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDetailViewModel.swift; sourceTree = "<group>"; };
 		89DFD3891F73CE0A00666866 /* NavCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavCell.swift; sourceTree = "<group>"; };
+		89E857D01F977A8F00A972FC /* RatingsStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsStackView.swift; sourceTree = "<group>"; };
+		89E857D21F979DFE00A972FC /* statusCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = statusCircleView.swift; sourceTree = "<group>"; };
+		89E857D41F979DFE00A972FC /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogNavigationController.swift; sourceTree = "<group>"; };
 		89F5C09A1F7279A700B98284 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
 		F56B70B9C5CD4B178E2541A1 /* Pods-myAIDADynamicPrototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myAIDADynamicPrototype.release.xcconfig"; path = "Pods/Target Support Files/Pods-myAIDADynamicPrototype/Pods-myAIDADynamicPrototype.release.xcconfig"; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				494F5CEF1F331D920064DD8F /* DataUtils.swift */,
 				899781961F74F542006C1DA4 /* Excursion.swift */,
 				89457B1A1F86050800E9AD7C /* OpenVenues.swift */,
+				89E857D41F979DFE00A972FC /* Rating.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -438,8 +441,8 @@
 				89729B3C1F84D68D00D7C241 /* IncludedTableViewCell.xib */,
 				8977FE541F52C1E000A38741 /* TimesCell.swift */,
 				8977FE551F52C1E100A38741 /* TimesCell.xib */,
-				897B69DC1F975CB300CEF2BF /* RatingsView.swift */,
-				897B69DE1F975CEA00CEF2BF /* RatingsView.xib */,
+				89E857D01F977A8F00A972FC /* RatingsStackView.swift */,
+				89E857D21F979DFE00A972FC /* statusCircleView.swift */,
 			);
 			name = "Catalog Views";
 			sourceTree = "<group>";
@@ -609,7 +612,6 @@
 				4961C6E61F02956F004F3270 /* OpenSans-SemiBold.ttf in Resources */,
 				4961C6E41F02956F004F3270 /* OpenSans-LightItalic.ttf in Resources */,
 				49E7F21C1F4D6D3B0001F3FA /* VenueInfoView.xib in Resources */,
-				897B69DF1F975CEA00CEF2BF /* RatingsView.xib in Resources */,
 				89BC84B31F7D4F4C00AD0D57 /* DescriptionCellTableViewCell.xib in Resources */,
 				89729B3A1F84D57E00D7C241 /* PopularTimesTableViewCell.xib in Resources */,
 				4961C6DE1F02956F004F3270 /* OpenSans-Bold.ttf in Resources */,
@@ -688,6 +690,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89F5C0991F7137DF00B98284 /* CatalogNavigationController.swift in Sources */,
+				89E857D31F979DFE00A972FC /* statusCircleView.swift in Sources */,
 				491D5F021F0289C3007661E5 /* TopicPromotionalView.swift in Sources */,
 				494F5CEE1F331C8E0064DD8F /* URL+.swift in Sources */,
 				89729B3D1F84D68D00D7C241 /* IncludedTableViewCell.swift in Sources */,
@@ -697,6 +700,7 @@
 				89630FF11F7E873400D1BC0C /* LocationTableViewCell.swift in Sources */,
 				49E7F21E1F4D6DCF0001F3FA /* VenueInfoView.swift in Sources */,
 				89BC84B51F7D5AA300AD0D57 /* CatalogDetailViewModel.swift in Sources */,
+				89E857D11F977A8F00A972FC /* RatingsStackView.swift in Sources */,
 				495845C81F0CE2EC00368B44 /* GradientView.swift in Sources */,
 				491D5EE61EFD5599007661E5 /* ModalSegue.swift in Sources */,
 				491D5EE81F012754007661E5 /* TopicViewController.swift in Sources */,
@@ -704,7 +708,6 @@
 				491FC2D81EFC041800884318 /* Topic.swift in Sources */,
 				89457B1D1F8629E700E9AD7C /* DateExtensions.swift in Sources */,
 				491D5EEF1F0279A0007661E5 /* Fonts.swift in Sources */,
-				897B69DD1F975CB300CEF2BF /* RatingsView.swift in Sources */,
 				494BFEF81F05376800E7BA8E /* VenueMenu.swift in Sources */,
 				89729B391F84D57E00D7C241 /* PopularTimesTableViewCell.swift in Sources */,
 				89F5C09B1F7279A800B98284 /* RadialGradientView.swift in Sources */,
@@ -722,6 +725,7 @@
 				491D5EED1F02775F007661E5 /* Venue.swift in Sources */,
 				491D5F001F0289AA007661E5 /* TopicHeader.swift in Sources */,
 				495845E21F2F674B00368B44 /* OLD_VenueDetailController.swift in Sources */,
+				89E857D51F979DFE00A972FC /* Rating.swift in Sources */,
 				495845CD1F0D17CF00368B44 /* VenueCell.swift in Sources */,
 				494BFEFC1F05393600E7BA8E /* Event.swift in Sources */,
 				4961C6E91F02A7DC004F3270 /* TopicLayout.swift in Sources */,
