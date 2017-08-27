@@ -47,46 +47,68 @@ class Venue : Object {
     //logistics
     let openingHours = List<OpeningTime>()
     
-//    var hoursToday: List<OpeningTime> {
-//        let hoursList = List<OpeningTime>()
-//        let today = Utils().simDateTime
-//        for hours in self.openingHours {
-//        
-//            if let openString = hours.openTimeDate, let closeString = hours.closeTimeDate {
-//                let openDate = Date(fromString: openString, format: .custom("yyyy-MM-dd HH:mm:ss"))
-//                let closeDate = Date(fromString: closeString, format: .custom("yyyy-MM-dd HH:mm:ss"))
-//                if let openDate = openDate, let closeDate = closeDate {
-//                    if today.compare(.isSameDay(as: openDate)) && today.compare(.isSameDay(as: closeDate)) {
-//                        hoursList.append(hours)
-//                    }
-//                }
-//
-//            }
-//        }
-//        
-//        return hoursList
-//    }
+    var hoursToday: List<OpeningTime> {
+        let hoursList = List<OpeningTime>()
+
+
+                
+        for date in self.openingHours {
+            if date.opening?.component(.day) == Date().component(.day) {
+                hoursList.append(date)
+            }
+        }
+ 
+        return hoursList
+    }
     
         
   
+    var nextOpeningTime:OpeningTime? {
+        
+        
+      if self.isOpen && self.hoursToday.count > 0 {
+            
+            // look through today's opening times
+            for entry in self.hoursToday {
+                // return the current one
+                if let openingTime = entry.opening, let closingTime = entry.closing {
+                    if Date().isBetween(beginDate: openingTime, endDate: closingTime, inclusive: true) {
+                        return entry
+                    }
+                    
+                } else {
+                    // current item in hours today is nil
+                    // print("opening time couldn't be unpacked")
+                    return nil
+                }
+            }
+            
+        } else {
+            // venue is closed, find next opening time
+            for entry in self.openingHours {
+                if entry.opening?.compare(Date()) == .orderedDescending {
+                    return entry
+                }
+            }
+        }
+        
+        //        print("could not find an opening time - off cruise")
+        return nil
+    }
+    
     
     
     dynamic var popularTimes:String?        //stubbing for image of popular times, rather than the actual data
     
     dynamic var isOpen:Bool {
 //        let currentDate:Date = Utils().simDateTime
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        for hours in self.openingHours {
-//            if let openString = hours.openTimeDate, let closeString = hours.closeTimeDate {
-//                
-//                guard let openDate = Date(fromString: openString, format: .custom("yyyy-MM-dd HH:mm:ss")) else { return false }
-//                guard let closeDate = Date(fromString: closeString, format: .custom("yyyy-MM-dd HH:mm:ss")) else { return false }
-//                if currentDate.isBetween(beginDate: openDate, endDate: closeDate, inclusive: true) {
-//                    return true
-//                }
-//            }
-//        }
+//        guard let currentDate:Date = Utils().simDateTime else { return false }
+        for hours in self.openingHours {
+            
+            if Date().isBetween(beginDate: hours.opening!, endDate: hours.closing!, inclusive: true) {
+                return true
+            }
+        }
         return false
     }
     
@@ -118,3 +140,5 @@ class Venue : Object {
 
     
 }
+
+

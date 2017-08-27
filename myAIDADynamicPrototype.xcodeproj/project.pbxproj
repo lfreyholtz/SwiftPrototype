@@ -85,6 +85,8 @@
 		89729B3D1F84D68D00D7C241 /* IncludedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89729B3B1F84D68D00D7C241 /* IncludedTableViewCell.swift */; };
 		89729B3E1F84D68D00D7C241 /* IncludedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89729B3C1F84D68D00D7C241 /* IncludedTableViewCell.xib */; };
 		89729B411F84EC5D00D7C241 /* VenueCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89729B401F84EC5D00D7C241 /* VenueCoverViewModel.swift */; };
+		8977FE561F52C1E100A38741 /* TimesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977FE541F52C1E000A38741 /* TimesCell.swift */; };
+		8977FE571F52C1E100A38741 /* TimesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8977FE551F52C1E100A38741 /* TimesCell.xib */; };
 		89970BF71F755A9F00A27C25 /* Playground.h in Headers */ = {isa = PBXBuildFile; fileRef = 89970BF51F755A9F00A27C25 /* Playground.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		89970BFA1F755A9F00A27C25 /* Playground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89970BF31F755A9F00A27C25 /* Playground.framework */; };
 		89970BFB1F755A9F00A27C25 /* Playground.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 89970BF31F755A9F00A27C25 /* Playground.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -204,6 +206,8 @@
 		89729B3B1F84D68D00D7C241 /* IncludedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncludedTableViewCell.swift; sourceTree = "<group>"; };
 		89729B3C1F84D68D00D7C241 /* IncludedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IncludedTableViewCell.xib; sourceTree = "<group>"; };
 		89729B401F84EC5D00D7C241 /* VenueCoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCoverViewModel.swift; sourceTree = "<group>"; };
+		8977FE541F52C1E000A38741 /* TimesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesCell.swift; sourceTree = "<group>"; };
+		8977FE551F52C1E100A38741 /* TimesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimesCell.xib; sourceTree = "<group>"; };
 		89970BED1F755A5500A27C25 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		89970BF31F755A9F00A27C25 /* Playground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Playground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89970BF51F755A9F00A27C25 /* Playground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playground.h; sourceTree = "<group>"; };
@@ -426,6 +430,8 @@
 				89729B381F84D57D00D7C241 /* PopularTimesTableViewCell.xib */,
 				89729B3B1F84D68D00D7C241 /* IncludedTableViewCell.swift */,
 				89729B3C1F84D68D00D7C241 /* IncludedTableViewCell.xib */,
+				8977FE541F52C1E000A38741 /* TimesCell.swift */,
+				8977FE551F52C1E100A38741 /* TimesCell.xib */,
 			);
 			name = "Catalog Views";
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 				4961C6E21F02956F004F3270 /* OpenSans-Italic.ttf in Resources */,
 				4961C6E71F02956F004F3270 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				4961C6E11F02956F004F3270 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				8977FE571F52C1E100A38741 /* TimesCell.xib in Resources */,
 				4961C6E61F02956F004F3270 /* OpenSans-SemiBold.ttf in Resources */,
 				4961C6E41F02956F004F3270 /* OpenSans-LightItalic.ttf in Resources */,
 				49E7F21C1F4D6D3B0001F3FA /* VenueInfoView.xib in Resources */,
@@ -714,6 +721,7 @@
 				494F5CDF1F31FBA80064DD8F /* DismissMenuAnimator.swift in Sources */,
 				89BC84B71F7E449100AD0D57 /* VenueDetailViewModel.swift in Sources */,
 				89DFD38A1F73CE0A00666866 /* NavCell.swift in Sources */,
+				8977FE561F52C1E100A38741 /* TimesCell.swift in Sources */,
 				899781971F74F542006C1DA4 /* Excursion.swift in Sources */,
 				89BC84B21F7D4F4C00AD0D57 /* DescriptionCellTableViewCell.swift in Sources */,
 				495845DA1F0E640700368B44 /* PhotoListLayout.swift in Sources */,

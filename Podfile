@@ -13,4 +13,5 @@ target 'myAIDADynamicPrototype' do
   pod 'RealmSwift'
 #   pod "MXParallaxHeader"
   pod 'AFDateHelper', '~> 4.2.2'
+#  pod 'SwiftDate', '~> 4.0'
 end

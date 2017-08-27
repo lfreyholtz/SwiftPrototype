@@ -88,7 +88,7 @@ class VenueDetailViewModel : NSObject {
         // header info view
         if let name = venue.name, let tagline = venue.tagline, let type = venue.type?.typeName, let typeDesc = venue.type?.typeDescription, let keyImageName = venue.images.first?.imageName {
             
-            headerInfoModel = VenueCoverViewModel(venueName: name, tagline: tagline, venueType: type, typeDescription: typeDesc, keyImageName: keyImageName, isOpen:venue.isOpen)
+            headerInfoModel = VenueCoverViewModel(venue: venue)
         }
         
 

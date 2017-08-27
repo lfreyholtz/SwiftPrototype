@@ -1,68 +1,95 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 
 
 
-let startTime:String = "2017-08-27 09:30:00"
-let endTime:String = "2017-08-27 11:30:00"
 
-//let currentTime:String = "2017-08-27 11:29:00"
-let currentTime:String = "2017-08-27 11:30:00"
+// get now
 
-let fullDateFormatter = DateFormatter()
-let dayOnlyFormatter = DateFormatter()
-fullDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss 'UTC+02:00'"
-dayOnlyFormatter.dateFormat = "EEEE"
 
-//dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
 
-let startTD = fullDateFormatter.date(from: startTime)
-let endTD = fullDateFormatter.date(from: endTime)
-
-let todayDT = fullDateFormatter.date(from: currentTime)
-let unitFlags = Set<Calendar.Component>([.hour, .year, .minute, .day, .month, .weekday])
-let calendar = Calendar.current
-
-//let rightNow = calendar.dateComponents(unitFlags, from:todayDT as! Date)
-//let openingTime = calendar.dateComponents(unitFlags, from: startTD as! Date)
-//let closingTime = calendar.dateComponents(unitFlags, from: endTD as! Date)
-
-//let currentDay = rightNow.weekday
-let shortFormatter = CFDateFormatterStyle.fullStyle
-
-let datePrint = dayOnlyFormatter.string(from: todayDT!)
+//var timer = Timer()
 
 
 
 
 
 
+// to make string dynamic, need to create a timer that runs every second
+
+
+
+
+
+
+//// generate new time zone transformed dates
+//let timezoneTransformedOpening = calendar.date(from: openingTimeZoneComponents)
+//let timezoneTransformedClosing = calendar.date(from: closingTimeZoneComponents)
+// convert now into new date in UTC
+//let adjustedNow = calendar.dateComponents(in: UTCTimeZone, from: now)
+//let adjustedNowString = calendar.date(from: adjustedNow)
+
+// then perform comparison
+
+
+class tempClass : NSObject {
     
-func dateIsBetween(compareDate:Date, beginDate:Date, endDate:Date, inclusive:Bool) -> Bool {
+
+    let dateFormatter:DateFormatter =  {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+            return formatter
+        }()
+    
+    let timeOnlyFormatter:DateFormatter =  {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+    
+    let openingTimeString = "27 Aug 2017 05:30:00 +0000"
+    let closingTimeString = "27 Aug 2017 10:00:00 +0000"
     
     
-    print("date: \(compareDate)")
-    print("is between: \(beginDate) and \(endDate)")
     
-    if inclusive {
-        return compareDate.compare(beginDate) == .orderedDescending && compareDate.compare(endDate) == .orderedAscending ||
-            compareDate.compare(beginDate) == .orderedSame || compareDate.compare(endDate) == .orderedSame
-    } else {
-        return compareDate.compare(beginDate) == .orderedDescending && compareDate.compare(endDate) == .orderedAscending
+    var openingTime:Date {
+        return dateFormatter.date(from: openingTimeString)!
     }
     
+    var closingTime:Date {
+        return dateFormatter.date(from: closingTimeString)!
+    }
+    
+
+    var timeString:String? {
+        get {
+            var timeString = ""
+            var calendar = Calendar.current
+            calendar.timeZone = TimeZone.current
+            let timeToClose = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date(), to: self.closingTime)
+            if timeToClose.hour! <= 1 {
+                timeString = "Closing in \(timeToClose.minute!) minutes"
+            } else {
+                timeString = "Open now until \(timeOnlyFormatter.string(from: closingTime))"
+            }
+            return timeString
+        }
+        
+        
+    }
     
 }
 
 
 
 
-let isOpen = dateIsBetween(compareDate: todayDT!, beginDate: startTD!, endDate: endTD!, inclusive: false)
-let otherIsOpen = todayDT?.compare(startTD!) == ComparisonResult.orderedAscending && todayDT?.compare(endTD!) == ComparisonResult.orderedDescending
+let newString = tempClass().timeString
 
-// if today > start date && < end date should be true
+//var timer = Timer.scheduledTimer(timeInterval: 1, target: testClassInstance, selector: #selector(tempClass.updateDate), userInfo: nil, repeats: true)
+//
+//timer.fire()
 
 

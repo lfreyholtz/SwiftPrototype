@@ -24,9 +24,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIApplication.shared.statusBarStyle = .lightContent
         
         let mainRealm = try! Realm(configuration: RealmConfig.main.configuration) // read/write realm in documents directory copied from bundle
-        print(Utils().simDateTime)
-        Utils().generateOpeningHours()
+//        print(Utils().simDateTime!)
         
+//        let todayStart = Calendar.current.startOfDay(for: Utils().simDateTime!)
+//        let todayEnd:Date = {
+//            let components = DateComponents(day:1, second:-1)
+//            return Calendar.current.date(byAdding:components, to:todayStart)!
+//        }()
+
+        
+//        Utils().generateOpeningHours()
+//        let openNow = mainRealm.objects(Venue.self).filter(<#T##predicate: NSPredicate##NSPredicate#>)
 //        let venues = mainRealm.objects(Venue.self)
 //        let restaurantsOnly = mainRealm.objects(Venue.self).filter("type.typeName = 'buffet' OR type.typeName = 'service' OR type.typeName = 'alacarte'")
 //        Utils().generateOpeningHours(inRealm:mainRealm, forItems: restaurantsOnly)

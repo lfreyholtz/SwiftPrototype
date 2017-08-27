@@ -29,9 +29,24 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>SwiftDate.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0A82777B6D256113695277C0513EC092</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>21D2A30EBCC4952364CFB2F348AD45F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>22358D6ABB1C6C0BD899EA7FD9498406</key>
 		<dict>
 			<key>primary</key>
@@ -88,6 +103,16 @@
 			<true/>
 		</dict>
 		<key>E959B957E005E6B3BCCC69382E4AB904</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2AACE335A67D6831E776C81815099CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB0B9510B176FC69AD270FB6465DF777</key>
 		<dict>
 			<key>primary</key>
 			<true/>

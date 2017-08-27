@@ -26,7 +26,9 @@ class VenueCell: UICollectionViewCell {
     var selectedCell:Bool = false
     var viewModel:VenueCoverViewModel? {
         didSet {
+         
             self.venueInfo.viewModel = viewModel
+//            venueInfo.layoutIfNeeded() // no effect
         }
     }
     

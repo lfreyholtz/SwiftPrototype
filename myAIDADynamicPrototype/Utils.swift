@@ -17,12 +17,18 @@ class Utils: NSObject {
 
 
     // simulation date
-    var simDateTime:Date {
-        let simulationDateString = "2017-08-28 08:31:00"
-        let fullDateFormatter = DateFormatter()
-        fullDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        return fullDateFormatter.date(from: simulationDateString)!
+    var simTimeZone:TimeZone = TimeZone.current
+    var simDateTime:Date? {
+//        let testDateString = "27 Aug 2017 06:31:00 +0000"
+//        
+////        let timeZone = TimeZone(abbreviation: "UTC") 
+////        let calendar = Calendar.current
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss Z"
+//        print("testDate and Time: \(dateFormatter.date(from: testDateString)!)")
+//        return dateFormatter.date(from: testDateString)
+        return Date()
     }
     
     
@@ -57,34 +63,49 @@ class Utils: NSObject {
     func generateOpeningHours(){
         let mainRealm = try! Realm(configuration: RealmConfig.main.configuration)
 //        let restaurantsOnly = mainRealm.objects(Venue.self).filter("type.typeName = 'buffet' OR type.typeName = 'service' OR type.typeName = 'alacarte'")
-        let snackbars = mainRealm.objects((Venue.self).filter("type.typeName = 'snackbar'"))
+        let snackbars = mainRealm.objects(Venue.self).filter("type.typeName = 'snackbar'")
+        let bars = mainRealm.objects(Venue.self).filter("type.typeName = 'bar'")
         let times = List<OpeningTime>()
         let startDate = Date(fromString: "27 Aug 2017 0:00:00 +0000", format: .altRSS)
         let cruiseDays = 7
-        let amOpenHours = [5, 6, 7, 8]
-        let lunchOpenHours = [10, 11, 12, 13]
-        let dinnerOpenHours = [17,18,19,20]
-        let halfHourOptions = [0, 30]
+//        let amOpenHours = [5, 6, 7, 8]
+//        let lunchOpenHours = [10, 11, 12, 13]
+//        let dinnerOpenHours = [17,18,19,20]
+//        let halfHourOptions = [0, 30]
 //        var descriptor:String
         
-        for item in restaurantsOnly {
+        for item in bars {
             //day
             for day in 0...cruiseDays {
                 // breakfast
                 let curCruiseDay = startDate?.adjust(.day, offset: day)
 //                print("******* venue:\(item.name!) *********")
 //                print("\(curCruiseDay!.toString(style: .full))")
-                let snackBarOpen = curCruiseDay?.adjust(.hour, offset:14)
-                let finalSnackBarOpen = snackBarOpen.adjust(.minute, offset:30)
-                let snackBarClose = finalSnackBarOpen.adjust(.hour, offset:9)
-                let snackbarOpeningTime = OpeningTime()
-                    snackbarOpeningTime.opening = finalSnackBarOpen!
-                    snackbarOpeningTime.closing = snackBarClose!
-                    snackbarOpeningTime.timeDescriptor = "snackbar"
                 
-                try! mainRealm.write {
-                    item.openingHours.append(snackbarOpeningTime)
-                }
+                let barOpen = curCruiseDay?.adjust(.hour, offset: 21)
+                let barClose = barOpen?.adjust(.hour, offset: 6)
+                let barOpeningTime = OpeningTime()
+                    barOpeningTime.opening = barOpen!
+                    barOpeningTime.closing = barClose!
+                    barOpeningTime.timeDescriptor = "bar / nightclub"
+                
+                times.append(barOpeningTime)
+//                try! mainRealm.write {
+//                    item.openingHours.append(barOpeningTime)
+//                }
+                
+//                let snackBarOpen = curCruiseDay?.adjust(.hour, offset:14)
+//                let finalSnackBarOpen = snackBarOpen?.adjust(.minute, offset:30)
+//                let snackBarClose = finalSnackBarOpen?.adjust(.hour, offset:9)
+//                let snackbarOpeningTime = OpeningTime()
+//                    snackbarOpeningTime.opening = finalSnackBarOpen!
+//                    snackbarOpeningTime.closing = snackBarClose!
+//                    snackbarOpeningTime.timeDescriptor = "snackbar"
+//                
+//                times.append(snackbarOpeningTime)
+//                try! mainRealm.write {
+//                    item.openingHours.append(snackbarOpeningTime)
+//                }
 //                let randomBreakfastOpen = amOpenHours[Int(arc4random_uniform(UInt32(amOpenHours.count)))]
 //                let randomHalfHour = halfHourOptions[Int(arc4random_uniform(UInt32(halfHourOptions.count)))]
 //                

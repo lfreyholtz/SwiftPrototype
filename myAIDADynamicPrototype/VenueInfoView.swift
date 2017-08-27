@@ -35,34 +35,38 @@ import UIKit
     let compactFrameHeight = PhotoListLayoutConstants.Cell.standardHeight
     let featureFrameHeight = PhotoListLayoutConstants.Cell.featuredHeight
     let fullScreenHeight = PhotoListLayoutConstants.Cell.fullScreenHeight
-    
+    var timer = Timer()
     
     
         var viewModel:VenueCoverViewModel? {
         didSet {
             
+            self.layoutIfNeeded()
+            
             guard let viewModel = viewModel else { return }
-            titleLabel.text = viewModel.venueName.uppercased()
+            titleLabel.text = viewModel.venueName?.uppercased()
             titleLabel.addTextSpacing()
             descriptionLabel.text = viewModel.typeDescription
             subtitleLabel.text = viewModel.tagline
-            if viewModel.keyImageName != "" {
-                keyImage.image = UIImage(named:viewModel.keyImageName)
+            
+            if let keyImageName = viewModel.keyImageName {
+                keyImage.image = UIImage(named: keyImageName)
             } else {
                 keyImage.image = #imageLiteral(resourceName: "Image_FPO")
             }
-            
-            if viewModel.isOpen {
-                openingTimeLabel.text = String("Jetzt Geöffnet").uppercased()
-            } else {
-                openingTimeLabel.text = "Geschlossen"
-            }
 
+            self.updateOpeningTime()
+            self.runTimer()
             
+//            openingTimeLabel.text = updateOpeningTime(withViewModel:viewModel)
+            
+//            contentView.layoutSubviews()
+//            contentView.updateConstraints()
+           
+
         }
        
-            
-            
+
         
     }
     
@@ -93,6 +97,7 @@ import UIKit
             self.descriptionLabel.alpha = textAlpha
             self.subtitleLabel.alpha = textAlpha
             self.divisionLine.alpha = textAlpha
+ 
             
         }
     }
@@ -111,6 +116,7 @@ import UIKit
         super.layoutIfNeeded()
     }
     
+
     
     private func commonInit() {
         let bundle:Bundle = Bundle(for: type(of: self))
@@ -130,7 +136,7 @@ import UIKit
     
     // parallax and squish
     func scrollViewDidScroll(scrollView:UIScrollView) {
-        
+        self.layoutIfNeeded()
         let offsetY = -(scrollView.contentOffset.y)
 //        print(offsetY)
 
@@ -158,5 +164,15 @@ import UIKit
         self.keyImage.alpha = fadeAlpha
         
     }
+    
+    // TODO: Doesn't work with isOpen, which is sitting on the venue object...
+    func runTimer() {
+        self.timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: (#selector(self.updateOpeningTime)), userInfo: nil, repeats: true)
+    }
+    func updateOpeningTime() {
+        openingTimeLabel.text =  self.viewModel?.openingMessage?.uppercased()
+        self.viewModel?.isOpen = self.viewModel?.isOpen
+    }
+
 
 }

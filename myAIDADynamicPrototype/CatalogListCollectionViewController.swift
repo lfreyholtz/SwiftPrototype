@@ -20,6 +20,8 @@ class CatalogListCollectionViewController: UICollectionViewController {
     
     var listData:Category? {
         didSet {
+            
+
             // init category values instance with type
 //            print(listData?.venueMembers)
             
@@ -52,8 +54,7 @@ class CatalogListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
-        
-//        self.navigationController?.delegate = self
+        collectionView!.isPrefetchingEnabled = false
         
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: storyboardValues.defaultCellID)
@@ -73,6 +74,8 @@ class CatalogListCollectionViewController: UICollectionViewController {
     func back(_ sender:UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
 
 }
 
@@ -118,22 +121,44 @@ extension CatalogListCollectionViewController {
             case "venue":
                 var venueInfoViewModel:VenueCoverViewModel?
                 
-                let venueForRow:Venue = listData.venueMembers[indexPath.item]
-                if let name = venueForRow.name, let type = venueForRow.type?.typeName, let typeDesc = venueForRow.type?.typeDescription, let tagline = venueForRow.tagline, let keyImage = venueForRow.images.first?.imageName {
-                    venueInfoViewModel = VenueCoverViewModel(venueName: name, tagline: tagline, venueType: type, typeDescription: typeDesc, keyImageName: keyImage, isOpen: venueForRow.isOpen)
+                
+                
+                // first show venues that are open, ranked by nearest closing time, then show venues that are closed, ranked by opening time
+                
+                let venueMembersArray = Array(listData.venueMembers).sorted{ item1, item2 in
                     
-                }
+                    if item1.isOpen == item2.isOpen {
+                        if item1.isOpen == true {
+                            
+                            guard let item1NextClosing = item1.nextOpeningTime?.closing else { return false }
+                            guard let item2NextClosing = item2.nextOpeningTime?.closing else { return false }
+                            return item1NextClosing < item2NextClosing
+                            
+                        } else if item1.isOpen == false {
+                            guard let item1NextOpening = item1.nextOpeningTime?.opening else { return false }
+                            guard let item2NextOpening = item2.nextOpeningTime?.opening else { return false }
+                            return item1NextOpening < item2NextOpening
+                        }
+                    }
+                    
+                    return item1.isOpen && !item2.isOpen
+
+                    }
+
                 
-               
+                let venueForRow:Venue = venueMembersArray[indexPath.item]
+                venueInfoViewModel = VenueCoverViewModel(venue: venueForRow)
                 
                 
-                
-                
+
+
                 let venueCell = collectionView.dequeueReusableCell(withReuseIdentifier: storyboardValues.venueCellID, for: indexPath) as! VenueCell
                 
                 venueCell.viewModel = venueInfoViewModel
                 self.segueForDetail = storyboardValues.venueDetailSegue
                 
+//                self.collectionView?.collectionViewLayout.invalidateLayout()
+                venueCell.layoutSubviews()
                 return venueCell
                 
                 // case "event":
