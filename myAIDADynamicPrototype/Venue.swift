@@ -59,8 +59,7 @@ class Venue : Object {
 //    let userReservations = List<Reservation>()
     
     //ratings
-    let ratingComments = List<RatingComment>()
-    let numRatings = RealmOptional<Int>()
+    let ratings = List<Rating>()
     
     let staff = List<Crew>()
     

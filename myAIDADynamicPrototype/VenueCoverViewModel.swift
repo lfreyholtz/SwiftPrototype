@@ -19,9 +19,10 @@ class VenueCoverViewModel : NSObject {
     var venueType:String?
     var typeDescription: String?
     var keyImageName: String?
-    // for later
-    //    var rating: CGFloat
-    //    var totalRatings: Int
+    
+
+    var rating: CGFloat
+    var totalRatings: Int
 //    var isOpen:Bool
     var openMessage:String?
     
