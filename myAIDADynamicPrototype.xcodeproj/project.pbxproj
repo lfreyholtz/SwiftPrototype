@@ -261,7 +261,7 @@
 		491FC2C41EFBF53900884318 /* myAIDADynamicPrototype */ = {
 			isa = PBXGroup;
 			children = (
-				49E7F1E61F444B4D0001F3FA /* Custom Views */,
+				49E7F1E61F444B4D0001F3FA /* Catalog Views */,
 				494F5CE21F33181A0064DD8F /* Assets */,
 				491D5EE21EFD3BF4007661E5 /* menu */,
 				491D5ED91EFC0CA2007661E5 /* Itinerary */,
@@ -341,13 +341,13 @@
 			name = Venue;
 			sourceTree = "<group>";
 		};
-		49E7F1E61F444B4D0001F3FA /* Custom Views */ = {
+		49E7F1E61F444B4D0001F3FA /* Catalog Views */ = {
 			isa = PBXGroup;
 			children = (
 				49E7F21B1F4D6D3B0001F3FA /* VenueInfoView.xib */,
 				49E7F21D1F4D6DCF0001F3FA /* VenueInfoView.swift */,
 			);
-			name = "Custom Views";
+			name = "Catalog Views";
 			sourceTree = "<group>";
 		};
 		49F5EA811F03E65D00E39EDC /* Transitions */ = {

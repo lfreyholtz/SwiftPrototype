@@ -281,10 +281,10 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wsT-JR-kHj">
-                                            <rect key="frame" x="16" y="319.33333333333326" width="343" height="84.666666666666686"/>
+                                            <rect key="frame" x="16" y="305" width="343" height="99"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLY-U4-4Tp" customClass="AdvancedLabel" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="63.666666666666686"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="74.333333333333314"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Essen, trinken &amp; Nachtleben">
                                                             <attributes>
@@ -298,7 +298,7 @@
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;topic subheading&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwR-9m-1Pj">
-                                                    <rect key="frame" x="0.0" y="63.666666666666686" width="343" height="21"/>
+                                                    <rect key="frame" x="0.0" y="74.333333333333314" width="343" height="24.666666666666686"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

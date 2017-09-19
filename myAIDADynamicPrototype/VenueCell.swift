@@ -59,41 +59,6 @@ class VenueCell: UICollectionViewCell {
                 venueImage.image = #imageLiteral(resourceName: "Image_FPO")
             
             }
-//            if let venue = venue {
-//                
-//                guard let name = venue.name else { return }
-//                venueName.text = name.uppercased()
-//                venueName.addTextSpacing()
-//                venueSubtitle.text = venue.tagline
-//                
-//                // test Hero
-//                
-//                
-//                
-//                let venueImages = venue.images
-//                let keyImage = venueImages.first
-//                let keyImageName = keyImage?.imageName
-//                
-//                if let keyImageName = keyImageName {
-//                    
-//                    venueImage.image = UIImage(named: keyImageName)
-//
-//                    
-//                } else {
-//                    venueImage.image = #imageLiteral(resourceName: "Image_FPO")
-//                
-//                }
-//                
-//                let venueType = venue.type
-//                let typeDescriptor = venueType?.typeDescription
-//                                
-//                if let typeDescriptor = typeDescriptor {
-//                    
-//                    venueTypeDescriptor.text = typeDescriptor
-//                    
-//                }
-//
-//            }
         }
     }
     
@@ -136,7 +101,7 @@ class VenueCell: UICollectionViewCell {
 //        venueInfo.descriptionLabel.alpha = alphaMod
 //        venueInfo.subheadingLabel.alpha = alphaMod
         
-        updateScrollEffects()
+//        updateScrollEffects()
 
         
         

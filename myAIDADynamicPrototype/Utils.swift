@@ -10,27 +10,14 @@ import UIKit
 
 class Utils: NSObject {
 
-    static func modulate(value:CGFloat, fromLow:CGFloat, fromHigh:CGFloat, toLow:CGFloat, toHigh:CGFloat, limit:Bool) -> CGFloat {
-        
-        let result:CGFloat = (((value - fromLow) / (fromHigh - fromLow)) * (toHigh - toLow))
-        
-        if limit {
-            if toLow < toHigh {
-                if (result < toLow) { return toLow }
-                if (result > toHigh) { return toHigh }
-                
-            } else {
-
-                if (result > toLow) { return toLow }
-
-                if (result < toHigh) { return toHigh }
-            }
-        }
+// TODO: Implement range limiting, use pattern matching y1...y2 ~= result
+    
+    func modulate(input:CGFloat, x1:CGFloat, x2:CGFloat, y1:CGFloat, y2:CGFloat) -> CGFloat {
+        let result:CGFloat = (((input - x1) * (y2 - y1)) / (x2 - x1)) + y1
         
         return result
         
     }
-        
 
 
 }

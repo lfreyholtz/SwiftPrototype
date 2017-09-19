@@ -52,9 +52,7 @@ extension AdvancedLabel {
             attributedString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, strLength))
             attributedString.addAttribute(NSKernAttributeName, value: -1.0, range: NSMakeRange(0,strLength))
             
-//            print("paragraph line height multiple: \(paragraphStyle.lineHeightMultiple)")
             if let font = font {
-//                print("line height: \(font.lineHeight)")
                 adjustedTop = ceil(font.lineHeight - paragraphStyle.lineHeightMultiple * font.lineHeight)
                 
             }
@@ -65,7 +63,6 @@ extension AdvancedLabel {
             
             
             
-            //            self.sizeToFit()
             
         }
     }

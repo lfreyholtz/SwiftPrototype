@@ -56,8 +56,7 @@ class ItineraryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 178/255, green: 0/255, blue: 142/255, alpha: 1.0)
-        // Do any additional setup after loading the view.
+
     }
 
 }
