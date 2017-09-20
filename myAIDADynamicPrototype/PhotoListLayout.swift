@@ -14,10 +14,10 @@ struct PhotoListLayoutConstants {
     struct Cell {
         
         /* The height of the non-featured cell */
-        static let standardHeight: CGFloat = 120
+        static let standardHeight: CGFloat = 200
         /* The height of the first visible cell */
         static let featuredHeight: CGFloat = 400
-//        var featuredHeight:CGFloat = 400
+//        var featuredHeight:CGFloat = 440
         static let fullScreenHeight:CGFloat = UIScreen.main.bounds.height
     }
 }

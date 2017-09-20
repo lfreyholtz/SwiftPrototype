@@ -43,5 +43,16 @@ import UIKit
         
     }
 
+    func createGradientImage() -> UIImage? {
+        var image:UIImage? = nil
+        UIGraphicsBeginImageContext(bounds.size)
+        if let context = UIGraphicsGetCurrentContext() {
+            self.layer.render(in: context)
+            image = UIGraphicsGetImageFromCurrentImageContext()
+            
+        }
+        UIGraphicsEndImageContext()
+        return image
+    }
     
 }

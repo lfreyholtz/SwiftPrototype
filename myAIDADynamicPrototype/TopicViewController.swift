@@ -17,14 +17,21 @@ protocol TopicViewControllerDelegate {
 class TopicViewController: UIViewController {
 
     // @IBOutlet weak var CloseButton: UIButton!
+
+    
+    // for hiding statusbar
+    var statusBarHidden:Bool = false {
+        didSet {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+
     
     struct storyboardValues {
         static let cellIdentifier = "categoryCell"
         static let showList = "showList"
     }
     var delegate: TopicViewControllerDelegate?
-    var parentController : UINavigationController?
-    var navController : UINavigationController?
     var topicData:Topic?
     var members:AnyObject?
     var selectedCategory:Category?
@@ -32,6 +39,7 @@ class TopicViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +49,8 @@ class TopicViewController: UIViewController {
         
         layout?.itemSize = CGSize(width: width, height: 62)
 
+        
+        // close custom icon
         let icon = UIImage(named: "icn_close_white")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: icon,
@@ -50,19 +60,16 @@ class TopicViewController: UIViewController {
         )
         
         self.navigationItem.title = ""
-        var colors = [UIColor]()
-        colors.append(UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5))
-        colors.append(UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.0))
-        navigationController?.navigationBar.setGradientBackground(colors: colors)
-        navigationController?.navigationBar.shadowImage = nil
-    }
 
+    }
+    
+    
     func dismiss(_ sender:UIBarButtonItem) {
         dismiss(animated:true, completion:nil)
     }
     
-    
 
+    
 
 }
 
@@ -78,8 +85,11 @@ extension TopicViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let topicData = topicData {
+            
             return topicData.categories.count
+        
         } else {
+            
             return 1
         }
        
@@ -98,8 +108,6 @@ extension TopicViewController: UICollectionViewDataSource {
         cell.category = topicData?.categories[indexPath.item]
         
         
-        
-
         
 
         return cell
@@ -129,6 +137,20 @@ extension TopicViewController: UICollectionViewDataSource {
             
         }
     }
+    
+    
+    /// scroll behaviors (e.g. show / hide nav bar)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        hideNavBar()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        showNavBar()
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        showNavBar()
+    }
 }
 
 extension TopicViewController : UICollectionViewDelegate {
@@ -148,7 +170,7 @@ extension TopicViewController : UICollectionViewDelegate {
             listController.listData = selectedCategory
             listController.transitioningDelegate = nil
             
-//            print("Sending list data:\(selectedCategory)")
+
 
         }
         
@@ -164,50 +186,62 @@ extension TopicViewController : UICollectionViewDelegateFlowLayout {
     
 }
 
-
-// MARK NavBar Customization
-extension UINavigationBar {
+// showing hiding status bar
+extension TopicViewController  {
     
-    
-    func setGradientBackground(colors: [UIColor]) {
+    func hideNavBar() {
         
-        var updatedFrame = bounds
-        updatedFrame.size.height += 20
-        let gradientLayer = CAGradientLayer(frame: updatedFrame, colors: colors)
+        guard let navController = self.navigationController else { return }
+        let navBarFrame:CGRect = navController.navigationBar.frame
         
-        setBackgroundImage(gradientLayer.createGradientImage(), for: UIBarMetrics.default)
-        shadowImage = UIImage()
-        isTranslucent = true
-        barTintColor = UIColor.clear
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+            
+            navController.navigationBar.alpha = 0.0
+            
+        }, completion: {
+            
+            ( completed ) in
+            
+            navController.navigationBar.frame = CGRect.zero
+//            navController.navigationBar.frame = CGRect(x: 0, y: 20, width: navBarFrame.size.width, height: 44)
+            navController.navigationBar.frame = navBarFrame
+            self.statusBarHidden = true
 
+
+        })
+        
+       
+           }
+    
+    func showNavBar() {
+        
+        guard let navController = self.navigationController else { return }
+        let navBarFrame:CGRect = navController.navigationBar.frame
+        
+        
+        UIView.animate(withDuration: 0.33, delay: 1.0, options: .curveEaseInOut, animations: {
+            
+            navController.navigationBar.alpha = 1.0
+            
+        }, completion: {
+            
+            ( completed ) in
+            
+                navController.navigationBar.frame = CGRect.zero
+                navController.navigationBar.frame = navBarFrame
+//                navController.navigationBar.frame = CGRect(x: 0, y: 20, width: navBarFrame.size.width, height: 44)
+                self.statusBarHidden = false
+
+        })
+        
+        
+       
         
     }
+
+    override var prefersStatusBarHidden: Bool {
+        return statusBarHidden
+    }
+ 
+
 }
-
-extension CAGradientLayer {
-    
-    convenience init(frame: CGRect, colors: [UIColor]) {
-        self.init()
-        self.frame = frame
-        self.colors = []
-        for color in colors {
-            self.colors?.append(color.cgColor)
-        }
-        startPoint = CGPoint(x: 0, y: 0)
-        endPoint = CGPoint(x: 0, y: 1)
-    }
-    
-    func createGradientImage() -> UIImage? {
-        
-        var image: UIImage? = nil
-        UIGraphicsBeginImageContext(bounds.size)
-        if let context = UIGraphicsGetCurrentContext() {
-            render(in: context)
-            image = UIGraphicsGetImageFromCurrentImageContext()
-        }
-        UIGraphicsEndImageContext()
-        return image
-    }
-    
-}
-

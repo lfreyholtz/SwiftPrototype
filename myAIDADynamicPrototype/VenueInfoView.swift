@@ -71,7 +71,7 @@ import UIKit
             
             // font size
             let frameHeight = self.bounds.height
-            let minFontSize:CGFloat = 18.0
+            let minFontSize:CGFloat = 24.0
             let maxFontSize:CGFloat = 32.0
             let calculatedFontSize = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: fullScreenHeight, y1: minFontSize, y2: maxFontSize)
 
@@ -82,7 +82,7 @@ import UIKit
             let textGroupHeight = self.descriptionLabel.frame.maxY - (self.titleLabel.frame.maxY + 12)
             let featuredConstraintHeight:CGFloat = 24.0
             let collapsedConstraintHeight:CGFloat = (textGroupHeight * -1)
-            print(textGroupHeight)
+//            print(textGroupHeight)
             self.textAreaBottomConstraint.constant = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: featureFrameHeight, y1: collapsedConstraintHeight, y2: featuredConstraintHeight)
             
             // text alpha

@@ -375,40 +375,9 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jpJ-Wm-dwU">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVW-2f-MAq">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFz-dr-7xD" customClass="VenueInfoView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="571"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="casanova_01" translatesAutoresizingMaskIntoConstraints="NO" id="fXB-Gk-zoF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="571"/>
-                                                        </imageView>
-                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1u-QK-xR2" customClass="GradientView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="midColor">
-                                                                    <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.22" colorSpace="calibratedRGB"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                                                    <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qkd-fD-2bV" customClass="VenueInfoView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="571"/>
-                                                        </view>
-                                                    </subviews>
-                                                    <color key="backgroundColor" cyan="0.75" magenta="0.22" yellow="0.029999999999999999" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="qkd-fD-2bV" secondAttribute="bottom" id="97X-rQ-YNl"/>
-                                                        <constraint firstItem="qkd-fD-2bV" firstAttribute="top" secondItem="rVW-2f-MAq" secondAttribute="top" id="G0P-Pq-yyt"/>
-                                                        <constraint firstItem="qkd-fD-2bV" firstAttribute="leading" secondItem="rVW-2f-MAq" secondAttribute="leading" id="I5A-QG-DeB"/>
-                                                        <constraint firstAttribute="trailing" secondItem="fXB-Gk-zoF" secondAttribute="trailing" id="Swe-tO-elE"/>
-                                                        <constraint firstItem="fXB-Gk-zoF" firstAttribute="height" secondItem="rVW-2f-MAq" secondAttribute="height" id="UUY-NX-WoH"/>
-                                                        <constraint firstItem="fXB-Gk-zoF" firstAttribute="leading" secondItem="rVW-2f-MAq" secondAttribute="leading" id="nOI-p1-OrC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="qkd-fD-2bV" secondAttribute="trailing" id="ngk-cL-TI4"/>
-                                                        <constraint firstItem="fXB-Gk-zoF" firstAttribute="bottom" secondItem="rVW-2f-MAq" secondAttribute="bottom" id="wMS-9L-uBd"/>
-                                                    </constraints>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufO-Nk-DHj">
                                                     <rect key="frame" x="0.0" y="571" width="414" height="48"/>
@@ -424,7 +393,6 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="0.70171440972222221" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="jpJ-Wm-dwU" secondAttribute="trailing" id="0WV-2g-2yF"/>
                                         <constraint firstItem="jpJ-Wm-dwU" firstAttribute="top" secondItem="Dzf-94-NQ2" secondAttribute="top" id="kj0-Li-SSj"/>
@@ -433,11 +401,6 @@
                                     </constraints>
                                     <connections>
                                         <outlet property="actionButton" destination="ufO-Nk-DHj" id="BoW-xH-0OO"/>
-                                        <outlet property="bottomLayoutConstraint" destination="wMS-9L-uBd" id="SlE-sp-Hsl"/>
-                                        <outlet property="containerView" destination="rVW-2f-MAq" id="lua-hr-bxf"/>
-                                        <outlet property="heightLayoutConstraint" destination="UUY-NX-WoH" id="lbK-QB-sSd"/>
-                                        <outlet property="keyImage" destination="fXB-Gk-zoF" id="ocU-WI-cta"/>
-                                        <outlet property="keyImageGradient" destination="q1u-QK-xR2" id="CTN-e8-Fgo"/>
                                     </connections>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="HPa-tm-Mmp">
@@ -550,7 +513,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="defaultCell" textLabel="Juu-10-64p" style="IBUITableViewCellStyleDefault" id="SDw-4I-byO">
-                                        <rect key="frame" x="0.0" y="674.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="674" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SDw-4I-byO" id="5ba-Fx-OSI">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -765,10 +728,10 @@
             </objects>
             <point key="canvasLocation" x="-647" y="403"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Catalog Navigation Controller-->
         <scene sceneID="AJr-Ih-NFl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W7E-OY-0ju" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenKeyboardAppears="YES" id="W7E-OY-0ju" customClass="CatalogNavigationController" customModule="myAIDADynamicPrototype" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Oes-YT-jBY">
@@ -789,7 +752,6 @@
     </scenes>
     <resources>
         <image name="Image_FPO" width="376" height="336"/>
-        <image name="casanova_01" width="2032" height="1332"/>
         <image name="icn_disclosure_blue_small" width="7" height="11"/>
         <image name="topicFamily" width="1128" height="1269"/>
     </resources>

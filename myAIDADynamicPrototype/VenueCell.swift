@@ -92,16 +92,6 @@ class VenueCell: UICollectionViewCell {
         let transformMargin:CGFloat = 10
         let delta = 1 - ((featuredHeight - frame.height - transformMargin) / (featuredHeight - standardHeight))
         
-        // alpha
-        let minAlpha:CGFloat = 0.0
-        let maxAlpha:CGFloat = 1.0
-        let alphaMod = minAlpha - (delta * (minAlpha - maxAlpha))
-        
-//        venueInfo.venueNameLabel.alpha = alphaMod
-//        venueInfo.descriptionLabel.alpha = alphaMod
-//        venueInfo.subheadingLabel.alpha = alphaMod
-        
-//        updateScrollEffects()
 
         
         
@@ -110,24 +100,5 @@ class VenueCell: UICollectionViewCell {
     }
     
     
-    func updateScrollEffects() {
-        
-        
-        // constraints
-        let standardHeight = PhotoListLayoutConstants.Cell.standardHeight
-        let featuredHeight = PhotoListLayoutConstants.Cell.featuredHeight
-        let transformMargin:CGFloat = 10
-        
-        
-//        textGroupHeight = venueTypeDescriptor.frame.maxY - venueSubtitle.frame.minY
-//        let delta = 1 - ((featuredHeight - frame.height - transformMargin) / (featuredHeight - standardHeight))
-//        
-//        let featureConstraintSize:CGFloat = 24.0
-//        let collapsedConstraintSize:CGFloat = textGroupHeight * -1
-//        
-//        let constraintMod = collapsedConstraintSize - (delta*(collapsedConstraintSize - featureConstraintSize))
-//        textGroupConstraintValue = constraintMod
-
-    }
-
+   
 }

@@ -59,7 +59,7 @@ class MenuViewController: UIViewController {
 extension MenuViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedTopic = topics[indexPath.row]
-        print("selected topic: \(String(describing: selectedTopic.title))")
+//        print("selected topic: \(String(describing: selectedTopic.title))")
         dismiss(animated: true, completion: {
             self.delegate?.openCatalog(selectedTopic)
         })

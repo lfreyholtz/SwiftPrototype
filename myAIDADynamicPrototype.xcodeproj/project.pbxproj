@@ -77,6 +77,8 @@
 		49E7F1EC1F4457E10001F3FA /* VenueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E7F1EB1F4457E10001F3FA /* VenueCell.xib */; };
 		49E7F21C1F4D6D3B0001F3FA /* VenueInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E7F21B1F4D6D3B0001F3FA /* VenueInfoView.xib */; };
 		49E7F21E1F4D6DCF0001F3FA /* VenueInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F21D1F4D6DCF0001F3FA /* VenueInfoView.swift */; };
+		89F5C0991F7137DF00B98284 /* CatalogNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */; };
+		89F5C09B1F7279A800B98284 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C09A1F7279A700B98284 /* RadialGradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +156,8 @@
 		49E7F1EB1F4457E10001F3FA /* VenueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueCell.xib; sourceTree = "<group>"; };
 		49E7F21B1F4D6D3B0001F3FA /* VenueInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueInfoView.xib; sourceTree = "<group>"; };
 		49E7F21D1F4D6DCF0001F3FA /* VenueInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInfoView.swift; sourceTree = "<group>"; };
+		89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogNavigationController.swift; sourceTree = "<group>"; };
+		89F5C09A1F7279A700B98284 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,7 @@
 				495845D11F0D27EC00368B44 /* LineBackgroundView.swift */,
 				495845DF1F14D80600368B44 /* AdvancedLabel.swift */,
 				499B40001F4DC1FD00786954 /* Utils.swift */,
+				89F5C09A1F7279A700B98284 /* RadialGradientView.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 		491FC2C41EFBF53900884318 /* myAIDADynamicPrototype */ = {
 			isa = PBXGroup;
 			children = (
+				89F5C0941F7135C400B98284 /* NavControllers */,
 				49E7F1E61F444B4D0001F3FA /* Catalog Views */,
 				494F5CE21F33181A0064DD8F /* Assets */,
 				491D5EE21EFD3BF4007661E5 /* menu */,
@@ -357,6 +363,14 @@
 				49E7F1E31F4327990001F3FA /* ZoomPopTransition.swift */,
 			);
 			name = Transitions;
+			sourceTree = "<group>";
+		};
+		89F5C0941F7135C400B98284 /* NavControllers */ = {
+			isa = PBXGroup;
+			children = (
+				89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */,
+			);
+			name = NavControllers;
 			sourceTree = "<group>";
 		};
 		E125F9D4C9F40FEC8C97F5AC /* Pods */ = {
@@ -516,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89F5C0991F7137DF00B98284 /* CatalogNavigationController.swift in Sources */,
 				491D5F021F0289C3007661E5 /* TopicPromotionalView.swift in Sources */,
 				494F5CEE1F331C8E0064DD8F /* URL+.swift in Sources */,
 				494F5CF01F331D920064DD8F /* Catalog.swift in Sources */,
@@ -528,6 +543,7 @@
 				491FC2D81EFC041800884318 /* Topic.swift in Sources */,
 				491D5EEF1F0279A0007661E5 /* Fonts.swift in Sources */,
 				494BFEF81F05376800E7BA8E /* VenueMenu.swift in Sources */,
+				89F5C09B1F7279A800B98284 /* RadialGradientView.swift in Sources */,
 				495845E01F14D80600368B44 /* AdvancedLabel.swift in Sources */,
 				494F5CE51F33189B0064DD8F /* RealmConfig.swift in Sources */,
 				496B73B91F31EBEC00B9957D /* PresentMenuAnimator.swift in Sources */,

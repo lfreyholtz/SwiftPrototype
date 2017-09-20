@@ -27,7 +27,15 @@ class CatalogListCollectionViewController: UICollectionViewController {
     
 
 
+    // for hiding statusbar
+    var statusBarHidden:Bool = false {
+        didSet {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+    }
 
+    
+    
     struct storyboardValues {
         static let venueCellID = "venueCell"
         static let venueCellNibName = "VenueCell"
@@ -39,10 +47,10 @@ class CatalogListCollectionViewController: UICollectionViewController {
     
     
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
-
         
 //        self.navigationController?.delegate = self
         
@@ -50,11 +58,19 @@ class CatalogListCollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: storyboardValues.defaultCellID)
         self.collectionView!.register(UINib(nibName: storyboardValues.venueCellNibName, bundle: nil), forCellWithReuseIdentifier: storyboardValues.venueCellID)
         
-        
+        // custom back icon
+        let icon = UIImage(named:"icn_back_white")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: icon,
+            style: UIBarButtonItemStyle.plain,
+            target: self,
+            action: #selector(back(_:))
+        )
     }
     
-    func changeLayout() {
-        
+
+    func back(_ sender:UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
@@ -133,7 +149,6 @@ extension CatalogListCollectionViewController {
         // scroll to selected item
         let layout = collectionViewLayout as! PhotoListLayout
         let offset = layout.dragOffset * CGFloat(indexPath.item)
-//        let cell = collectionView.cellForItem(at: indexPath)
         
         selectedIndexPath = indexPath
         selectedItem  = collectionView.cellForItem(at: indexPath)
@@ -147,8 +162,23 @@ extension CatalogListCollectionViewController {
 
     }
     
-    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    /// scroll behaviors (e.g. show / hide nav bar)
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        hideNavBar()
+
         
+        
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        showNavBar()
+    }
+    
+    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        showNavBar()
+
+
         perform(#selector(fireSegueWithSelectedCell), with: nil, afterDelay: 0.3)
     }
     
@@ -189,41 +219,104 @@ extension CatalogListCollectionViewController {
     
 }
 
-extension CatalogListCollectionViewController : ZoomingPhotoController {
+//extension CatalogListCollectionViewController : ZoomingPhotoController {
+//
+//    
+//    
+//    func heroImage(for transition:ZoomingPhotoTransition) -> UIImageView? {
+//        
+//        if let selectedIndexPath = selectedIndexPath {
+//            let cell = collectionView?.cellForItem(at: selectedIndexPath) as! VenueCell
+//            return cell.venueImage
+//            
+//        } else {
+//            return nil
+//        }
+//    }
+//    
+//    
+//    func gradient(for transition: ZoomingPhotoTransition) -> GradientView? {
+//        if let selectedIndexPath = selectedIndexPath {
+//            let cell = collectionView?.cellForItem(at: selectedIndexPath) as! VenueCell
+//            return cell.gradientView
+//        } else {
+//            return nil
+//        }
+//        
+//    }
+//    
+//    func infoPanel(for transition: ZoomingPhotoTransition) -> UIView? {
+//        if let selectedIndexPath = selectedIndexPath {
+//            let cell = collectionView?.cellForItem(at: selectedIndexPath) as! VenueCell
+//            return cell.venueInfo
+//        } else {
+//            return nil
+//        }
+//    }
+//    
+//}
 
+// showing hiding status bar
+extension CatalogListCollectionViewController  {
     
-    
-    func heroImage(for transition:ZoomingPhotoTransition) -> UIImageView? {
+    func hideNavBar() {
         
-        if let selectedIndexPath = selectedIndexPath {
-            let cell = collectionView?.cellForItem(at: selectedIndexPath) as! VenueCell
-            return cell.venueImage
+        
+        guard let navController = self.navigationController else { return }
+        let navBarFrame:CGRect = navController.navigationBar.frame
+        
+        
+        
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
             
-        } else {
-            return nil
-        }
-    }
-    
-    
-    func gradient(for transition: ZoomingPhotoTransition) -> GradientView? {
-        if let selectedIndexPath = selectedIndexPath {
-            let cell = collectionView?.cellForItem(at: selectedIndexPath) as! VenueCell
-            return cell.gradientView
-        } else {
-            return nil
-        }
+            
+            navController.navigationBar.alpha = 0.0
+        }, completion: {
+            ( completed ) in
+            
+            navController.navigationBar.frame = CGRect.zero
+            navController.navigationBar.frame = navBarFrame
+//            navController.navigationBar.frame = CGRect(x: 0, y: 20, width: navBarFrame.size.width, height: 44)
+            self.statusBarHidden = true
+            
+            
+            
+        })
+        
         
     }
     
-    func infoPanel(for transition: ZoomingPhotoTransition) -> UIView? {
-        if let selectedIndexPath = selectedIndexPath {
-            let cell = collectionView?.cellForItem(at: selectedIndexPath) as! VenueCell
-            return cell.venueInfo
-        } else {
-            return nil
-        }
+    func showNavBar() {
+        
+        
+        
+        guard let navController = self.navigationController else { return }
+        let navBarFrame:CGRect = navController.navigationBar.frame
+        
+        
+        
+        
+        UIView.animate(withDuration: 0.33, delay: 1.0, options: .curveEaseInOut, animations: {
+            
+            
+            
+            navController.navigationBar.alpha = 1.0
+        }, completion: {
+            ( completed ) in
+            navController.navigationBar.frame = CGRect.zero
+            navController.navigationBar.frame = navBarFrame
+//            navController.navigationBar.frame = CGRect(x: 0, y: 20, width: navBarFrame.size.width, height: 44)
+            self.statusBarHidden = false
+            
+        })
+        
+        
+        
+        
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return statusBarHidden
+    }
+   
 }
-
-
