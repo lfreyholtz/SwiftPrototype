@@ -77,10 +77,42 @@
 		49E7F21C1F4D6D3B0001F3FA /* VenueInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E7F21B1F4D6D3B0001F3FA /* VenueInfoView.xib */; };
 		49E7F21E1F4D6DCF0001F3FA /* VenueInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F21D1F4D6DCF0001F3FA /* VenueInfoView.swift */; };
 		899781971F74F542006C1DA4 /* Excursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899781961F74F542006C1DA4 /* Excursion.swift */; };
+		899781EB1F754F86006C1DA4 /* Playground.h in Headers */ = {isa = PBXBuildFile; fileRef = 899781E91F754F86006C1DA4 /* Playground.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		899781EE1F754F86006C1DA4 /* Playground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899781E71F754F86006C1DA4 /* Playground.framework */; };
+		899781EF1F754F86006C1DA4 /* Playground.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 899781E71F754F86006C1DA4 /* Playground.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		899781F31F754FEC006C1DA4 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F5CE41F33189B0064DD8F /* RealmConfig.swift */; };
+		899781F41F755058006C1DA4 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491FC2D71EFC041800884318 /* Topic.swift */; };
+		899781F51F755058006C1DA4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5EDA1EFD0815007661E5 /* Category.swift */; };
+		899781F61F755058006C1DA4 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5EEC1F02775F007661E5 /* Venue.swift */; };
+		899781F71F755058006C1DA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEE51F04F39300E7BA8E /* User.swift */; };
+		899781F81F755058006C1DA4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEE71F04F4BC00E7BA8E /* Location.swift */; };
+		899781F91F755058006C1DA4 /* Crew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEE91F04F72000E7BA8E /* Crew.swift */; };
+		899781FA1F755058006C1DA4 /* CatalogImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEED1F0506C900E7BA8E /* CatalogImage.swift */; };
+		899781FB1F755058006C1DA4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEEF1F0507D900E7BA8E /* Tag.swift */; };
+		899781FC1F755058006C1DA4 /* CategorySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEF11F052B0D00E7BA8E /* CategorySetup.swift */; };
+		899781FD1F755058006C1DA4 /* OpeningTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEF31F052E7000E7BA8E /* OpeningTime.swift */; };
+		899781FE1F755058006C1DA4 /* RatingComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEF51F052F9400E7BA8E /* RatingComment.swift */; };
+		899781FF1F755058006C1DA4 /* VenueMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEF71F05376800E7BA8E /* VenueMenu.swift */; };
+		899782001F755058006C1DA4 /* VenueMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEF91F05379E00E7BA8E /* VenueMenuItem.swift */; };
+		899782011F755058006C1DA4 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BFEFB1F05393600E7BA8E /* Event.swift */; };
+		899782021F755058006C1DA4 /* CatalogTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495845D71F0E5D4F00368B44 /* CatalogTypes.swift */; };
+		899782031F755058006C1DA4 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495845DD1F124B2D00368B44 /* Booking.swift */; };
+		899782041F755058006C1DA4 /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F5CEF1F331D920064DD8F /* DataUtils.swift */; };
+		899782051F755058006C1DA4 /* Excursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899781961F74F542006C1DA4 /* Excursion.swift */; };
 		89DFD38A1F73CE0A00666866 /* NavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DFD3891F73CE0A00666866 /* NavCell.swift */; };
 		89F5C0991F7137DF00B98284 /* CatalogNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */; };
 		89F5C09B1F7279A800B98284 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C09A1F7279A700B98284 /* RadialGradientView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		899781EC1F754F86006C1DA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 491FC2BA1EFBF53900884318 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 899781E61F754F86006C1DA4;
+			remoteInfo = Playground;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8916F1041F73C049003F4282 /* Embed Frameworks */ = {
@@ -89,6 +121,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				899781EF1F754F86006C1DA4 /* Playground.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +202,10 @@
 		49E7F21D1F4D6DCF0001F3FA /* VenueInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInfoView.swift; sourceTree = "<group>"; };
 		70711E900EED86CD80794383 /* Pods_myAIDADynamicPrototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myAIDADynamicPrototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		899781961F74F542006C1DA4 /* Excursion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Excursion.swift; sourceTree = "<group>"; };
+		899781E11F754F36006C1DA4 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
+		899781E71F754F86006C1DA4 /* Playground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Playground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		899781E91F754F86006C1DA4 /* Playground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playground.h; sourceTree = "<group>"; };
+		899781EA1F754F86006C1DA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89DFD3891F73CE0A00666866 /* NavCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavCell.swift; sourceTree = "<group>"; };
 		89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogNavigationController.swift; sourceTree = "<group>"; };
 		89F5C09A1F7279A700B98284 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
@@ -181,6 +218,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				37C3192879655E33EE64E9E6 /* Pods_myAIDADynamicPrototype.framework in Frameworks */,
+				899781EE1F754F86006C1DA4 /* Playground.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899781E31F754F86006C1DA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +300,9 @@
 		491FC2B91EFBF53900884318 = {
 			isa = PBXGroup;
 			children = (
+				899781E11F754F36006C1DA4 /* Playground.playground */,
 				491FC2C41EFBF53900884318 /* myAIDADynamicPrototype */,
+				899781E81F754F86006C1DA4 /* Playground */,
 				491FC2C31EFBF53900884318 /* Products */,
 				D53F343B5BA3E445A9908374 /* Pods */,
 				5BF6E34202DCFFB8310B1B40 /* Frameworks */,
@@ -266,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				491FC2C21EFBF53900884318 /* myAIDADynamicPrototype.app */,
+				899781E71F754F86006C1DA4 /* Playground.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -381,6 +429,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		899781E81F754F86006C1DA4 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				899781E91F754F86006C1DA4 /* Playground.h */,
+				899781EA1F754F86006C1DA4 /* Info.plist */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
 		89F5C0941F7135C400B98284 /* NavControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +457,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		899781E41F754F86006C1DA4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				899781EB1F754F86006C1DA4 /* Playground.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		491FC2C11EFBF53900884318 /* myAIDADynamicPrototype */ = {
 			isa = PBXNativeTarget;
@@ -416,11 +484,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				899781ED1F754F86006C1DA4 /* PBXTargetDependency */,
 			);
 			name = myAIDADynamicPrototype;
 			productName = myAIDADynamicPrototype;
 			productReference = 491FC2C21EFBF53900884318 /* myAIDADynamicPrototype.app */;
 			productType = "com.apple.product-type.application";
+		};
+		899781E61F754F86006C1DA4 /* Playground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 899781F01F754F86006C1DA4 /* Build configuration list for PBXNativeTarget "Playground" */;
+			buildPhases = (
+				899781E21F754F86006C1DA4 /* Sources */,
+				899781E31F754F86006C1DA4 /* Frameworks */,
+				899781E41F754F86006C1DA4 /* Headers */,
+				899781E51F754F86006C1DA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Playground;
+			productName = Playground;
+			productReference = 899781E71F754F86006C1DA4 /* Playground.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -433,6 +520,11 @@
 				ORGANIZATIONNAME = "Lew Freyholtz";
 				TargetAttributes = {
 					491FC2C11EFBF53900884318 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = Y85D6QZYTX;
+						ProvisioningStyle = Automatic;
+					};
+					899781E61F754F86006C1DA4 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = Y85D6QZYTX;
 						ProvisioningStyle = Automatic;
@@ -453,6 +545,7 @@
 			projectRoot = "";
 			targets = (
 				491FC2C11EFBF53900884318 /* myAIDADynamicPrototype */,
+				899781E61F754F86006C1DA4 /* Playground */,
 			);
 		};
 /* End PBXProject section */
@@ -479,6 +572,13 @@
 				494F5CF21F3368140064DD8F /* catalogContent.realm in Resources */,
 				4961C6DF1F02956F004F3270 /* OpenSans-BoldItalic.ttf in Resources */,
 				4961C6E01F02956F004F3270 /* OpenSans-ExtraBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899781E51F754F86006C1DA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +695,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		899781E21F754F86006C1DA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				899781F31F754FEC006C1DA4 /* RealmConfig.swift in Sources */,
+				899782031F755058006C1DA4 /* Booking.swift in Sources */,
+				899782051F755058006C1DA4 /* Excursion.swift in Sources */,
+				899781F61F755058006C1DA4 /* Venue.swift in Sources */,
+				899781F41F755058006C1DA4 /* Topic.swift in Sources */,
+				899781FC1F755058006C1DA4 /* CategorySetup.swift in Sources */,
+				899782011F755058006C1DA4 /* Event.swift in Sources */,
+				899781FA1F755058006C1DA4 /* CatalogImage.swift in Sources */,
+				899782041F755058006C1DA4 /* DataUtils.swift in Sources */,
+				899781FD1F755058006C1DA4 /* OpeningTime.swift in Sources */,
+				899781FF1F755058006C1DA4 /* VenueMenu.swift in Sources */,
+				899782001F755058006C1DA4 /* VenueMenuItem.swift in Sources */,
+				899781FE1F755058006C1DA4 /* RatingComment.swift in Sources */,
+				899781F91F755058006C1DA4 /* Crew.swift in Sources */,
+				899781F71F755058006C1DA4 /* User.swift in Sources */,
+				899781FB1F755058006C1DA4 /* Tag.swift in Sources */,
+				899782021F755058006C1DA4 /* CatalogTypes.swift in Sources */,
+				899781F81F755058006C1DA4 /* Location.swift in Sources */,
+				899781F51F755058006C1DA4 /* Category.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		899781ED1F754F86006C1DA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 899781E61F754F86006C1DA4 /* Playground */;
+			targetProxy = 899781EC1F754F86006C1DA4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		491FC2C91EFBF53900884318 /* Main.storyboard */ = {
@@ -716,6 +850,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 093595FD0058C1E749C6F0B9 /* Pods-myAIDADynamicPrototype.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y85D6QZYTX;
 				INFOPLIST_FILE = myAIDADynamicPrototype/Info.plist;
@@ -732,6 +867,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F56B70B9C5CD4B178E2541A1 /* Pods-myAIDADynamicPrototype.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y85D6QZYTX;
 				INFOPLIST_FILE = myAIDADynamicPrototype/Info.plist;
@@ -741,6 +877,52 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		899781F11F754F86006C1DA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Y85D6QZYTX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Playground/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Factor-UE.Playground";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		899781F21F754F86006C1DA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Y85D6QZYTX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Playground/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Factor-UE.Playground";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -764,6 +946,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		899781F01F754F86006C1DA4 /* Build configuration list for PBXNativeTarget "Playground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899781F11F754F86006C1DA4 /* Debug */,
+				899781F21F754F86006C1DA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
