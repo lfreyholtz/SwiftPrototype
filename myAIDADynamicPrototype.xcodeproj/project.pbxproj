@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		365865C2DB3A480C4323260E /* Pods_myAIDADynamicPrototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E9C8496EA470E08D30C594 /* Pods_myAIDADynamicPrototype.framework */; };
+		37C3192879655E33EE64E9E6 /* Pods_myAIDADynamicPrototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70711E900EED86CD80794383 /* Pods_myAIDADynamicPrototype.framework */; };
 		491D5ED41EFC0BB9007661E5 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5ED31EFC0BB9007661E5 /* ItineraryViewController.swift */; };
 		491D5ED81EFC0BCA007661E5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5ED61EFC0BCA007661E5 /* MenuViewController.swift */; };
 		491D5EDB1EFD0815007661E5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5EDA1EFD0815007661E5 /* Category.swift */; };
-		491D5EE11EFD3BC4007661E5 /* NavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5EE01EFD3BC4007661E5 /* NavCell.swift */; };
 		491D5EE61EFD5599007661E5 /* ModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5EE51EFD5599007661E5 /* ModalSegue.swift */; };
 		491D5EE81F012754007661E5 /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5EE71F012754007661E5 /* TopicViewController.swift */; };
 		491D5EEB1F026227007661E5 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D5EEA1F026227007661E5 /* CategoryCell.swift */; };
@@ -46,7 +45,7 @@
 		494F5CE11F322BF00064DD8F /* CatalogListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F5CE01F322BF00064DD8F /* CatalogListCollectionViewController.swift */; };
 		494F5CE51F33189B0064DD8F /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F5CE41F33189B0064DD8F /* RealmConfig.swift */; };
 		494F5CEE1F331C8E0064DD8F /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F5CEA1F331C8E0064DD8F /* URL+.swift */; };
-		494F5CF01F331D920064DD8F /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F5CEF1F331D920064DD8F /* Catalog.swift */; };
+		494F5CF01F331D920064DD8F /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F5CEF1F331D920064DD8F /* DataUtils.swift */; };
 		494F5CF21F3368140064DD8F /* catalogContent.realm in Resources */ = {isa = PBXBuildFile; fileRef = 494F5CF11F3368140064DD8F /* catalogContent.realm */; };
 		495845C81F0CE2EC00368B44 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495845C71F0CE2EC00368B44 /* GradientView.swift */; };
 		495845CD1F0D17CF00368B44 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495845CB1F0D17CF00368B44 /* VenueCell.swift */; };
@@ -77,18 +76,30 @@
 		49E7F1EC1F4457E10001F3FA /* VenueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E7F1EB1F4457E10001F3FA /* VenueCell.xib */; };
 		49E7F21C1F4D6D3B0001F3FA /* VenueInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E7F21B1F4D6D3B0001F3FA /* VenueInfoView.xib */; };
 		49E7F21E1F4D6DCF0001F3FA /* VenueInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F21D1F4D6DCF0001F3FA /* VenueInfoView.swift */; };
+		899781971F74F542006C1DA4 /* Excursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899781961F74F542006C1DA4 /* Excursion.swift */; };
+		89DFD38A1F73CE0A00666866 /* NavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DFD3891F73CE0A00666866 /* NavCell.swift */; };
 		89F5C0991F7137DF00B98284 /* CatalogNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */; };
 		89F5C09B1F7279A800B98284 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C09A1F7279A700B98284 /* RadialGradientView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8916F1041F73C049003F4282 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		26421F121CD3D5900B7E8758 /* Pods-myAIDADynamicPrototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myAIDADynamicPrototype.release.xcconfig"; path = "Pods/Target Support Files/Pods-myAIDADynamicPrototype/Pods-myAIDADynamicPrototype.release.xcconfig"; sourceTree = "<group>"; };
-		27E9C8496EA470E08D30C594 /* Pods_myAIDADynamicPrototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myAIDADynamicPrototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		437C634384541A005411F3B3 /* Pods-myAIDADynamicPrototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myAIDADynamicPrototype.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myAIDADynamicPrototype/Pods-myAIDADynamicPrototype.debug.xcconfig"; sourceTree = "<group>"; };
+		093595FD0058C1E749C6F0B9 /* Pods-myAIDADynamicPrototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myAIDADynamicPrototype.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myAIDADynamicPrototype/Pods-myAIDADynamicPrototype.debug.xcconfig"; sourceTree = "<group>"; };
 		491D5ED31EFC0BB9007661E5 /* ItineraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		491D5ED61EFC0BCA007661E5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		491D5EDA1EFD0815007661E5 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		491D5EE01EFD3BC4007661E5 /* NavCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavCell.swift; path = ../NavCell.swift; sourceTree = "<group>"; };
 		491D5EE51EFD5599007661E5 /* ModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalSegue.swift; sourceTree = "<group>"; };
 		491D5EE71F012754007661E5 /* TopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		491D5EEA1F026227007661E5 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -135,7 +146,7 @@
 		494F5CE01F322BF00064DD8F /* CatalogListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogListCollectionViewController.swift; sourceTree = "<group>"; };
 		494F5CE41F33189B0064DD8F /* RealmConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
 		494F5CEA1F331C8E0064DD8F /* URL+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URL+.swift"; path = "Extensions/URL+.swift"; sourceTree = "<group>"; };
-		494F5CEF1F331D920064DD8F /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
+		494F5CEF1F331D920064DD8F /* DataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		494F5CF11F3368140064DD8F /* catalogContent.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = catalogContent.realm; sourceTree = "<group>"; };
 		495845C71F0CE2EC00368B44 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		495845CB1F0D17CF00368B44 /* VenueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCell.swift; sourceTree = "<group>"; };
@@ -156,8 +167,12 @@
 		49E7F1EB1F4457E10001F3FA /* VenueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueCell.xib; sourceTree = "<group>"; };
 		49E7F21B1F4D6D3B0001F3FA /* VenueInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueInfoView.xib; sourceTree = "<group>"; };
 		49E7F21D1F4D6DCF0001F3FA /* VenueInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInfoView.swift; sourceTree = "<group>"; };
+		70711E900EED86CD80794383 /* Pods_myAIDADynamicPrototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myAIDADynamicPrototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		899781961F74F542006C1DA4 /* Excursion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Excursion.swift; sourceTree = "<group>"; };
+		89DFD3891F73CE0A00666866 /* NavCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavCell.swift; sourceTree = "<group>"; };
 		89F5C0981F7137DF00B98284 /* CatalogNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogNavigationController.swift; sourceTree = "<group>"; };
 		89F5C09A1F7279A700B98284 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
+		F56B70B9C5CD4B178E2541A1 /* Pods-myAIDADynamicPrototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myAIDADynamicPrototype.release.xcconfig"; path = "Pods/Target Support Files/Pods-myAIDADynamicPrototype/Pods-myAIDADynamicPrototype.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,21 +180,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				365865C2DB3A480C4323260E /* Pods_myAIDADynamicPrototype.framework in Frameworks */,
+				37C3192879655E33EE64E9E6 /* Pods_myAIDADynamicPrototype.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		408A003A67CC8742B2FC429C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				27E9C8496EA470E08D30C594 /* Pods_myAIDADynamicPrototype.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		491D5ED91EFC0CA2007661E5 /* Itinerary */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,9 +198,9 @@
 		491D5EE21EFD3BF4007661E5 /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				89DFD3891F73CE0A00666866 /* NavCell.swift */,
 				496B73B61F31EB1B00B9957D /* MenuHelper.swift */,
 				491D5ED61EFC0BCA007661E5 /* MenuViewController.swift */,
-				491D5EE01EFD3BC4007661E5 /* NavCell.swift */,
 				496B73B81F31EBEC00B9957D /* PresentMenuAnimator.swift */,
 				494F5CDE1F31FBA80064DD8F /* DismissMenuAnimator.swift */,
 			);
@@ -250,8 +257,8 @@
 			children = (
 				491FC2C41EFBF53900884318 /* myAIDADynamicPrototype */,
 				491FC2C31EFBF53900884318 /* Products */,
-				E125F9D4C9F40FEC8C97F5AC /* Pods */,
-				408A003A67CC8742B2FC429C /* Frameworks */,
+				D53F343B5BA3E445A9908374 /* Pods */,
+				5BF6E34202DCFFB8310B1B40 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -303,7 +310,8 @@
 				494BFEFB1F05393600E7BA8E /* Event.swift */,
 				495845D71F0E5D4F00368B44 /* CatalogTypes.swift */,
 				495845DD1F124B2D00368B44 /* Booking.swift */,
-				494F5CEF1F331D920064DD8F /* Catalog.swift */,
+				494F5CEF1F331D920064DD8F /* DataUtils.swift */,
+				899781961F74F542006C1DA4 /* Excursion.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -365,6 +373,14 @@
 			name = Transitions;
 			sourceTree = "<group>";
 		};
+		5BF6E34202DCFFB8310B1B40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70711E900EED86CD80794383 /* Pods_myAIDADynamicPrototype.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		89F5C0941F7135C400B98284 /* NavControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,11 +389,11 @@
 			name = NavControllers;
 			sourceTree = "<group>";
 		};
-		E125F9D4C9F40FEC8C97F5AC /* Pods */ = {
+		D53F343B5BA3E445A9908374 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				437C634384541A005411F3B3 /* Pods-myAIDADynamicPrototype.debug.xcconfig */,
-				26421F121CD3D5900B7E8758 /* Pods-myAIDADynamicPrototype.release.xcconfig */,
+				093595FD0058C1E749C6F0B9 /* Pods-myAIDADynamicPrototype.debug.xcconfig */,
+				F56B70B9C5CD4B178E2541A1 /* Pods-myAIDADynamicPrototype.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -389,12 +405,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 491FC2D41EFBF53900884318 /* Build configuration list for PBXNativeTarget "myAIDADynamicPrototype" */;
 			buildPhases = (
-				37A1B7C105AFBD5E4B20FDC3 /* [CP] Check Pods Manifest.lock */,
+				6D9EB1B9A204A98DAA6409C6 /* [CP] Check Pods Manifest.lock */,
 				491FC2BE1EFBF53900884318 /* Sources */,
 				491FC2BF1EFBF53900884318 /* Frameworks */,
 				491FC2C01EFBF53900884318 /* Resources */,
-				6C7ECDC05E7B3048A74A949A /* [CP] Embed Pods Frameworks */,
-				8F50BC909C0A4682E4587468 /* [CP] Copy Pods Resources */,
+				8916F1041F73C049003F4282 /* Embed Frameworks */,
+				46480348CF6282F5A695F59D /* [CP] Embed Pods Frameworks */,
+				E341A67467D6DD1C4D7D1402 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -468,47 +485,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		37A1B7C105AFBD5E4B20FDC3 /* [CP] Check Pods Manifest.lock */ = {
+		46480348CF6282F5A695F59D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-myAIDADynamicPrototype-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6C7ECDC05E7B3048A74A949A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-myAIDADynamicPrototype/Pods-myAIDADynamicPrototype-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myAIDADynamicPrototype/Pods-myAIDADynamicPrototype-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F50BC909C0A4682E4587468 /* [CP] Copy Pods Resources */ = {
+		6D9EB1B9A204A98DAA6409C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E341A67467D6DD1C4D7D1402 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -533,7 +540,7 @@
 				89F5C0991F7137DF00B98284 /* CatalogNavigationController.swift in Sources */,
 				491D5F021F0289C3007661E5 /* TopicPromotionalView.swift in Sources */,
 				494F5CEE1F331C8E0064DD8F /* URL+.swift in Sources */,
-				494F5CF01F331D920064DD8F /* Catalog.swift in Sources */,
+				494F5CF01F331D920064DD8F /* DataUtils.swift in Sources */,
 				494F5CE11F322BF00064DD8F /* CatalogListCollectionViewController.swift in Sources */,
 				491D5ED81EFC0BCA007661E5 /* MenuViewController.swift in Sources */,
 				49E7F21E1F4D6DCF0001F3FA /* VenueInfoView.swift in Sources */,
@@ -565,9 +572,10 @@
 				491D5ED41EFC0BB9007661E5 /* ItineraryViewController.swift in Sources */,
 				499B40011F4DC1FD00786954 /* Utils.swift in Sources */,
 				491D5EFD1F028064007661E5 /* Colors.swift in Sources */,
-				491D5EE11EFD3BC4007661E5 /* NavCell.swift in Sources */,
 				495845D21F0D27EC00368B44 /* LineBackgroundView.swift in Sources */,
 				494F5CDF1F31FBA80064DD8F /* DismissMenuAnimator.swift in Sources */,
+				89DFD38A1F73CE0A00666866 /* NavCell.swift in Sources */,
+				899781971F74F542006C1DA4 /* Excursion.swift in Sources */,
 				495845DA1F0E640700368B44 /* PhotoListLayout.swift in Sources */,
 				4923ECD61F4186350012B100 /* ZoomingPhotoTransition.swift in Sources */,
 				491FC2C61EFBF53900884318 /* AppDelegate.swift in Sources */,
@@ -706,7 +714,7 @@
 		};
 		491FC2D51EFBF53900884318 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 437C634384541A005411F3B3 /* Pods-myAIDADynamicPrototype.debug.xcconfig */;
+			baseConfigurationReference = 093595FD0058C1E749C6F0B9 /* Pods-myAIDADynamicPrototype.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y85D6QZYTX;
@@ -722,7 +730,7 @@
 		};
 		491FC2D61EFBF53900884318 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26421F121CD3D5900B7E8758 /* Pods-myAIDADynamicPrototype.release.xcconfig */;
+			baseConfigurationReference = F56B70B9C5CD4B178E2541A1 /* Pods-myAIDADynamicPrototype.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y85D6QZYTX;

@@ -45,6 +45,18 @@ class MenuViewController: UIViewController {
 
         topics = mainRealm.objects(Topic.self)
         
+        // venue migration
+//        try! mainRealm.write {
+//            for venue in mainRealm.objects(Venue.self) {
+//                
+//                let newEntity = CatalogEntity()
+//                newEntity.id = venue.id
+//                mainRealm.add(newEntity)
+//            }
+//
+//        }
+        
+
         collectionView.dataSource = self
         collectionView.delegate = self
 

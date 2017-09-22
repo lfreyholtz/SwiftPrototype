@@ -9,9 +9,9 @@
 import Foundation
 import RealmSwift
 
-enum RealmConfig {
+public enum RealmConfig {
     private static var copyInitialFile: Void = {
-        Catalog.copyInitialData(
+        DataUtils.copyInitialData(
             Bundle.main.url(forResource: "catalogContent", withExtension: "realm")!,
             to: RealmConfig.mainConfig.fileURL!)
     }()
@@ -19,39 +19,24 @@ enum RealmConfig {
     
     private static let defaultConfig = Realm.Configuration(
 
-        schemaVersion: 18,
-        migrationBlock: {
-            migration, oldSchemaVersion in
-            if (oldSchemaVersion < 18) {
-                print("schema out of date in default realm file")
+        schemaVersion: 36,
+        migrationBlock:DataUtils.migrate
 
-            }
-    })
+   )
     
     
     private static let mainConfig = Realm.Configuration(
         fileURL: URL.inDocumentsFolder(fileName: "main.realm"),
-        schemaVersion: 18,
-        migrationBlock:
-            {
-                migration, oldSchemaVersion in
-                    if (oldSchemaVersion < 18) {
-                        print("schema out of date in main.realm")
-                }
-            }
+        schemaVersion: 36,
+        migrationBlock:DataUtils.migrate
     )
     
     private static let staticConfig = Realm.Configuration(
         fileURL: Bundle.main.url(forResource: "catalogContent", withExtension: "realm"),
         readOnly:true,
-        schemaVersion: 19,
-        migrationBlock:
-        {
-            migration, oldSchemaVersion in
-            if (oldSchemaVersion < 19) {
-                print("schema out of date in catalogContent.realm")
-            }
-        }
+        schemaVersion: 36,
+        migrationBlock:DataUtils.migrate
+
     )
     
 
@@ -64,7 +49,7 @@ enum RealmConfig {
     var configuration: Realm.Configuration {
         switch  self {
         case .main:
-            _ = RealmConfig.copyInitialFile
+//            _ = RealmConfig.copyInitialFile
             
             return RealmConfig.mainConfig
         

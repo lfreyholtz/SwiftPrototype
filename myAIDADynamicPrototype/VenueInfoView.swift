@@ -18,10 +18,10 @@ import UIKit
     @IBOutlet weak var titleLabel: AdvancedLabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
-    @IBOutlet var keyImage: UIImageView!
+    @IBOutlet weak var keyImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    @IBOutlet var textAreaBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textAreaBottomConstraint: NSLayoutConstraint!
     
     // probably need to refactor this to decouple from constants in layout class
     let compactFrameHeight = PhotoListLayoutConstants.Cell.standardHeight

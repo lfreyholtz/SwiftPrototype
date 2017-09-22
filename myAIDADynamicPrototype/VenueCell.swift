@@ -85,12 +85,12 @@ class VenueCell: UICollectionViewCell {
         
         super.apply(layoutAttributes)
         self.layoutIfNeeded()
-        let standardHeight = PhotoListLayoutConstants.Cell.standardHeight
-        let featuredHeight = PhotoListLayoutConstants.Cell.featuredHeight
-        
-        
-        let transformMargin:CGFloat = 10
-        let delta = 1 - ((featuredHeight - frame.height - transformMargin) / (featuredHeight - standardHeight))
+//        let standardHeight = PhotoListLayoutConstants.Cell.standardHeight
+//        let featuredHeight = PhotoListLayoutConstants.Cell.featuredHeight
+//        
+//        
+//        let transformMargin:CGFloat = 10
+//        let delta = 1 - ((featuredHeight - frame.height - transformMargin) / (featuredHeight - standardHeight))
         
 
         

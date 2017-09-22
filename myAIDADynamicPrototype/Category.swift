@@ -22,6 +22,8 @@ class Category : Object {
     dynamic var subsingle = ""
     
     let venueMembers = LinkingObjects(fromType: Venue.self, property: "categories")
+    
+    
     //TODO: other types
     
     

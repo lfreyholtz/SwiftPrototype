@@ -4,10 +4,10 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Hero.xcscheme</key>
+		<key>MXParallaxHeader.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-myAIDADynamicPrototype.xcscheme</key>
 		<dict>
@@ -27,22 +27,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>18173CC38346212432517F4B65166D17</key>
+		<key>22358D6ABB1C6C0BD899EA7FD9498406</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A3E211676B243619B026D147D272253</key>
+		<key>2A5A7DDF8563E58DACEF8D406D642B84</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>940FF9A0F4E9E82D2F0AC9EE2044EC21</key>
+		<key>3043F78B6C8C2905CFD65D4D31C4BD2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C6C3019B60A2AF693F8FBBB1B276F03</key>
+		<key>510F841484BB1A26B4840334CBBA79B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D594482B890E8C6A14215CE6A4D0DAEF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA0C4CB27BB812B25AB362668416D224</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E75E5BAC0FE6E4C6A5E5F95EA6807F8A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

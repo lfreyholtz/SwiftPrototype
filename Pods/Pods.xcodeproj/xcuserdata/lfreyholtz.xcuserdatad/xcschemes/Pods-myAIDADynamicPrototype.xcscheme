@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "18173CC38346212432517F4B65166D17"
+               BlueprintIdentifier = "3043F78B6C8C2905CFD65D4D31C4BD2A"
                BuildableName = "Pods_myAIDADynamicPrototype.framework"
                BlueprintName = "Pods-myAIDADynamicPrototype"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "18173CC38346212432517F4B65166D17"
+            BlueprintIdentifier = "3043F78B6C8C2905CFD65D4D31C4BD2A"
             BuildableName = "Pods_myAIDADynamicPrototype.framework"
             BlueprintName = "Pods-myAIDADynamicPrototype"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "18173CC38346212432517F4B65166D17"
+            BlueprintIdentifier = "3043F78B6C8C2905CFD65D4D31C4BD2A"
             BuildableName = "Pods_myAIDADynamicPrototype.framework"
             BlueprintName = "Pods-myAIDADynamicPrototype"
             ReferencedContainer = "container:Pods.xcodeproj">

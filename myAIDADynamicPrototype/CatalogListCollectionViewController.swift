@@ -17,10 +17,11 @@ class CatalogListCollectionViewController: UICollectionViewController {
     var navController : UINavigationController?
     var selectedItem: UICollectionViewCell?
     var selectedIndexPath:IndexPath?
+    
     var listData:Category? {
         didSet {
             // init category values instance with type
-            
+//            print(listData?.venueMembers)
             
         }
     }
@@ -206,9 +207,10 @@ extension CatalogListCollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == storyboardValues.venueDetailSegue {
+            print("Sending data as venue")
             let detailController = segue.destination as! VenueDetailViewController
             let selectedVenue = sender as! Venue
-            detailController.venue = selectedVenue
+            detailController.itemData = selectedVenue
             
  
             

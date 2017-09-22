@@ -11,12 +11,13 @@ import RealmSwift
 
 class Venue : Object {
     
-    dynamic var venueID = NSUUID().uuidString
+
+//    dynamic var id = NSUUID().uuidString
+    
     dynamic var name:String?
     dynamic var type:CatalogType?
     dynamic var tagline:String?
-    
-    
+    dynamic var id = NSUUID().uuidString
     dynamic var location: Location? //wayfinding object
     let images = List<CatalogImage>() //key image should be at 0
 
@@ -66,7 +67,7 @@ class Venue : Object {
     
     //MARK: meta
     override class func primaryKey() -> String? {
-        return "venueID"
+        return "id"
     }
     
 }

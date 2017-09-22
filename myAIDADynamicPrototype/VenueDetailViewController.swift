@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 
 let cellIdentifier = "defaultCell"
@@ -21,7 +21,14 @@ class VenueDetailViewController: UIViewController {
     
 
     
-    var venue:Venue?
+//    var venue:Venue?
+    var itemData:Venue? {
+        didSet {
+            let objectType = String(describing: type(of: itemData))
+            print(objectType)
+        }
+    }
+    
     
     
     // TODO: Put these somewhere useful so they can be used for all detail types
@@ -49,11 +56,8 @@ class VenueDetailViewController: UIViewController {
 
     private let coverImageHeaderHeight = UIScreen.main.bounds.size.height
     
-    var tableHeaderView:VenueCoverView!
     
-    @IBOutlet weak var coverImageHeader: VenueCoverView!
     
-    @IBOutlet weak var heroGroup: UIView!
     
     
     @IBOutlet weak var alternativesCollectionView: UICollectionView!
@@ -91,7 +95,7 @@ class VenueDetailViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         
-        tableHeaderView = self.coverImageHeader!
+//        tableHeaderView = self.coverImageHeader!
         
         descriptionText!.delegate = self
         
@@ -104,16 +108,16 @@ class VenueDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
-        if let venue = venue {
-            coverImageHeader.venue = venue
-            
-            // TODO: Move to footer view
-            descriptionText.text = venue.articleText
-            descriptionTitle.text = venue.tagline
-            
-            
-            
-        }
+//        if let venue = venue {
+////            coverImageHeader.venue = venue
+//            
+//            // TODO: Move to footer view
+//            descriptionText.text = venue.articleText
+//            descriptionTitle.text = venue.tagline
+//            
+//            
+//            
+//        }
         
         
 
@@ -174,7 +178,7 @@ extension VenueDetailViewController : UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        let headerView = self.tableView.tableHeaderView as! VenueCoverView
-        coverImageHeader.scrollViewDidScroll(scrollView: scrollView)
+//        coverImageHeader.scrollViewDidScroll(scrollView: scrollView)
     }
 }
 
@@ -194,20 +198,20 @@ extension VenueDetailViewController: ExpandableHeaderViewDelegate {
     
 }
 
-extension VenueDetailViewController : ZoomingPhotoController {
-    
-    func heroImage(for transition: ZoomingPhotoTransition) -> UIImageView? {
-        return self.tableHeaderView.keyImage
-    }
-    
-    func gradient(for transition: ZoomingPhotoTransition) -> GradientView? {
-        return self.tableHeaderView.keyImageGradient
-    }
-    
-    func infoPanel(for transition: ZoomingPhotoTransition) -> UIView? {
-        return self.tableHeaderView.infoStack
-    }
-}
+//extension VenueDetailViewController : ZoomingPhotoController {
+//    
+//    func heroImage(for transition: ZoomingPhotoTransition) -> UIImageView? {
+//        return self.tableHeaderView.keyImage
+//    }
+//    
+//    func gradient(for transition: ZoomingPhotoTransition) -> GradientView? {
+//        return self.tableHeaderView.keyImageGradient
+//    }
+//    
+//    func infoPanel(for transition: ZoomingPhotoTransition) -> UIView? {
+//        return self.tableHeaderView.infoStack
+//    }
+//}
 
 extension VenueDetailViewController : UITextViewDelegate {
     
