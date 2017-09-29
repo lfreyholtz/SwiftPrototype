@@ -164,11 +164,17 @@ extension CatalogListCollectionViewController {
     }
     
     /// scroll behaviors (e.g. show / hide nav bar)
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        hideNavBar()
+    }
+    
+
+//    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        showNavBar()
+//    }
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         hideNavBar()
-
-        
-        
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

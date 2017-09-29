@@ -140,6 +140,10 @@ extension TopicViewController: UICollectionViewDataSource {
     
     
     /// scroll behaviors (e.g. show / hide nav bar)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        hideNavBar()
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         hideNavBar()
     }
@@ -193,6 +197,7 @@ extension TopicViewController  {
         
         guard let navController = self.navigationController else { return }
         let navBarFrame:CGRect = navController.navigationBar.frame
+        navController.navigationBar.frame = CGRect(x: 0, y: 20, width: navBarFrame.size.width, height: 44)
         
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
             
@@ -203,7 +208,7 @@ extension TopicViewController  {
             ( completed ) in
             
             navController.navigationBar.frame = CGRect.zero
-//            navController.navigationBar.frame = CGRect(x: 0, y: 20, width: navBarFrame.size.width, height: 44)
+            navController.navigationBar.frame = CGRect(x: 0, y: 20, width: navBarFrame.size.width, height: 44)
             navController.navigationBar.frame = navBarFrame
             self.statusBarHidden = true
 

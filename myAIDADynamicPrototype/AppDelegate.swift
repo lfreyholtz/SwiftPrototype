@@ -25,6 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mainRealm = try! Realm(configuration: RealmConfig.main.configuration) // read/write realm in documents directory copied from bundle
 
+        let testVenues = mainRealm.objects(Venue.self)
+        var modelObjects = [VenueDetailViewModel]()
+        for venue in testVenues {
+//            var venueDetail = VenueDetailViewModel(venue:venue)
+            modelObjects.append(VenueDetailViewModel(venue:venue))
+//
+        }
+        
+        
 //        let realm = try! Realm() // default realm
        
 //        let folderPath = mainRealm.configuration.fileURL!.deletingLastPathComponent().path

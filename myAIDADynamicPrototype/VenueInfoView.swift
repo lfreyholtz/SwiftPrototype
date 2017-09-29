@@ -18,11 +18,18 @@ import UIKit
     @IBOutlet weak var titleLabel: AdvancedLabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
+    @IBOutlet var infoStack: UIStackView!
     @IBOutlet weak var keyImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet var openingIcon: UIImageView!
+    @IBOutlet var openingTimeLabel: UILabel!
+    @IBOutlet var containerView: UIView!
     @IBOutlet weak var textAreaBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var containerViewBottom: NSLayoutConstraint!
+    @IBOutlet var containerHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet var gradientOverlay: GradientView!
     // probably need to refactor this to decouple from constants in layout class
     let compactFrameHeight = PhotoListLayoutConstants.Cell.standardHeight
     let featureFrameHeight = PhotoListLayoutConstants.Cell.featuredHeight
@@ -73,7 +80,7 @@ import UIKit
             let frameHeight = self.bounds.height
             let minFontSize:CGFloat = 24.0
             let maxFontSize:CGFloat = 32.0
-            let calculatedFontSize = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: fullScreenHeight, y1: minFontSize, y2: maxFontSize)
+            let calculatedFontSize = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: fullScreenHeight, y1: minFontSize, y2: maxFontSize, limit:false)
 
             self.titleLabel.font = self.titleLabel.font.withSize(calculatedFontSize)
             
@@ -83,10 +90,10 @@ import UIKit
             let featuredConstraintHeight:CGFloat = 24.0
             let collapsedConstraintHeight:CGFloat = (textGroupHeight * -1)
 //            print(textGroupHeight)
-            self.textAreaBottomConstraint.constant = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: featureFrameHeight, y1: collapsedConstraintHeight, y2: featuredConstraintHeight)
+            self.textAreaBottomConstraint.constant = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: featureFrameHeight, y1: collapsedConstraintHeight, y2: featuredConstraintHeight, limit: true)
             
             // text alpha
-            let textAlpha = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: featureFrameHeight, y1: 0, y2: 1)
+            let textAlpha = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: featureFrameHeight, y1: 0, y2: 1, limit:false)
             self.descriptionLabel.alpha = textAlpha
             self.subtitleLabel.alpha = textAlpha
             self.divisionLine.alpha = textAlpha
@@ -119,6 +126,37 @@ import UIKit
         contentView.layoutSubviews()
         contentView.updateConstraints()
   
+    }
+    
+    // parallax and squish
+    func scrollViewDidScroll(scrollView:UIScrollView) {
+        
+        let offsetY = -(scrollView.contentOffset.y)
+//        print(offsetY)
+
+        contentView.clipsToBounds = offsetY <= 0
+        containerViewBottom.constant = offsetY >= 0 ? 0 : offsetY / 2
+        containerHeightConstraint.constant = max(offsetY, 0) // maybe need to account for inset
+        
+        // make sure that the text doesn't drop below scrolling down, does not get covered scrolling up
+        self.textAreaBottomConstraint.constant = offsetY >= 0 ? 24 + fabs(offsetY) : 24 + fabs(offsetY * 0.7)
+        
+//        print(textAreaBottomConstraint.constant)
+        
+        // text fade
+        let fadeRangeStart:CGFloat = -100
+        let fadeRangeEnd:CGFloat = -300
+        
+        let textAlpha = Utils().modulate(input: offsetY, x1: fadeRangeStart, x2: fadeRangeEnd, y1: 1, y2: 0, limit: false)
+        self.infoStack.alpha = textAlpha
+        
+        
+        // image fade
+        let fadeAlpha = Utils().modulate(input:offsetY, x1:fadeRangeStart, x2:fadeRangeEnd, y1:1, y2:0.5, limit:true)
+        
+        self.gradientOverlay.alpha = fadeAlpha
+        self.keyImage.alpha = fadeAlpha
+        
     }
 
 }
