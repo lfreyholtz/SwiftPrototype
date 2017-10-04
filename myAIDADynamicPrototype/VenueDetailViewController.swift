@@ -31,7 +31,7 @@ class VenueDetailViewController: UIViewController {
     
     var dataType: String?
     
-
+    var viewModel:VenueDetailViewModel?
     var itemData:Object?
     
     var statusBarHidden:Bool = false {
@@ -41,46 +41,17 @@ class VenueDetailViewController: UIViewController {
     }
 
     
-    // TODO: Put these somewhere useful so they can be used for all detail types
-    var sections = [
-        DetailSection(title: "ÖFFNUNGSZEITEN",
-                      icon: UIImage(named:"icn_clock")!,
-                      type: "openingTimes",
-                      expanded: true),
-        
-        DetailSection(title: "<LOCATION>",
-                      icon: UIImage(named:"icn_clock")!,
-                      type: "openingTimes",
-                      expanded: true),
-        
-        DetailSection(title: "INKLUSIVLEISTUNGEN",
-                      icon: UIImage(named:"icn_clock")!,
-                      type: "openingTimes",
-                      expanded: true),
-    
-    ]
+
     
     
     @IBOutlet weak var tableView: UITableView!
 
 
     private let coverImageHeaderHeight = UIScreen.main.bounds.size.height
-    
     @IBOutlet var infoView: UIView!
     @IBOutlet var bookingButton: UIButton!
     
-    @IBOutlet var infoViewCenterConstraint: NSLayoutConstraint!
-    
-    
-    
-    @IBOutlet weak var alternativesCollectionView: UICollectionView!
-    
-    
-    @IBOutlet weak var descriptionFooterView: UIView!
-    @IBOutlet weak var descriptionTitle: UILabel!
-    @IBOutlet weak var descriptionText: UITextView!
-    @IBOutlet weak var alternativesTitle: UILabel!
-    @IBOutlet weak var menuButton: UIButton!
+
     
     
     // Actions
@@ -103,54 +74,69 @@ class VenueDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        fileprivate let viewModel = VenueDetailViewModel(venue:itemData)
+
         
 
         
+        
+        tableView.estimatedRowHeight = 60.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // register cell types
+        tableView.register(DescriptionCellTableViewCell.nib, forCellReuseIdentifier: DescriptionCellTableViewCell.identifier)
+        tableView.register(LocationTableViewCell.nib, forCellReuseIdentifier: LocationTableViewCell.identifier)
+        tableView.register(IncludedTableViewCell.nib, forCellReuseIdentifier: IncludedTableViewCell.identifier)
+
+        tableView.register(ExpandableHeader.nib, forHeaderFooterViewReuseIdentifier: ExpandableHeader.identifier)
+        
+        // register section header types
         let headerViewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        
+        // UITableView Header
         tableView.tableHeaderView?.frame = headerViewFrame
         
+        
+        // data switch
         guard let itemData = itemData else { fatalError("No item data") }
         dataType = String(describing: type(of:itemData))
+
+        
         if let dataType = dataType {
             
-            // TODO: Test with other types, consolidate into method
-            
-            let mainRealm = try! Realm(configuration: RealmConfig.main.configuration)
-            let allVenues = mainRealm.objects(Venue.self)
             
             switch dataType {
                 case "Venue":
                     print("yup, it's a venue")
                     let itemData = itemData as! Venue
-                    let info = infoView as! VenueInfoView
-                    info.venue = itemData
-                    let viewModel = VenueDetailViewModel(venue:itemData)
+
+                    viewModel = VenueDetailViewModel(venue:itemData)
                     tableView.dataSource = viewModel
+                    tableView.delegate = viewModel
+                    
+                    let info = infoView as! VenueInfoView
+                    info.viewModel = viewModel?.headerInfoModel
+                    
+                    // for collapse / expand headers
+                    viewModel?.reloadSections = { [weak self] (section: Int) in
+                        print("Fire reload sections")
+                        self?.tableView?.beginUpdates()
+                        self?.tableView?.reloadSections([section], with: .fade)
+                        self?.tableView?.endUpdates()
+                    }
+        
+                    
+                    
                     self.bookingButton.isHidden = itemData.isBookable.value!
-                
-                    let footer = self.descriptionFooterView as! VenueFooterView
-                    footer.Data = itemData
-//                    footer.setCollectionViewDataSourceDelegate(self)
-                    footer.alternatives = allVenues
-                
                 default:
                     fatalError("data type not recognized")
             }
         }
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
-        
-        
+
         
 
         
-//        descriptionText!.delegate = self
         
-        
-        tableView.register(UINib(nibName:"expandableHeaderView", bundle:nil), forHeaderFooterViewReuseIdentifier: "expandingHeader")
-        
+
         
         // custom back icon
         let icon = UIImage(named:"icn_back_white")
@@ -164,138 +150,55 @@ class VenueDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        
-   
-        
-
     }
 
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-       
+        tableView.reloadData()
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        
-//        guard let footerView = tableView.tableFooterView else {
-//            return
-//        }
-//        
-//        let size = footerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//        if footerView.frame.size.height != size.height {
-//            footerView.frame.size.height = size.height
-//        }
-//        
-//        tableView.tableFooterView = footerView
-//        tableView.layoutIfNeeded()
-//    }
-    
+
     func back(_ sender:UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
   
 }
 
-//extension VenueDetailViewController:UITableViewDataSource {
+
+
+//extension VenueDetailViewController : UITableViewDelegate {
 //    
-//    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        print(sections.count)
-//        return sections.count
+// 
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        hideNavBar()
 //    }
 //    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
 //    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 44
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if (sections[indexPath.section].expanded) {
-//            return 44
-//        } else {
-//            return 0
-//        }
-//    }
-//    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        hideNavBar()
+//        let info = infoView as! VenueInfoView
+//        info.scrollViewDidScroll(scrollView:scrollView)
 //        
-//        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "expandingHeader") as! ExpandableHeader
-//        sectionHeader.customInit(title: sections[section].title,
-//                              section: section,
-//                              icon: sections[section].icon!,
-//                              delegate: self)
-//        
-//        return sectionHeader
 //    }
 //    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell")!
-//        cell.textLabel?.text = "Placeholder for custom cell depending on type"
-//        return cell
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        
+//        showNavBar()
 //    }
+//    
+//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+//        showNavBar()
+//    }
+//    
+////    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        return UITableViewAutomaticDimension
+////    }
 //}
 
 
-extension VenueDetailViewController : UITableViewDelegate {
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        hideNavBar()
-    }
-    
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        hideNavBar()
-        let info = infoView as! VenueInfoView
-        info.scrollViewDidScroll(scrollView:scrollView)
-        
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-        showNavBar()
-    }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        showNavBar()
-    }
-}
 
-
-
-extension VenueDetailViewController: ExpandableHeaderViewDelegate {
-    
-    
-    func toggleSection(header: ExpandableHeader, section: Int) {
-        
-        print("Toggle Header")
-//        sections[section].expanded = !sections[section].expanded
-//        // implement reload rows here
-//        tableView.endUpdates()
-    
-    }
-    
-}
-
-//extension VenueDetailViewController : ZoomingPhotoController {
-//    
-//    func heroImage(for transition: ZoomingPhotoTransition) -> UIImageView? {
-//        return self.tableHeaderView.keyImage
-//    }
-//    
-//    func gradient(for transition: ZoomingPhotoTransition) -> GradientView? {
-//        return self.tableHeaderView.keyImageGradient
-//    }
-//    
-//    func infoPanel(for transition: ZoomingPhotoTransition) -> UIView? {
-//        return self.tableHeaderView.infoStack
-//    }
-//}
 
 
 
@@ -365,23 +268,4 @@ extension VenueDetailViewController {
     
 }
 
-func generateRandomData() -> [[UIColor]] {
-    let numberOfRows = 20
-    let numberOfItemsPerRow = 15
-    
-    return (0..<numberOfRows).map { _ in
-        return (0..<numberOfItemsPerRow).map { _ in UIColor.randomColor() }
-    }
-}
 
-extension UIColor {
-    
-    class func randomColor() -> UIColor {
-        
-        let hue = CGFloat(arc4random() % 100) / 100
-        let saturation = CGFloat(arc4random() % 100) / 100
-        let brightness = CGFloat(arc4random() % 100) / 100
-        
-        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
-    }
-}

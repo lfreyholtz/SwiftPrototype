@@ -97,7 +97,13 @@ struct DataUtils {
 
         if fileSchemaVersion == 35 {
             print("Migrating to 36")
-            migration.deleteData        }
+            migration.deleteData
+        }
+        
+        if fileSchemaVersion == 36 {
+            print("Migrating to 37")
+            migration.deleteData
+        }
     }
 
 }

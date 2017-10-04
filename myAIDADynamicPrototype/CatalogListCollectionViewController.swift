@@ -116,9 +116,16 @@ extension CatalogListCollectionViewController {
             switch dataType {
                 
             case "venue":
-                let venueForRow = listData.venueMembers[indexPath.item]
+                let venueForRow = listData.venueMembers[indexPath.item] as! Venue
+                
+                
+                // set view model here
+                
+                
+                
+                
                 let venueCell = collectionView.dequeueReusableCell(withReuseIdentifier: storyboardValues.venueCellID, for: indexPath) as! VenueCell
-                venueCell.venue = venueForRow
+                
                 
                 self.segueForDetail = storyboardValues.venueDetailSegue
                 

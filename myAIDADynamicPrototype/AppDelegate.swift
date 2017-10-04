@@ -25,13 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mainRealm = try! Realm(configuration: RealmConfig.main.configuration) // read/write realm in documents directory copied from bundle
 
-        let testVenues = mainRealm.objects(Venue.self)
-        var modelObjects = [VenueDetailViewModel]()
-        for venue in testVenues {
-//            var venueDetail = VenueDetailViewModel(venue:venue)
-            modelObjects.append(VenueDetailViewModel(venue:venue))
-//
-        }
+//        let testVenues = mainRealm.objects(Venue.self)
+//        var modelObjects = [VenueDetailViewModel]()
+//        for venue in testVenues {
+////            var venueDetail = VenueDetailViewModel(venue:venue)
+//            modelObjects.append(VenueDetailViewModel(venue:venue))
+////
+//        }
         
         
 //        let realm = try! Realm() // default realm
@@ -46,10 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         Realm.Configuration.defaultConfiguration = RealmConfig.default.configuration
 //        let catalogContentRealm = try! Realm(configuration: RealmConfig.static.configuration) // read-only Realm
-        
 
-        
-        // copying from venues to 
         
         return true
     }

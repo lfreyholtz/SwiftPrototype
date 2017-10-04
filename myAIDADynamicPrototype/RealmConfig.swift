@@ -19,7 +19,7 @@ public enum RealmConfig {
     
     private static let defaultConfig = Realm.Configuration(
 
-        schemaVersion: 36,
+        schemaVersion: 37,
         migrationBlock:DataUtils.migrate
 
    )
@@ -27,14 +27,14 @@ public enum RealmConfig {
     
     private static let mainConfig = Realm.Configuration(
         fileURL: URL.inDocumentsFolder(fileName: "main.realm"),
-        schemaVersion: 36,
+        schemaVersion: 37,
         migrationBlock:DataUtils.migrate
     )
     
     private static let staticConfig = Realm.Configuration(
         fileURL: Bundle.main.url(forResource: "catalogContent", withExtension: "realm"),
         readOnly:true,
-        schemaVersion: 36,
+        schemaVersion: 37,
         migrationBlock:DataUtils.migrate
 
     )

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="116" id="KGk-i7-Jjw" customClass="IncludedTableViewCell" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="115.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="VlL-tP-mKn">
+                        <rect key="frame" x="24" y="24" width="272" height="67.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgT-vX-ZvZ" customClass="AdvancedLabel" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="272" height="41.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="&lt;included&gt;">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="OpenSans-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugA-fn-yB1" customClass="AdvancedLabel" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="45.5" width="272" height="22"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="&lt;excluded&gt;">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="OpenSans-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ugA-fn-yB1" secondAttribute="trailing" id="77P-sP-bhh"/>
+                            <constraint firstAttribute="trailing" secondItem="tgT-vX-ZvZ" secondAttribute="trailing" id="Ieh-z5-heT"/>
+                            <constraint firstItem="tgT-vX-ZvZ" firstAttribute="leading" secondItem="VlL-tP-mKn" secondAttribute="leading" id="RgR-LY-mWS"/>
+                            <constraint firstItem="ugA-fn-yB1" firstAttribute="leading" secondItem="VlL-tP-mKn" secondAttribute="leading" id="hOz-Ng-xhW"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="VlL-tP-mKn" secondAttribute="bottom" constant="24" id="4Nc-KE-Pik"/>
+                    <constraint firstAttribute="trailing" secondItem="VlL-tP-mKn" secondAttribute="trailing" constant="24" id="Wd0-RI-YGI"/>
+                    <constraint firstItem="VlL-tP-mKn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="XDK-Og-PsK"/>
+                    <constraint firstItem="VlL-tP-mKn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="smI-YC-nFV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="excludedLabel" destination="ugA-fn-yB1" id="PUq-kf-2BZ"/>
+                <outlet property="includedLabel" destination="tgT-vX-ZvZ" id="C6P-C8-ZHO"/>
+            </connections>
+            <point key="canvasLocation" x="21" y="-51"/>
+        </tableViewCell>
+    </objects>
+</document>

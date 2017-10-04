@@ -36,30 +36,21 @@ import UIKit
     let fullScreenHeight = PhotoListLayoutConstants.Cell.fullScreenHeight
     
     
-        var venue:Venue? {
+    
+        var viewModel:VenueCoverViewModel? {
         didSet {
             
-            
-            guard let venue = venue else { return }
-            titleLabel.text = venue.name?.uppercased()
+            guard let viewModel = viewModel else { return }
+            titleLabel.text = viewModel.venueName.uppercased()
             titleLabel.addTextSpacing()
-            guard let type = venue.type else { return }
-            descriptionLabel.text = type.typeDescription
-            subtitleLabel.text = venue.tagline
-            
-            let venueImages = venue.images
-            let defaultImage = venueImages.first
-            let keyImageName = defaultImage?.imageName
-            
-            if let keyImageName = keyImageName {
-                
-                keyImage.image = UIImage(named: keyImageName)
-                
-                
+            descriptionLabel.text = viewModel.typeDescription
+            subtitleLabel.text = viewModel.tagline
+            if viewModel.keyImageName != "" {
+                keyImage.image = UIImage(named:viewModel.keyImageName)
             } else {
                 keyImage.image = #imageLiteral(resourceName: "Image_FPO")
-                
             }
+            
 
             
         }
@@ -125,6 +116,10 @@ import UIKit
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         contentView.layoutSubviews()
         contentView.updateConstraints()
+        
+        // xCode bug
+        openingIcon.tintColor = nil
+        openingIcon.tintColor = UIColor.white
   
     }
     

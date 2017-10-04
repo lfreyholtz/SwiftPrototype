@@ -20,6 +20,9 @@ import UIKit
         return String(describing: self)
     }
     
+    static var nib:UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
     
     // retrieve item from view model
     var article:VenueDetailModelItem? {
@@ -29,45 +32,28 @@ import UIKit
             self.articleTitle.text = article.title
             self.articleTitle.addTextSpacing()
             self.articleBody.text = article.body
-            
-            self.articleBody.translatesAutoresizingMaskIntoConstraints = true
-            self.articleBody.sizeToFit()
+            self.articleBody.textContainerInset = UIEdgeInsets.zero
+            self.articleBody.textContainer.lineFragmentPadding = 0
+//            self.articleBody.translatesAutoresizingMaskIntoConstraints = true
+//            self.articleBody.sizeToFit()
             
             // TODO: Author
             
         }
     }
     
-    
-//    var venueArticle:Venue? {
-//        didSet {
-//            
-//            guard let venueArticle = venueArticle else { return }
-//            self.articleTitle.text = venueArticle.tagline
-//            self.articleTitle.addTextSpacing()
-//            
-//            self.articleBody.text = venueArticle.articleText
-//            self.articleBody.translatesAutoresizingMaskIntoConstraints = true
-//            self.articleBody.sizeToFit()
-//            
-//        }
-//    }
-    
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("initializing article cell - awake from nib")
         // Initialization code
         
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.articleBody.textContainerInset = UIEdgeInsets.zero
-        self.articleBody.textContainer.lineFragmentPadding = 0
-        
-        
-    }
+
 
     
     
 }
+

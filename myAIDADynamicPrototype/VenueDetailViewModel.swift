@@ -11,11 +11,10 @@ import RealmSwift
 
 
 enum VenueDetailItemType {
-    case headerInfo             // image, type, ratings, open now
 //    case bookable               // not sure...maybe better in header...
 //    case openingHours           // list, hours per day for each day on trip
     case location               // image, text description
-//    case included               // text definitions, multiple cells (e.g. Inklusiv...Aufpreis...)
+    case included               // text definitions, multiple cells (e.g. Inklusiv...Aufpreis...)
 //    case capacity               // popular times chart, capacity
     case article                // article description
 //    case menu                   // button
@@ -30,54 +29,76 @@ enum VenueDetailItemType {
 
 
 protocol VenueDetailModelItem {
-    var type:VenueDetailItemType { get }
+    var type:VenueDetailItemType { get }    // this is where the destinction would need to be made between venue, event, etc, effectively switching the enum
+    var hasHeader:Bool { get }
+    
     var sectionTitle: String { get }        // some sections have titles, others do not
     var collapsible:Bool { get }            // some sections are collapsible
+    var isCollapsed:Bool { get set }        // to see if it's collapsed
     var sectionIconName:String { get }
     var rowCount:Int { get }
+    
 }
 
-extension VenueDetailViewModel {
-    var rowCount: Int {
+
+
+extension VenueDetailModelItem {
     
+    var rowCount: Int {
         return 1
+        
     }
+    
+    var hasHeader:Bool {
+        return false
+    }
+    
+    var collapsible: Bool {
+        return false
+    }
+    
+    
 }
+
+
 
 // MARK: VIEW MODEL
 class VenueDetailViewModel : NSObject {
     
     var items = [VenueDetailModelItem]() // array containing items and their data
     var venue:Venue?
+    var headerInfoModel:VenueCoverViewModel?
+    
+    // callback to tableViewSections
+    var reloadSections: ((_ section: Int) -> Void)?
+    
     
     init(venue:Venue?) {
         super.init()
         
         
         guard let venue = venue else { return }
-        let venueImages = venue.images
-        let defaultImage = venueImages.first
-        let keyImageName = defaultImage?.imageName
         
-        
-        // header
-        if let name = venue.name, let tagline = venue.tagline, let type = venue.type?.typeName, let typeDescription = venue.type?.description, let keyImageName = keyImageName {
-
-            let headerItem = VenueDetailModelHeaderInfoItem(
-                name: name,
-                typeDescription: typeDescription,
-                tagline: tagline,
-                keyImageName: keyImageName,
-                venueType: type)
+        // header info view
+        if let name = venue.name, let tagline = venue.tagline, let type = venue.type?.typeName, let typeDesc = venue.type?.typeDescription, let keyImageName = venue.images.first?.imageName {
             
-            items.append(headerItem)
-        
+            headerInfoModel = VenueCoverViewModel(venueName: name, tagline: tagline, venueType: type, typeDescription: typeDesc, keyImageName: keyImageName)
         }
+        
+
+        
+        
         // location
         
         if let location = venue.location {
             let locationItem = VenueDetailModelLocationItem(location: location)
             items.append(locationItem)
+        }
+        
+        // what's included
+        if let included = venue.included, let excluded = venue.notIncluded {
+            let includedItem = VenueDetailIncludedItem(includedItems: included, excludedItems: excluded)
+            items.append(includedItem)
         }
         
         // article
@@ -86,63 +107,17 @@ class VenueDetailViewModel : NSObject {
             items.append(articleItem)
         }
         
+
+        
         
         
     }
     
 }
+
+
 
 // MARK: SECTION CLASSES
-// Venue Header
-class VenueDetailModelHeaderInfoItem : VenueDetailModelItem {
-    
-
-    var type: VenueDetailItemType {
-        return .headerInfo
-        
-    }
-    
-    var rowCount: Int {
-        return 0 // has no rows
-    }
-    // has no section title
-    var sectionTitle: String {
-        return ""
-    }
-    
-    // has no collapsible section
-    var collapsible: Bool {
-        return false
-    }
-    
-    // has no section icon
-    var sectionIconName: String {
-        return ""
-    }
-    
-    
-    var name: String
-    var tagline:String
-    var venueType:String
-    var typeDescription: String
-    var keyImageName: String
-    
-    
-    // for later
-//    var rating: CGFloat
-//    var totalRatings: Int
-//    var isOpen:Bool
-//    var occupancy:CGFloat
-//    var isFavorite:Bool
-//    
-    init(name:String, typeDescription:String, tagline:String, keyImageName:String, venueType:String) {
-        self.name = name
-        self.typeDescription = typeDescription
-        self.tagline = tagline
-        self.keyImageName = keyImageName
-        self.venueType = venueType
-    }
-}
 
 //class VenueDetailModelOpeningTimesItem : VenueDetailModelItem {
 //    
@@ -176,14 +151,16 @@ class VenueDetailModelLocationItem: VenueDetailModelItem {
         return .location
     }
     
-    var rowCount: Int {
-        return 1
+
+    var location: Location!
+    
+    
+    var hasHeader: Bool {
+        return true
     }
     
-    
-    var location: Location!
     var sectionTitle: String {
-        return String("ORT \(location.locationDeck!)").uppercased()
+        return String("ORT: \(location.locationDeck!)").uppercased()
     }
     
     var sectionIconName: String {
@@ -193,6 +170,9 @@ class VenueDetailModelLocationItem: VenueDetailModelItem {
     var collapsible: Bool {
         return true
     }
+    
+    var isCollapsed = true
+    
     
     var locName:String {
         return location.locationTitle!
@@ -232,9 +212,13 @@ class VenueDetailModelArticleItem : VenueDetailModelItem {
         return ""
     }
     
+    
+    // not collapsible, not collapsed
     var collapsible: Bool {
         return false
     }
+    
+    var isCollapsed = false
     
     
     var title:String
@@ -249,33 +233,156 @@ class VenueDetailModelArticleItem : VenueDetailModelItem {
 }
 
 
+// inlcuded
+
+class VenueDetailIncludedItem : VenueDetailModelItem {
+    var type: VenueDetailItemType {
+        return .included
+    }
+    
+    var sectionTitle: String {
+        return String("INKLUSIVELEISTUNGEN:").uppercased()
+    }
+    
+    var hasHeader: Bool {
+        return true
+    }
+    var sectionIconName: String {
+        return "icn_pricing"
+    }
+    var collapsible: Bool {
+        return true
+    }
+    
+    var isCollapsed = true
+
+    var includedItems:String
+    var excludedItems:String
+    
+    init(includedItems:String, excludedItems:String) {
+        self.includedItems = includedItems
+        self.excludedItems = excludedItems
+    }
+}
+
+// MARK: TABLEVIEW DELEGATE / DATASOURCE
+
 extension VenueDetailViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items[section].rowCount
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return items[section].sectionTitle
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.row]
-        switch item.type {
-            case .headerInfo:
-                break
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    
+        let item = items[section]
+        guard item.collapsible else {
+            return item.rowCount
+        }
         
+        if item.isCollapsed {
+            return 0
+        }  else {
+            return item.rowCount
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let item = items[indexPath.section]
+        let separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        
+        
+        switch item.type {
+
             case .article:
+                print("Adding article cell")
                 if let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionCellTableViewCell.identifier, for:indexPath) as? DescriptionCellTableViewCell {
                     cell.article = item
+                    cell.setNeedsDisplay()
+                    cell.layoutIfNeeded()
+                    
+                    cell.preservesSuperviewLayoutMargins = false
+                    cell.separatorInset = separatorInset
+                    
                     return cell
                 }
-        case .location:
-            break
-
+        
+            case .location:
+                print("Adding location cell")
+                if let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for:indexPath) as? LocationTableViewCell {
+                    cell.location = item
+                    cell.preservesSuperviewLayoutMargins = false
+                    cell.separatorInset = separatorInset
+                    return cell
+                }
+            
+            case .included:
+                print("Adding included cell")
+                if let cell = tableView.dequeueReusableCell(withIdentifier: IncludedTableViewCell.identifier, for:indexPath) as? IncludedTableViewCell {
+                    cell.included = item
+                    cell.preservesSuperviewLayoutMargins = false
+                    cell.separatorInset = separatorInset
+                    return cell
+            }
+            
         }
         
         return UITableViewCell()
     }
     
+    
+}
+
+extension VenueDetailViewModel : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        print("Adding section header to section \(section)")
+        
+        let item = items[section]
+        print(item.hasHeader)
+        
+        if !item.hasHeader {
+            return nil
+        } else {
+            if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ExpandableHeader.identifier) as? ExpandableHeader {
+                
+                headerView.item = items[section]
+                headerView.section = section
+                headerView.delegate = self
+                return headerView
+            }
+
+        }
+
+        return nil
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let item = items[section]
+        return CGFloat(item.hasHeader.hashValue * 57)
+        
+    }
+}
+
+extension VenueDetailViewModel : ExpandableHeaderDelegate {
+    
+    func toggleSection(header: ExpandableHeader, section: Int) {
+        var item = items[section]
+        if item.collapsible {
+            
+            let collapsed = !item.isCollapsed
+            item.isCollapsed = collapsed
+            header.setCollapsed(collapsed: collapsed)
+            
+            reloadSections?(section)
+        }
+    }
 }

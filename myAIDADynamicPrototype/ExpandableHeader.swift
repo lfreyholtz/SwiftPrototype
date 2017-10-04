@@ -9,38 +9,60 @@
 import UIKit
 
 
-protocol ExpandableHeaderViewDelegate {
+protocol ExpandableHeaderDelegate {
     func toggleSection(header:ExpandableHeader, section:Int)
 }
 
 private let headerKerningValue:CGFloat = 1.5
+
+
 class ExpandableHeader: UITableViewHeaderFooterView {
     
-    var delegate:ExpandableHeaderViewDelegate?
-    var section:Int!
+    var delegate:ExpandableHeaderDelegate?
+    var section:Int = 0
     
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var titleLabel: AdvancedLabel!
     @IBOutlet weak var disclosure: UIImageView!
+    @IBOutlet weak var tempSep: UIView!
     
     
-    func customInit(title:String, section:Int, icon:UIImage, delegate:ExpandableHeaderViewDelegate) {
-        self.titleLabel?.attributedText = setTextAttributes(ofString: title)
-        self.section = section
-        self.icon?.image = icon
-        self.delegate = delegate
+    var item:VenueDetailModelItem? {
+        didSet {
+            guard let item = item else { return }
+            
+            let sectionTitle = item.sectionTitle
+            titleLabel.attributedText = setTextAttributes(ofString: sectionTitle)
+            setCollapsed(collapsed: item.isCollapsed)
+            icon.image = UIImage(named: item.sectionIconName)
+            
+        }
+    }
+
+    static var identifier: String {
+        return String(describing: self)
     }
     
- 
+    static var nib:UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
 
-    func selectHeaderAction(gestureRecognizer:UITapGestureRecognizer) {
-        let cell = gestureRecognizer.view as! ExpandableHeader
-        delegate?.toggleSection(header: self, section: cell.section)
+
+    
+
+    func didTapHeader(gestureRecognizer:UITapGestureRecognizer) {
+        
+        delegate?.toggleSection(header: self, section: section)
+    }
+
+    func setCollapsed(collapsed: Bool) {
+        tempSep.isHidden = !collapsed
+        disclosure?.rotate(collapsed ? 0.0 : .pi)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectHeaderAction)))
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
     }
 
     func setTextAttributes(ofString:String) -> NSMutableAttributedString {
@@ -52,3 +74,17 @@ class ExpandableHeader: UITableViewHeaderFooterView {
 }
 
 
+
+extension UIView {
+    
+    
+    func rotate(_ toValue:CGFloat, duration:CFTimeInterval = 0.2) {
+        let animation = CABasicAnimation(keyPath:"transform.rotation")
+        animation.toValue = toValue
+        animation.duration = duration
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards
+        self.layer.add(animation, forKey:nil)
+        
+    }
+}

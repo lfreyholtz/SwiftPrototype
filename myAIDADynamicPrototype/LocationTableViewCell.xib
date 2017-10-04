@@ -6,19 +6,105 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="KGk-i7-Jjw" customClass="LocationTableViewCell" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="433" height="164"/>
+        <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" rowHeight="210" id="KGk-i7-Jjw" customClass="LocationTableViewCell" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="308" height="210"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="433" height="163.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="308" height="209.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="QVA-ur-Fw6">
+                        <rect key="frame" x="24" y="20" width="260" height="165.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FPO_deckPlan" translatesAutoresizingMaskIntoConstraints="NO" id="qIg-b9-SIM">
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="115" id="Ojp-36-tJI"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fDF-NL-rhr">
+                                <rect key="frame" x="24" y="121" width="212" height="44.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxw-F2-VIG">
+                                        <rect key="frame" x="0.0" y="0.0" width="212" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Q8H-V6-bnr">
+                                        <rect key="frame" x="12" y="28.5" width="188" height="16"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_dottedArrow" translatesAutoresizingMaskIntoConstraints="NO" id="L6X-e5-7QW">
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="16" id="PWH-St-wsy"/>
+                                                    <constraint firstAttribute="height" constant="16" id="jq9-f6-0yE"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWz-XE-wAu">
+                                                <rect key="frame" x="21" y="0.0" width="167" height="16"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Label">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="L6X-e5-7QW" firstAttribute="top" secondItem="Q8H-V6-bnr" secondAttribute="top" id="59B-Qb-DtD"/>
+                                            <constraint firstItem="UWz-XE-wAu" firstAttribute="centerY" secondItem="L6X-e5-7QW" secondAttribute="centerY" id="z4W-59-3YJ"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Xxw-F2-VIG" firstAttribute="leading" secondItem="fDF-NL-rhr" secondAttribute="leading" id="6z7-UY-Nmk"/>
+                                    <constraint firstItem="Q8H-V6-bnr" firstAttribute="leading" secondItem="fDF-NL-rhr" secondAttribute="leading" constant="12" id="OnC-CT-vBb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xxw-F2-VIG" secondAttribute="trailing" id="qmL-1I-Otc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q8H-V6-bnr" secondAttribute="trailing" constant="12" id="tpy-Xa-mPZ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="fDF-NL-rhr" firstAttribute="leading" secondItem="QVA-ur-Fw6" secondAttribute="leading" constant="24" id="cTi-Zg-D86"/>
+                            <constraint firstAttribute="trailing" secondItem="fDF-NL-rhr" secondAttribute="trailing" constant="24" id="idd-U4-Tdb"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QVA-ur-Fw6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="7Cs-oa-qOe"/>
+                    <constraint firstAttribute="bottom" secondItem="QVA-ur-Fw6" secondAttribute="bottom" constant="24" id="D8o-Rk-ZYB"/>
+                    <constraint firstItem="QVA-ur-Fw6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="Jpl-H7-21T"/>
+                    <constraint firstAttribute="trailing" secondItem="QVA-ur-Fw6" secondAttribute="trailing" constant="24" id="RPu-Ph-88M"/>
+                </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="1.5" y="114"/>
+            <connections>
+                <outlet property="deckPlanImage" destination="qIg-b9-SIM" id="ZhD-Jg-HZM"/>
+                <outlet property="infoStack" destination="fDF-NL-rhr" id="dq3-jh-OPz"/>
+                <outlet property="insetArrow" destination="L6X-e5-7QW" id="Fse-7R-kRY"/>
+                <outlet property="locationDescripton" destination="UWz-XE-wAu" id="n1Z-A9-RbZ"/>
+                <outlet property="locationName" destination="Xxw-F2-VIG" id="iYv-ct-dUB"/>
+            </connections>
+            <point key="canvasLocation" x="-41" y="102"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="FPO_deckPlan" width="595" height="842"/>
+        <image name="icn_dottedArrow" width="40" height="40"/>
+    </resources>
 </document>
