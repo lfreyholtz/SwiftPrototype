@@ -46,7 +46,7 @@ import UIKit
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("initializing article cell - awake from nib")
+//        print("initializing article cell - awake from nib")
         // Initialization code
         
     }

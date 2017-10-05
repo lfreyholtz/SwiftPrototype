@@ -27,6 +27,10 @@ enum VenueDetailItemType {
 //    case tags                   // tags for venue
 }
 
+protocol VenueDetailModelDelegate {
+    
+    func scrollViewDidScroll(scrollView:UIScrollView)
+}
 
 protocol VenueDetailModelItem {
     var type:VenueDetailItemType { get }    // this is where the destinction would need to be made between venue, event, etc, effectively switching the enum
@@ -64,6 +68,8 @@ extension VenueDetailModelItem {
 
 // MARK: VIEW MODEL
 class VenueDetailViewModel : NSObject {
+    var delegate:VenueDetailModelDelegate?
+    
     
     var items = [VenueDetailModelItem]() // array containing items and their data
     var venue:Venue?
@@ -82,7 +88,7 @@ class VenueDetailViewModel : NSObject {
         // header info view
         if let name = venue.name, let tagline = venue.tagline, let type = venue.type?.typeName, let typeDesc = venue.type?.typeDescription, let keyImageName = venue.images.first?.imageName {
             
-            headerInfoModel = VenueCoverViewModel(venueName: name, tagline: tagline, venueType: type, typeDescription: typeDesc, keyImageName: keyImageName)
+            headerInfoModel = VenueCoverViewModel(venueName: name, tagline: tagline, venueType: type, typeDescription: typeDesc, keyImageName: keyImageName, isOpen:venue.isOpen)
         }
         
 
@@ -302,7 +308,7 @@ extension VenueDetailViewModel : UITableViewDataSource {
         switch item.type {
 
             case .article:
-                print("Adding article cell")
+//                print("Adding article cell")
                 if let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionCellTableViewCell.identifier, for:indexPath) as? DescriptionCellTableViewCell {
                     cell.article = item
                     cell.setNeedsDisplay()
@@ -315,7 +321,7 @@ extension VenueDetailViewModel : UITableViewDataSource {
                 }
         
             case .location:
-                print("Adding location cell")
+//                print("Adding location cell")
                 if let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for:indexPath) as? LocationTableViewCell {
                     cell.location = item
                     cell.preservesSuperviewLayoutMargins = false
@@ -324,7 +330,7 @@ extension VenueDetailViewModel : UITableViewDataSource {
                 }
             
             case .included:
-                print("Adding included cell")
+//                print("Adding included cell")
                 if let cell = tableView.dequeueReusableCell(withIdentifier: IncludedTableViewCell.identifier, for:indexPath) as? IncludedTableViewCell {
                     cell.included = item
                     cell.preservesSuperviewLayoutMargins = false
@@ -343,10 +349,10 @@ extension VenueDetailViewModel : UITableViewDataSource {
 extension VenueDetailViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print("Adding section header to section \(section)")
+//        print("Adding section header to section \(section)")
         
         let item = items[section]
-        print(item.hasHeader)
+//        print(item.hasHeader)
         
         if !item.hasHeader {
             return nil
@@ -370,6 +376,12 @@ extension VenueDetailViewModel : UITableViewDelegate {
         return CGFloat(item.hasHeader.hashValue * 57)
         
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidScroll(scrollView: scrollView)
+    }
+    
+
 }
 
 extension VenueDetailViewModel : ExpandableHeaderDelegate {

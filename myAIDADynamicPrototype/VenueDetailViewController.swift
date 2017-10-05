@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import MXParallaxHeader
 
 let cellIdentifier = "defaultCell"
 
@@ -73,7 +72,7 @@ class VenueDetailViewController: UIViewController {
     // MARK - VIEW CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
 
         
 
@@ -106,19 +105,20 @@ class VenueDetailViewController: UIViewController {
             
             switch dataType {
                 case "Venue":
-                    print("yup, it's a venue")
+//                    print("yup, it's a venue")
                     let itemData = itemData as! Venue
 
                     viewModel = VenueDetailViewModel(venue:itemData)
                     tableView.dataSource = viewModel
                     tableView.delegate = viewModel
                     
+                    viewModel?.delegate = self
                     let info = infoView as! VenueInfoView
                     info.viewModel = viewModel?.headerInfoModel
                     
                     // for collapse / expand headers
                     viewModel?.reloadSections = { [weak self] (section: Int) in
-                        print("Fire reload sections")
+//                        print("Fire reload sections")
                         self?.tableView?.beginUpdates()
                         self?.tableView?.reloadSections([section], with: .fade)
                         self?.tableView?.endUpdates()
@@ -167,8 +167,8 @@ class VenueDetailViewController: UIViewController {
 }
 
 
-
-//extension VenueDetailViewController : UITableViewDelegate {
+//
+//extension VenueDetailViewController : UIScrollViewDelegate {
 //    
 // 
 //    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -191,14 +191,16 @@ class VenueDetailViewController: UIViewController {
 //    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
 //        showNavBar()
 //    }
-//    
-////    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        return UITableViewAutomaticDimension
-////    }
+//
 //}
 
 
-
+extension VenueDetailViewController : VenueDetailModelDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let info = infoView as! VenueInfoView
+        info.scrollViewDidScroll(scrollView: scrollView)
+    }
+}
 
 
 

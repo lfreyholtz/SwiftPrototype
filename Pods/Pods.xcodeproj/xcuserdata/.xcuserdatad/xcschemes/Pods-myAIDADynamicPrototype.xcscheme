@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '510F841484BB1A26B4840334CBBA79B5'
+               BlueprintIdentifier = 'E1F27EE6A7B154A9C81F231F62673773'
                BlueprintName = 'Pods-myAIDADynamicPrototype'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-myAIDADynamicPrototype.framework'>

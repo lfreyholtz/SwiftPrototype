@@ -22,20 +22,21 @@ class VenueCoverViewModel : NSObject {
     // for later
     //    var rating: CGFloat
     //    var totalRatings: Int
-    //    var isOpen:Bool
+    var isOpen:Bool
     //    var occupancy:CGFloat
     //    var isFavorite:Bool
     //
 
     
 
-    init(venueName:String, tagline:String, venueType:String, typeDescription:String, keyImageName:String) {
+    init(venueName:String, tagline:String, venueType:String, typeDescription:String, keyImageName:String, isOpen:Bool) {
         
         self.venueName = venueName
         self.tagline = tagline
         self.venueType = venueType
         self.typeDescription = typeDescription
         self.keyImageName = keyImageName
+        self.isOpen = isOpen
     }
 
     

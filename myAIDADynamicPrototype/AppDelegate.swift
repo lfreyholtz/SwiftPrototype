@@ -24,7 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIApplication.shared.statusBarStyle = .lightContent
         
         let mainRealm = try! Realm(configuration: RealmConfig.main.configuration) // read/write realm in documents directory copied from bundle
-
+        print(Utils().simDateTime)
+        Utils().generateOpeningHours()
+        
+//        let venues = mainRealm.objects(Venue.self)
+//        let restaurantsOnly = mainRealm.objects(Venue.self).filter("type.typeName = 'buffet' OR type.typeName = 'service' OR type.typeName = 'alacarte'")
+//        Utils().generateOpeningHours(inRealm:mainRealm, forItems: restaurantsOnly)
+        
 //        let testVenues = mainRealm.objects(Venue.self)
 //        var modelObjects = [VenueDetailViewModel]()
 //        for venue in testVenues {

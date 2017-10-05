@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 @IBDesignable class VenueInfoView: UIView {
     
 
@@ -51,6 +52,11 @@ import UIKit
                 keyImage.image = #imageLiteral(resourceName: "Image_FPO")
             }
             
+            if viewModel.isOpen {
+                openingTimeLabel.text = String("Jetzt Geöffnet").uppercased()
+            } else {
+                openingTimeLabel.text = "Geschlossen"
+            }
 
             
         }
@@ -80,7 +86,6 @@ import UIKit
             let textGroupHeight = self.descriptionLabel.frame.maxY - (self.titleLabel.frame.maxY + 12)
             let featuredConstraintHeight:CGFloat = 24.0
             let collapsedConstraintHeight:CGFloat = (textGroupHeight * -1)
-//            print(textGroupHeight)
             self.textAreaBottomConstraint.constant = Utils().modulate(input: frameHeight, x1: compactFrameHeight, x2: featureFrameHeight, y1: collapsedConstraintHeight, y2: featuredConstraintHeight, limit: true)
             
             // text alpha

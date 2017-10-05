@@ -41,7 +41,7 @@ class ItineraryViewController: UIViewController {
             }
             
         } else if segue.identifier == "openTopic" {
-            print("openTopic Prepare")
+//            print("openTopic Prepare")
             if let destinationViewController = segue.destination as? UINavigationController {
                 destinationViewController.navigationBar.tintColor = UIColor.white
                 if let targetController = destinationViewController.topViewController as? TopicViewController {
@@ -90,7 +90,7 @@ extension ItineraryViewController : MenuViewControllerDelegate {
     
     func openCatalog(_ topic: Topic) {
         
-        print("opening catalog topic screen")
+//        print("opening catalog topic screen")
             selectedTopic = topic
             performSegue(withIdentifier: "openTopic", sender: nil)
 

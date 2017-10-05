@@ -1,5 +1,5 @@
 PODS:
-  - MXParallaxHeader (0.6.1)
+  - AFDateHelper (4.2.4)
   - Realm (2.10.1):
     - Realm/Headers (= 2.10.1)
   - Realm/Headers (2.10.1)
@@ -7,14 +7,14 @@ PODS:
     - Realm (= 2.10.1)
 
 DEPENDENCIES:
-  - MXParallaxHeader
+  - AFDateHelper (~> 4.2.2)
   - RealmSwift
 
 SPEC CHECKSUMS:
-  MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
+  AFDateHelper: fbbf706fc7ef3b12efb8c25493c8dc5b9d18f86a
   Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
   RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
 
-PODFILE CHECKSUM: 34e67d6bbd3c24fdd7b82d80b1243c0a7a733d7f
+PODFILE CHECKSUM: 67b95dbbe973ebaa768318b20614cda66e20b0ae
 
 COCOAPODS: 1.2.0

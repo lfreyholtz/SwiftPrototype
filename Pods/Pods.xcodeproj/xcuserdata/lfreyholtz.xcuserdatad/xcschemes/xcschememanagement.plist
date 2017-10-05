@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFDateHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>MXParallaxHeader.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,12 +47,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>347A4CB32EE8761528D60DFE07BFAC52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>510F841484BB1A26B4840334CBBA79B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>6DB0D52D0A46BA95797E25FFE87C8C1C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A73DAA5FD08A6EA38AFD15162EA059B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>E1F27EE6A7B154A9C81F231F62673773</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E75E5BAC0FE6E4C6A5E5F95EA6807F8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E959B957E005E6B3BCCC69382E4AB904</key>
 		<dict>
 			<key>primary</key>
 			<true/>

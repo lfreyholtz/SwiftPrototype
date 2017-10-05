@@ -57,12 +57,14 @@ class ExpandableHeader: UITableViewHeaderFooterView {
 
     func setCollapsed(collapsed: Bool) {
         tempSep.isHidden = !collapsed
+
         disclosure?.rotate(collapsed ? 0.0 : .pi)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
+        tempSep.alpha = 1.0
     }
 
     func setTextAttributes(ofString:String) -> NSMutableAttributedString {

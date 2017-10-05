@@ -116,17 +116,22 @@ extension CatalogListCollectionViewController {
             switch dataType {
                 
             case "venue":
-                let venueForRow = listData.venueMembers[indexPath.item] as! Venue
+                var venueInfoViewModel:VenueCoverViewModel?
                 
+                let venueForRow:Venue = listData.venueMembers[indexPath.item]
+                if let name = venueForRow.name, let type = venueForRow.type?.typeName, let typeDesc = venueForRow.type?.typeDescription, let tagline = venueForRow.tagline, let keyImage = venueForRow.images.first?.imageName {
+                    venueInfoViewModel = VenueCoverViewModel(venueName: name, tagline: tagline, venueType: type, typeDescription: typeDesc, keyImageName: keyImage, isOpen: venueForRow.isOpen)
+                    
+                }
                 
-                // set view model here
+               
                 
                 
                 
                 
                 let venueCell = collectionView.dequeueReusableCell(withReuseIdentifier: storyboardValues.venueCellID, for: indexPath) as! VenueCell
                 
-                
+                venueCell.viewModel = venueInfoViewModel
                 self.segueForDetail = storyboardValues.venueDetailSegue
                 
                 return venueCell
@@ -220,7 +225,7 @@ extension CatalogListCollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == storyboardValues.venueDetailSegue {
-            print("Sending data as venue")
+//            print("Sending data as venue")
             let detailController = segue.destination as! VenueDetailViewController
             let selectedVenue = sender as! Venue
             detailController.itemData = selectedVenue

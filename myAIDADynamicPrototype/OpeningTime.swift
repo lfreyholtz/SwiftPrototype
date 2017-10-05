@@ -13,8 +13,9 @@ import RealmSwift
 
 class OpeningTime:Object {
 
-    dynamic var openTimeDate:String?
-    dynamic var closeTimeDate:String?
+    dynamic var timeDescriptor = ""
+    dynamic var opening:Date? = nil
+    dynamic var closing:Date? = nil
     
 
 }

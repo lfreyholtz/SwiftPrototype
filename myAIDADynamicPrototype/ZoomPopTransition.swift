@@ -14,7 +14,7 @@ import UIKit
 class ZoomPopTransition : NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        print("set duration")
+//        print("set duration")
         return 0
     }
     

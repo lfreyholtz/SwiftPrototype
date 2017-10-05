@@ -20,14 +20,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLY-WU-hes">
+                    <rect key="frame" x="24" y="43" width="327" height="1"/>
+                    <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" priority="999" constant="1" id="U1T-9I-Fqa"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yO8-j4-dtS">
                     <rect key="frame" x="24" y="0.0" width="327" height="44"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="n8P-TW-JNM" userLabel="opening title">
-                            <rect key="frame" x="0.0" y="0.0" width="327" height="43"/>
+                            <rect key="frame" x="0.0" y="0.0" width="327" height="44"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_time" translatesAutoresizingMaskIntoConstraints="NO" id="ooy-Uq-mlN">
-                                    <rect key="frame" x="0.0" y="13.5" width="16" height="16"/>
+                                    <rect key="frame" x="0.0" y="14" width="16" height="16"/>
                                     <color key="tintColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="ooy-Uq-mlN" secondAttribute="height" multiplier="1:1" id="7ay-2R-3XB"/>
@@ -35,7 +42,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIM-ym-XzH" customClass="AdvancedLabel" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-                                    <rect key="frame" x="22" y="12" width="287" height="19.5"/>
+                                    <rect key="frame" x="22" y="12.5" width="287" height="19.5"/>
                                     <attributedString key="attributedText">
                                         <fragment content="ÖFFNUNGSZEITEN">
                                             <attributes>
@@ -48,7 +55,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_disclosure_down_blue" translatesAutoresizingMaskIntoConstraints="NO" id="Ntz-FL-xGk">
-                                    <rect key="frame" x="315" y="18" width="12" height="7"/>
+                                    <rect key="frame" x="315" y="18.5" width="12" height="7"/>
                                     <color key="tintColor" cyan="0.75" magenta="0.22" yellow="0.029999999999999999" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="999" constant="7" id="8SL-vq-nsW"/>
@@ -57,17 +64,11 @@
                                 </imageView>
                             </subviews>
                         </stackView>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLY-WU-hes">
-                            <rect key="frame" x="0.0" y="43" width="327" height="1"/>
-                            <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" priority="999" constant="1" id="JwA-Li-Ago"/>
-                            </constraints>
-                        </view>
                     </subviews>
                 </stackView>
             </subviews>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="FLY-WU-hes" secondAttribute="bottom" id="269-dP-2JR"/>
                 <constraint firstItem="TOn-tQ-7LC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6gw-aG-BJi"/>
                 <constraint firstAttribute="trailing" secondItem="yO8-j4-dtS" secondAttribute="trailing" priority="999" constant="24" id="BK5-ae-3RM"/>
                 <constraint firstAttribute="bottom" secondItem="yO8-j4-dtS" secondAttribute="bottom" priority="999" id="HwC-j7-Gh5"/>
@@ -76,6 +77,8 @@
                 <constraint firstAttribute="bottom" secondItem="TOn-tQ-7LC" secondAttribute="bottom" id="dqA-eJ-IXf"/>
                 <constraint firstAttribute="trailing" secondItem="TOn-tQ-7LC" secondAttribute="trailing" id="fWF-HD-Lo0"/>
                 <constraint firstItem="TOn-tQ-7LC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gHy-aU-5ap"/>
+                <constraint firstItem="FLY-WU-hes" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="999" constant="24" id="hJ0-xa-i2z"/>
+                <constraint firstAttribute="trailing" secondItem="FLY-WU-hes" secondAttribute="trailing" priority="999" constant="24" id="wMc-P0-XYa"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -92,6 +95,6 @@
     </objects>
     <resources>
         <image name="icn_disclosure_down_blue" width="13" height="8"/>
-        <image name="icn_time" width="26" height="26"/>
+        <image name="icn_time" width="40" height="40"/>
     </resources>
 </document>
