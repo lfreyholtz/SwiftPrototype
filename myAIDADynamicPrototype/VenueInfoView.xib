@@ -150,6 +150,6 @@
     </objects>
     <resources>
         <image name="brauhaus_01" width="2032" height="1334"/>
-        <image name="icn_time" width="26" height="26"/>
+        <image name="icn_time" width="40" height="40"/>
     </resources>
 </document>

@@ -12,7 +12,7 @@ import RealmSwift
 
 enum VenueDetailItemType {
 //    case bookable               // not sure...maybe better in header...
-//    case openingHours           // list, hours per day for each day on trip
+    case openingHours           // list, hours per day for each day on trip
     case location               // image, text description
     case included               // text definitions, multiple cells (e.g. Inklusiv...Aufpreis...)
 //    case capacity               // popular times chart, capacity
@@ -86,14 +86,18 @@ class VenueDetailViewModel : NSObject {
         guard let venue = venue else { return }
         
         // header info view
-        if let name = venue.name, let tagline = venue.tagline, let type = venue.type?.typeName, let typeDesc = venue.type?.typeDescription, let keyImageName = venue.images.first?.imageName {
-            
-            headerInfoModel = VenueCoverViewModel(venue: venue)
+        headerInfoModel = VenueCoverViewModel(venue: venue)
+//        if let name = venue.name, let tagline = venue.tagline, let type = venue.type?.typeName, let typeDesc = venue.type?.typeDescription, let keyImageName = venue.images.first?.imageName {
+//            
+//            headerInfoModel = VenueCoverViewModel(venue: venue)
+//        }
+        
+        // hours
+        if venue.openingHours.count > 0 {
+            let timesItem = VenueDetailModelOpeningTimesItem(openingHours: venue.openingHours)
+            items.append(timesItem)
         }
-        
 
-        
-        
         // location
         
         if let location = venue.location {
@@ -112,7 +116,6 @@ class VenueDetailViewModel : NSObject {
             let articleItem = VenueDetailModelArticleItem(title: title, body: articleText)
             items.append(articleItem)
         }
-        
 
         
         
@@ -125,34 +128,77 @@ class VenueDetailViewModel : NSObject {
 
 // MARK: SECTION CLASSES
 
-//class VenueDetailModelOpeningTimesItem : VenueDetailModelItem {
-//    
-//    var type: VenueDetailItemType {
-//        return .openingHours
+class VenueDetailModelOpeningTimesItem : VenueDetailModelItem {
+   
+    var type: VenueDetailItemType {
+        return .openingHours
+    }
+    
+    var sectionTitle: String {
+        return "OFFNUGSZEITEN"
+    }
+    
+    var hasHeader: Bool {
+        return true
+    }
+    
+    var sectionIconName: String {
+        return "icn_time"
+    }
+    
+    var collapsible: Bool {
+        return true
+    }
+    
+    var isCollapsed = true
+
+//    var todaysHours:List<OpeningTime>
+    var venueOpeningTimes: List<OpeningTime>
+    
+    var todaysHours:List<OpeningTime> {
+        let todaysList = List<OpeningTime>()
+        if venueOpeningTimes.count > 0 {
+//            var tomorrow = Date().adjust(.day, offset: 1)
+//            var datesTodayPredicate = NSPredicate(format: "opening BETWEEN %@", Date(), tomorrow)
+//            return self.venueOpeningTimes.filter(datesTodayPredicate)
+//        }
+        
+            for date in self.venueOpeningTimes {
+                if Calendar.current.compare(Date(), to: date.opening!, toGranularity: .day) == .orderedSame && Calendar.current.compare(Date(), to: date.closing!, toGranularity: .minute) == .orderedAscending {
+                
+                    todaysList.append(date)
+                }
+            }
+            
+        }
+        return todaysList
+    }
+//    var tomorrowsHours:List<OpeningTime> {
+//        let openingTimes = List<OpeningTime>()
+//        
+//        for date in self.venueOpeningTimes {
+//            if Calendar.current.compare(Date(), to: date.opening!, toGranularity: .day) == .orderedSame && Calendar.current.compare(Date(), to: date.closing!, toGranularity: .minute) == .orderedAscending {
+//                
+//                openingTimes.append(date)
+//            }
+//        }
+//        return openingTimes
+//        
 //    }
-//    
-//    var sectionTitle: String {
-//        return "OFFNUGSZEITEN"
-//    }
-//    
-//    var collapsible: Bool {
-//        return true
-//    }
-//    var sectionIconName: String {
-//        return "icn_clock"
-//    }
-//    var openingTimes: List<OpeningTime>
-//    var rowCount: Int {
-//        return openingTimes.count
-//    }
-//    
-//    init(openingTimes:List<OpeningTime>) {
-//        self.openingTimes = openingTimes
-//    }
-//    
-//}
+    
+    var rowCount: Int {
+        return 1
+    }
+    
+    init(openingHours:List<OpeningTime>) {
+        self.venueOpeningTimes = openingHours
+//        self.venueOpeningTimes = openingHours
+    }
+    
+}
 //
 class VenueDetailModelLocationItem: VenueDetailModelItem {
+    
     var type: VenueDetailItemType {
         return .location
     }
@@ -336,7 +382,16 @@ extension VenueDetailViewModel : UITableViewDataSource {
                     cell.preservesSuperviewLayoutMargins = false
                     cell.separatorInset = separatorInset
                     return cell
-            }
+                }
+            
+            case .openingHours:
+                //                print("Adding times cell")
+                if let cell = tableView.dequeueReusableCell(withIdentifier: TimesCell.identifier, for:indexPath) as? TimesCell {
+                    cell.openingHours = item
+                    cell.preservesSuperviewLayoutMargins = false
+                    cell.separatorInset = separatorInset
+                    return cell
+                }
             
         }
         

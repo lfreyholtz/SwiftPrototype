@@ -22,10 +22,17 @@ class VenueCoverViewModel : NSObject {
     // for later
     //    var rating: CGFloat
     //    var totalRatings: Int
-    var isOpen:Bool?
+//    var isOpen:Bool
     var openMessage:String?
     
-    
+//    var isOpen:Bool {
+//        didSet(newValue) {
+//            if self.isOpen != newValue {
+//                print("isOpen in coverViewModel was changed")
+//            }
+//        }
+//    }
+//    
     // calendar settings
     
     let calendar = Calendar.current
@@ -53,7 +60,14 @@ class VenueCoverViewModel : NSObject {
     
     }()
     
+    let dayOfWeekFormatter:DateFormatter = {
     
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.current
+        formatter.locale = Locale(identifier: "de-DE") // to keep things in german for now, even on "english" test device
+        formatter.dateFormat = "EEEE"
+        return formatter
+    }()
     let componentFormatter:DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.calendar = Calendar.current
@@ -65,41 +79,49 @@ class VenueCoverViewModel : NSObject {
     }()
     
     // string displayed for opening time
-    var openingMessage:String? {
-        var returnString:String?
-        
-        guard let venue = self.venue else { print("no venue"); return "" }
-        guard let nextOpeningTime = venue.nextOpeningTime else { print("not open, on cruise"); return "" }
-        let timeToClose = calendar.dateComponents([.weekday, .year, .month, .day, .hour, .minute], from: Date(), to: nextOpeningTime.closing!)
-        
-        if venue.isOpen {
-            if timeToClose.hour! <= 1 {
-                if timeToClose.minute! <= 1 {
-                    returnString = "Geöffnet: schließt in \(timeToClose.minute!) Minute"
-                } else {
-                    returnString = "Geöffnet: schließt in \(timeToClose.minute!) Minuten"
+    var openingMessage:String {
+    
+        var openingString:String = "Geschlossen"
+        guard let venue = self.venue else { return "" }
+       
+        if let nextOpeningTime = venue.nextOpeningTime() {
+            
+            switch venue.isOpen() {
+                
+                case true:
+                     let timeToClose = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date(), to:nextOpeningTime.closing!)
+                     let minutesPlural = timeToClose.minute! > 1 ? "Minuten" : "Minute"
+                
+                     if timeToClose.hour! < 1 {
+                        if timeToClose.minute! <= 1 {
+                            openingString = "Jezt geöffnet, schliesst gleich"
+                        } else {
+                            openingString = "Jetzt geöffnet, schliesst in \(timeToClose.minute!) \(minutesPlural)"
+                        }
+                     } else {
+                        openingString = "Jetzt geöffnet bis \(timeOnlyFormatter.string(from: nextOpeningTime.closing!))"
                 }
                 
-            } else {
-                returnString = "Jetzt geöffnet bis \(timeOnlyFormatter.string(from: nextOpeningTime.closing!)) Uhr"
+                
+            
+                default:
+
+                    let timeToOpen = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date(), to: nextOpeningTime.opening!)
+                    if timeToOpen.day! > 1 && timeToOpen.day! < 6 {
+                        openingString = "Geschlossen, öffnet \(dayOfWeekFormatter.string(from: nextOpeningTime.opening!)) um \(timeOnlyFormatter.string(from: nextOpeningTime.opening!))"
+                    } else {
+                        openingString = "Geschlossen, öffnet \(relativeDateFormatter.string(from:nextOpeningTime.opening!))"
+                    }
+
+                }
+
+                
+                
             }
-            
-        } else {
-            
-            // TODO: Improve this by creating a localized set of relative date values
-            let timeToClose = calendar.dateComponents([.weekday, .year, .month, .day, .hour, .minute], from: Date(), to: nextOpeningTime.opening!)
-            print(timeToClose)
-            returnString = "Geschlossen: öffnet \(relativeDateFormatter.string(from: nextOpeningTime.opening!)) Uhr"
-            
-// TODO: case for opening exactly one week later
-// TODO: case for opening on a day this week
-            
-            
-        }
-        print(returnString!)
-        return returnString ?? ""
+
+        print(openingString)
+        return openingString
     }
-    // if open, returns current opening time.  If closed, returns next.  If none for voyage or if venue fails, will return nil.
 
     
     init(venue:Venue) {
@@ -111,7 +133,7 @@ class VenueCoverViewModel : NSObject {
         self.venueType = venue.type?.typeName
         self.typeDescription = venue.type?.typeDescription
         self.keyImageName = venue.images.first?.imageName
-        self.isOpen = venue.isOpen
+//        self.isOpen = venue.isOpen()
         
 //        setUpOpenStringFor(venue: venue)
         

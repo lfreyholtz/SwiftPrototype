@@ -170,8 +170,8 @@ import UIKit
         self.timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: (#selector(self.updateOpeningTime)), userInfo: nil, repeats: true)
     }
     func updateOpeningTime() {
-        openingTimeLabel.text =  self.viewModel?.openingMessage?.uppercased()
-        self.viewModel?.isOpen = self.viewModel?.isOpen
+        openingTimeLabel.text =  self.viewModel?.openingMessage.uppercased()
+//        self.viewModel?.isOpen = self.viewModel?.isOpen
     }
 
 

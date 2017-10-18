@@ -20,15 +20,18 @@ class CatalogListCollectionViewController: UICollectionViewController {
     
     var listData:Category? {
         didSet {
+            self.viewModel = PhotoListViewModel(category: listData)
+            viewModel?.delegate = self as PhotoListViewModelDelegate
             
-
+            self.collectionView?.delegate = viewModel
+//        var datesTodayPredicate = NSPredicate(format: "opening BETWEEN %@", Date(), tomorrow)
             // init category values instance with type
 //            print(listData?.venueMembers)
             
         }
     }
     
-
+    var viewModel: PhotoListViewModel?
 
     // for hiding statusbar
     var statusBarHidden:Bool = false {
@@ -55,10 +58,15 @@ class CatalogListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
         collectionView!.isPrefetchingEnabled = false
+        collectionView!.dataSource = viewModel
+        
+        
+        
         
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: storyboardValues.defaultCellID)
-        self.collectionView!.register(UINib(nibName: storyboardValues.venueCellNibName, bundle: nil), forCellWithReuseIdentifier: storyboardValues.venueCellID)
+        collectionView!.register(VenueCell.nib, forCellWithReuseIdentifier: VenueCell.identifier)
+        collectionView!.register(DefaultCollectionViewCell.nib, forCellWithReuseIdentifier:DefaultCollectionViewCell.identifier)
+        
         
         // custom back icon
         let icon = UIImage(named:"icn_back_white")
@@ -70,6 +78,7 @@ class CatalogListCollectionViewController: UICollectionViewController {
         )
     }
     
+    
 
     func back(_ sender:UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
@@ -79,190 +88,104 @@ class CatalogListCollectionViewController: UICollectionViewController {
 
 }
 
-// MARK: UICollectionViewDataSource
-extension CatalogListCollectionViewController {
-    
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+// MARK: PhotoListViewModelDelegate 
+
+extension CatalogListCollectionViewController: PhotoListViewModelDelegate {
+    func listDidSort() {
+        
+        let indexSet = IndexSet(integer: 0)
+        
+            self.collectionView?.performBatchUpdates({ () -> Void in
+            self.collectionView?.reloadSections(indexSet)
+            
+        }, completion: nil)
+        
+        print("View model reported that data was sorted")
     }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var count:Int = 1
-        
-
-        if let listData = listData {
-            let dataType = listData.memberType
-            
-            switch dataType {
-            case "venue":
-                count = listData.venueMembers.count
-            //case "event":
-            default:
-                count = 0
-            }
-        }
-            return count
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
-
-        
-        if let listData = listData {
-            
-            let dataType = listData.memberType
-            
-            
-            switch dataType {
-                
-            case "venue":
-                var venueInfoViewModel:VenueCoverViewModel?
-                
-                
-                
-                // first show venues that are open, ranked by nearest closing time, then show venues that are closed, ranked by opening time
-                
-                let venueMembersArray = Array(listData.venueMembers).sorted{ item1, item2 in
-                    
-                    if item1.isOpen == item2.isOpen {
-                        if item1.isOpen == true {
-                            
-                            guard let item1NextClosing = item1.nextOpeningTime?.closing else { return false }
-                            guard let item2NextClosing = item2.nextOpeningTime?.closing else { return false }
-                            return item1NextClosing < item2NextClosing
-                            
-                        } else if item1.isOpen == false {
-                            guard let item1NextOpening = item1.nextOpeningTime?.opening else { return false }
-                            guard let item2NextOpening = item2.nextOpeningTime?.opening else { return false }
-                            return item1NextOpening < item2NextOpening
-                        }
-                    }
-                    
-                    return item1.isOpen && !item2.isOpen
-
-                    }
-
-                
-                let venueForRow:Venue = venueMembersArray[indexPath.item]
-                venueInfoViewModel = VenueCoverViewModel(venue: venueForRow)
-                
-                
-
-
-                let venueCell = collectionView.dequeueReusableCell(withReuseIdentifier: storyboardValues.venueCellID, for: indexPath) as! VenueCell
-                
-                venueCell.viewModel = venueInfoViewModel
-                self.segueForDetail = storyboardValues.venueDetailSegue
-                
-//                self.collectionView?.collectionViewLayout.invalidateLayout()
-                venueCell.layoutSubviews()
-                return venueCell
-                
-                // case "event":
-                
-            default:
-                print("could not return a data type")
-                let defaultCell = collectionView.dequeueReusableCell(withReuseIdentifier: storyboardValues.defaultCellID, for: indexPath) as! DefaultCollectionViewCell
-                
-                return defaultCell
-                
-            }
-        }
-        return UICollectionViewCell()
-
-    }
-    
-    
 }
-
 
 // MARK: UICollectionViewDelegate
-extension CatalogListCollectionViewController {
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        // scroll to selected item
-        let layout = collectionViewLayout as! PhotoListLayout
-        let offset = layout.dragOffset * CGFloat(indexPath.item)
-        
-        selectedIndexPath = indexPath
-        selectedItem  = collectionView.cellForItem(at: indexPath)
-        
-        if collectionView.contentOffset.y < offset {
-            collectionView.setContentOffset(CGPoint(x: 0, y: offset), animated: true)
-        } else {
-            fireSegueWithSelectedCell()
-        }
-
-
-    }
-    
-    /// scroll behaviors (e.g. show / hide nav bar)
-    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        hideNavBar()
-    }
-    
-
-//    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//extension CatalogListCollectionViewController {
+//    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//        // scroll to selected item
+//        let layout = collectionViewLayout as! PhotoListLayout
+//        let offset = layout.dragOffset * CGFloat(indexPath.item)
+//        
+//        selectedIndexPath = indexPath
+//        selectedItem  = collectionView.cellForItem(at: indexPath)
+//        
+//        if collectionView.contentOffset.y < offset {
+//            collectionView.setContentOffset(CGPoint(x: 0, y: offset), animated: true)
+//        } else {
+//            fireSegueWithSelectedCell()
+//        }
+//
+//
+//    }
+//    
+//    /// scroll behaviors (e.g. show / hide nav bar)
+//    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        hideNavBar()
+//    }
+//    
+//
+//
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        hideNavBar()
+//    }
+//    
+//    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//
 //        showNavBar()
 //    }
+//    
+//    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+//        showNavBar()
+//
+//
+//        perform(#selector(fireSegueWithSelectedCell), with: nil, afterDelay: 0.3)
+//    }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        hideNavBar()
-    }
-    
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//    func fireSegueWithSelectedCell(){
+//        if let selectedIndexPath = selectedIndexPath {
+//            
+//            if let listData = listData {
+//                
+//                let dataType = listData.memberType
+//                
+//                switch dataType {
+//                    
+//                case "venue":
+//                    let venue = listData.venueMembers[selectedIndexPath.item]
+//                    performSegue(withIdentifier: segueForDetail, sender: venue)
+//                    
+//                default:
+//                    break
+//                }
+//            }
+//        }
+//    
+//    }
+//    
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == storyboardValues.venueDetailSegue {
+////            print("Sending data as venue")
+//            let detailController = segue.destination as! VenueDetailViewController
+//            let selectedVenue = sender as! Venue
+//            detailController.itemData = selectedVenue
+//            
+// 
+//            
+//        }
+//    }
+//    
 
-        showNavBar()
-    }
     
-    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        showNavBar()
-
-
-        perform(#selector(fireSegueWithSelectedCell), with: nil, afterDelay: 0.3)
-    }
-    
-    func fireSegueWithSelectedCell(){
-        if let selectedIndexPath = selectedIndexPath {
-            
-            if let listData = listData {
-                
-                let dataType = listData.memberType
-                
-                switch dataType {
-                    
-                case "venue":
-                    let venue = listData.venueMembers[selectedIndexPath.item]
-                    performSegue(withIdentifier: segueForDetail, sender: venue)
-                    
-                default:
-                    break
-                }
-            }
-        }
-    
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == storyboardValues.venueDetailSegue {
-//            print("Sending data as venue")
-            let detailController = segue.destination as! VenueDetailViewController
-            let selectedVenue = sender as! Venue
-            detailController.itemData = selectedVenue
-            
- 
-            
-        }
-    }
-    
-   
-    
-}
+//}
 
 //extension CatalogListCollectionViewController : ZoomingPhotoController {
 //
@@ -300,6 +223,8 @@ extension CatalogListCollectionViewController {
 //    }
 //    
 //}
+
+// MARK: - List Sorting
 
 // showing hiding status bar
 extension CatalogListCollectionViewController  {

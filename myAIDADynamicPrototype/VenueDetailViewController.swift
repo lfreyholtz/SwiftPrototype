@@ -85,7 +85,8 @@ class VenueDetailViewController: UIViewController {
         tableView.register(DescriptionCellTableViewCell.nib, forCellReuseIdentifier: DescriptionCellTableViewCell.identifier)
         tableView.register(LocationTableViewCell.nib, forCellReuseIdentifier: LocationTableViewCell.identifier)
         tableView.register(IncludedTableViewCell.nib, forCellReuseIdentifier: IncludedTableViewCell.identifier)
-
+        tableView.register(TimesCell.nib, forCellReuseIdentifier: TimesCell.identifier)
+        
         tableView.register(ExpandableHeader.nib, forHeaderFooterViewReuseIdentifier: ExpandableHeader.identifier)
         
         // register section header types
@@ -167,32 +168,6 @@ class VenueDetailViewController: UIViewController {
 }
 
 
-//
-//extension VenueDetailViewController : UIScrollViewDelegate {
-//    
-// 
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        hideNavBar()
-//    }
-//    
-//    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        hideNavBar()
-//        let info = infoView as! VenueInfoView
-//        info.scrollViewDidScroll(scrollView:scrollView)
-//        
-//    }
-//    
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        
-//        showNavBar()
-//    }
-//    
-//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-//        showNavBar()
-//    }
-//
-//}
 
 
 extension VenueDetailViewController : VenueDetailModelDelegate {
@@ -214,11 +189,7 @@ extension VenueDetailViewController {
         guard let navController = self.navigationController else { return }
         let navBarFrame:CGRect = navController.navigationBar.frame
         
-        
-        
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-            
-            
             navController.navigationBar.alpha = 0.0
         }, completion: {
             ( completed ) in
@@ -228,8 +199,6 @@ extension VenueDetailViewController {
             //            navController.navigationBar.frame = CGRect(x: 0, y: 20, width: navBarFrame.size.width, height: 44)
             self.statusBarHidden = true
             
-            
-            
         })
         
         
@@ -237,18 +206,10 @@ extension VenueDetailViewController {
     
     func showNavBar() {
         
-        
-        
         guard let navController = self.navigationController else { return }
         let navBarFrame:CGRect = navController.navigationBar.frame
         
-        
-        
-        
         UIView.animate(withDuration: 0.33, delay: 1.0, options: .curveEaseInOut, animations: {
-            
-            
-            
             navController.navigationBar.alpha = 1.0
         }, completion: {
             ( completed ) in

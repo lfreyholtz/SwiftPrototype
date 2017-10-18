@@ -11,9 +11,10 @@ import RealmSwift
 import AFDateHelper
 
 
+
 class Venue : Object {
     
-
+    
 //    dynamic var id = NSUUID().uuidString
     
     dynamic var name:String?
@@ -47,71 +48,11 @@ class Venue : Object {
     //logistics
     let openingHours = List<OpeningTime>()
     
-    var hoursToday: List<OpeningTime> {
-        let hoursList = List<OpeningTime>()
-
-
-                
-        for date in self.openingHours {
-            if date.opening?.component(.day) == Date().component(.day) {
-                hoursList.append(date)
-            }
-        }
- 
-        return hoursList
-    }
-    
-        
-  
-    var nextOpeningTime:OpeningTime? {
-        
-        
-      if self.isOpen && self.hoursToday.count > 0 {
-            
-            // look through today's opening times
-            for entry in self.hoursToday {
-                // return the current one
-                if let openingTime = entry.opening, let closingTime = entry.closing {
-                    if Date().isBetween(beginDate: openingTime, endDate: closingTime, inclusive: true) {
-                        return entry
-                    }
-                    
-                } else {
-                    // current item in hours today is nil
-                    // print("opening time couldn't be unpacked")
-                    return nil
-                }
-            }
-            
-        } else {
-            // venue is closed, find next opening time
-            for entry in self.openingHours {
-                if entry.opening?.compare(Date()) == .orderedDescending {
-                    return entry
-                }
-            }
-        }
-        
-        //        print("could not find an opening time - off cruise")
-        return nil
-    }
-    
     
     
     dynamic var popularTimes:String?        //stubbing for image of popular times, rather than the actual data
     
-    dynamic var isOpen:Bool {
-//        let currentDate:Date = Utils().simDateTime
-//        guard let currentDate:Date = Utils().simDateTime else { return false }
-        for hours in self.openingHours {
-            
-            if Date().isBetween(beginDate: hours.opening!, endDate: hours.closing!, inclusive: true) {
-                return true
-            }
-        }
-        return false
-    }
-    
+
     
     //TODO:reservations, languages
 //    let languagesSpoken = List<Language>()
@@ -130,7 +71,7 @@ class Venue : Object {
     dynamic var isFavorite = false
     let bookings = List<Booking>()
 
-    
+
     
     //MARK: meta
     override class func primaryKey() -> String? {
@@ -138,7 +79,41 @@ class Venue : Object {
     }
     
 
+    func hoursToday() -> Results<OpeningTime> {
+        
+        let todayStart = Calendar.current.startOfDay(for: Date())
+        let todayEnd:Date = {
+            let components = DateComponents(day:1, second:-1)
+            return Calendar.current.date(byAdding:components, to: todayStart)!
+        }()
+        let filteredList = self.openingHours.filter("opening BETWEEN %@", [todayStart, todayEnd])
+        return filteredList.sorted(byKeyPath: "opening", ascending: true)
+    }
     
+    
+    func nextOpeningTime() -> OpeningTime? {
+        
+        let todaysHours: Results<OpeningTime> = hoursToday()
+        let allSortedHours = self.openingHours.sorted(byKeyPath: "opening", ascending: true)
+        
+        if self.isOpen() {
+
+            return todaysHours.filter("(opening <= %@) AND (closing >= %@)", Date(), Date()).first
+        }
+        return allSortedHours.filter("opening >= %@", Date()).first
+    }
+    
+    
+    
+    func isOpen() -> Bool {
+        
+        let todaysHours: Results<OpeningTime> = hoursToday()
+        // assuming if no opening hours venue is closed
+
+        return todaysHours.filter("(opening <= %@) AND (closing >= %@)", Date(), Date()).count >= 1
+
+        
+    }
 }
 
 

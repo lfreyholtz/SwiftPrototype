@@ -119,6 +119,9 @@ struct DataUtils {
         if fileSchemaVersion == 40 {
             print("Migrating to 41")
         }
+        if fileSchemaVersion == 41 {
+            print("Migrating to 42")
+        }
     }
 
 }
