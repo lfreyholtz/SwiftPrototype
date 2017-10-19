@@ -1,19 +1,19 @@
 PODS:
-  - AFDateHelper (4.2.4)
-  - Realm (2.10.1):
-    - Realm/Headers (= 2.10.1)
-  - Realm/Headers (2.10.1)
-  - RealmSwift (2.10.1):
-    - Realm (= 2.10.1)
+  - AFDateHelper (4.2.5)
+  - Realm (3.0.0):
+    - Realm/Headers (= 3.0.0)
+  - Realm/Headers (3.0.0)
+  - RealmSwift (3.0.0):
+    - Realm (= 3.0.0)
 
 DEPENDENCIES:
   - AFDateHelper (~> 4.2.2)
   - RealmSwift
 
 SPEC CHECKSUMS:
-  AFDateHelper: fbbf706fc7ef3b12efb8c25493c8dc5b9d18f86a
-  Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
-  RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
+  AFDateHelper: d90e331deccf0543b2dc745a6d02e083d541d867
+  Realm: dec0de73be8c57506e39db72694d513c189493b3
+  RealmSwift: 44a7090b16d1b22a406c6bf129bdd602db1bbecc
 
 PODFILE CHECKSUM: e9978884099165ac03a2cb67b32ebb04a7d7d971
 

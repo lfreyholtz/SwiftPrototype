@@ -59,7 +59,7 @@ class Venue : Object {
 //    let userReservations = List<Reservation>()
     
     //ratings
-    let ratings = List<Rating>()
+//    let ratings = List<Rating>()
     
     let staff = List<Crew>()
     
