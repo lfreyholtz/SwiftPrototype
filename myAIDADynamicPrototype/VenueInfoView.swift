@@ -46,12 +46,14 @@ import UIKit
         var viewModel:VenueCoverViewModel? {
         didSet {
             
-            self.layoutIfNeeded()
+//            self.layoutIfNeeded()
             
             guard let viewModel = viewModel else { return }
             titleLabel.text = viewModel.venueName?.uppercased()
             titleLabel.addTextSpacing()
             descriptionLabel.text = viewModel.typeDescription
+            rating.rating = Int(viewModel.rating)
+            ratingCount.text = String(viewModel.totalRatings)
 //            subtitleLabel.text = viewModel.tagline
             
             if let keyImageName = viewModel.keyImageName {
@@ -63,7 +65,6 @@ import UIKit
             self.updateOpeningTime()
             self.runTimer()
             
-//            openingTimeLabel.text = updateOpeningTime(withViewModel:viewModel)
             
 //            contentView.layoutSubviews()
 //            contentView.updateConstraints()
@@ -80,8 +81,8 @@ import UIKit
             
             // needs to be called at the outset to get correct subview frames (https://stackoverflow.com/questions/28269452/subview-frame-is-incorrect-when-creating-uicollectionviewcell)
             
-            self.layoutIfNeeded()
-            
+
+            self.layoutIfNeeded() // fixes initial misplacements of layouts after data loaded
             // font size
             let frameHeight = self.bounds.height
             let minFontSize:CGFloat = 24.0
@@ -102,7 +103,7 @@ import UIKit
             self.descriptionLabel.alpha = textAlpha
 //            self.subtitleLabel.alpha = textAlpha
             self.divisionLine.alpha = textAlpha
- 
+
             
         }
     }
@@ -117,9 +118,7 @@ import UIKit
         commonInit()
     }
 
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-    }
+
     
 
     
@@ -129,10 +128,10 @@ import UIKit
         bundle.loadNibNamed("VenueInfoView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        contentView.layoutSubviews()
-        contentView.updateConstraints()
-        
+//        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+//        contentView.layoutSubviews()
+//        contentView.updateConstraints()
+//        print("venue info view end common init - subviews, resize mask, constraints updated.  Frame:\(self.frame)")
 //        // xCode bug
 //        openingIcon.tintColor = nil
 //        openingIcon.tintColor = UIColor.white
@@ -141,7 +140,7 @@ import UIKit
     
     // parallax and squish
     func scrollViewDidScroll(scrollView:UIScrollView) {
-        self.layoutIfNeeded()
+//        self.layoutIfNeeded()
         let offsetY = -(scrollView.contentOffset.y)
 //        print(offsetY)
 

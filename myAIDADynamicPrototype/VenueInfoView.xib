@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,16 +49,16 @@
                             <rect key="frame" x="0.0" y="0.0" width="471" height="482"/>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-qu-4hj">
-                            <rect key="frame" x="24" y="349.5" width="423" height="108.5"/>
+                            <rect key="frame" x="24" y="352" width="423" height="106"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZrO-Dj-tcF">
                                     <rect key="frame" x="0.0" y="0.0" width="423" height="50"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFr-MX-agU">
-                                            <rect key="frame" x="0.0" y="17" width="126.5" height="16.5"/>
+                                            <rect key="frame" x="0.0" y="18" width="346" height="14"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iB-Lg-rrj" customClass="statusCircleView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="3" width="10" height="10"/>
+                                                    <rect key="frame" x="0.0" y="2" width="10" height="10"/>
                                                     <color key="backgroundColor" cyan="0.75" magenta="0.22" yellow="0.029999999999999999" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="10" id="3WH-Gk-F35"/>
@@ -66,7 +66,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRU-cB-h0S">
-                                                    <rect key="frame" x="14" y="0.0" width="112.5" height="16.5"/>
+                                                    <rect key="frame" x="14" y="0.0" width="346" height="14"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
@@ -80,10 +80,10 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0rZ-59-NA3">
-                                            <rect key="frame" x="131.5" y="0.0" width="291.5" height="50"/>
+                                            <rect key="frame" x="351" y="0.0" width="72" height="50"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mUT-8a-clo" customClass="RatingsStackView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="262" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="size" keyPath="starSize">
                                                             <size key="value" width="14" height="14"/>
@@ -94,7 +94,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="0000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpC-Qv-pqk">
-                                                    <rect key="frame" x="264" y="17" width="27.5" height="16.5"/>
+                                                    <rect key="frame" x="72" y="18" width="0.0" height="14"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -124,7 +124,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG7-P3-VOq" customClass="AdvancedLabel" customModule="myAIDADynamicPrototype" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="92" width="423" height="16.5"/>
+                                    <rect key="frame" x="0.0" y="92" width="423" height="14"/>
                                     <attributedString key="attributedText">
                                         <fragment content="Label">
                                             <attributes>

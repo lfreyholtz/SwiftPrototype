@@ -17,10 +17,7 @@ enum PhotoListModelItemType {
     case excursion
 }
 
-protocol PhotoListViewModelDelegate {
-//    func scrollViewDidScroll(scrollView:UIScrollView)
-    func listDidSort()
-}
+
 
 protocol PhotoListModelItem {
     var type:PhotoListModelItemType { get }
@@ -30,13 +27,13 @@ protocol PhotoListModelItem {
 
 
 
-class PhotoListViewModel : NSObject, PhotoListModelVenueItemDelegate {
-    
-    var delegate:PhotoListViewModelDelegate?
+class PhotoListViewModel : NSObject {
+
+
     
     var items = [PhotoListModelItem]()
-    
- 
+    var refreshCollection:(() -> Void)?
+    var performSegue:((_ selectedItem:Object) -> Void)?
     
     init(category:Category?) {
         super.init()
@@ -48,7 +45,6 @@ class PhotoListViewModel : NSObject, PhotoListModelVenueItemDelegate {
             for venue in category.venueMembers {
                 let coverViewModel = VenueCoverViewModel(venue: venue)
                 let venueItem = PhotoListModelVenueItem(venue: venue, coverViewModel:coverViewModel)
-                venueItem.delegate = self
                 items.append(venueItem)
             }
             
@@ -64,7 +60,7 @@ class PhotoListViewModel : NSObject, PhotoListModelVenueItemDelegate {
             return
         }
         
-        print("Sorting list")
+//        print("Sorting list")
         items.sort { item1, item2 in
             let venue1 = item1 as! PhotoListModelVenueItem
             let venue2 = item2 as! PhotoListModelVenueItem
@@ -91,18 +87,13 @@ class PhotoListViewModel : NSObject, PhotoListModelVenueItemDelegate {
         for item in self.items {
             guard let newItem = item as? PhotoListModelVenueItem else { return }
             let openString:String = newItem.venueIsOpen ? "open" : "closed"
-            print("\(newItem.venue!.name!) is \(openString)")
+//            print("\(newItem.venue!.name!) is \(openString)")
         
         }
-        delegate?.listDidSort()
+        refreshCollection?()
         
     }
-    
-    func venueOpenStatusDidChange() {
-        print("Venue View Model Reported that is Open Status has changed, sorting items")
-        sortVenueList()
-    }
-    
+
     // sort other lists
 }
 
@@ -237,5 +228,18 @@ extension PhotoListViewModel : UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 extension PhotoListViewModel : UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedItem = collectionView.cellForItem(at: indexPath) as! VenueCell
+        let itemViewModel = selectedItem.cellViewModel as! PhotoListModelVenueItem
+        let selectedVenue = itemViewModel.venue
+        performSegue!(selectedVenue!)
+//        let offset = layout.dragOffset * CGFloat(indexPath.item)
+        
+    }
+    
 
+    
+    
 }

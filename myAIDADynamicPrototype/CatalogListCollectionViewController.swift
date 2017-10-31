@@ -18,15 +18,30 @@ class CatalogListCollectionViewController: UICollectionViewController {
     var selectedItem: UICollectionViewCell?
     var selectedIndexPath:IndexPath?
     
+    
+    // testing views
+    
+    
     var listData:Category? {
         didSet {
             self.viewModel = PhotoListViewModel(category: listData)
-            viewModel?.delegate = self as PhotoListViewModelDelegate
-            
             self.collectionView?.delegate = viewModel
-//        var datesTodayPredicate = NSPredicate(format: "opening BETWEEN %@", Date(), tomorrow)
-            // init category values instance with type
-//            print(listData?.venueMembers)
+            
+            viewModel?.performSegue = {[weak self] (selectedItem) in
+               
+                self?.performSegue(withIdentifier: "detailSegue", sender: selectedItem)
+                
+                
+            }
+            // callback to refresh collectionView
+            viewModel?.refreshCollection = { [weak self]  in
+                let indexSet = IndexSet(integer: 0)
+                self?.collectionView?.performBatchUpdates({ () -> Void in
+                    self?.collectionView?.reloadSections(indexSet)
+                }, completion: nil)
+//                print("Collection data reloaded")
+            }
+
             
         }
     }
@@ -79,52 +94,28 @@ class CatalogListCollectionViewController: UICollectionViewController {
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let detailController = segue.destination as! VenueDetailViewController
+        detailController.itemData = sender as? Object
+        
+    }
+
 
     func back(_ sender:UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
+
+
 
 }
 
 
-// MARK: PhotoListViewModelDelegate 
 
-extension CatalogListCollectionViewController: PhotoListViewModelDelegate {
-    func listDidSort() {
-        
-        let indexSet = IndexSet(integer: 0)
-        
-            self.collectionView?.performBatchUpdates({ () -> Void in
-            self.collectionView?.reloadSections(indexSet)
-            
-        }, completion: nil)
-        
-        print("View model reported that data was sorted")
-    }
-}
 
 // MARK: UICollectionViewDelegate
-//extension CatalogListCollectionViewController {
-//    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        // scroll to selected item
-//        let layout = collectionViewLayout as! PhotoListLayout
-//        let offset = layout.dragOffset * CGFloat(indexPath.item)
-//        
-//        selectedIndexPath = indexPath
-//        selectedItem  = collectionView.cellForItem(at: indexPath)
-//        
-//        if collectionView.contentOffset.y < offset {
-//            collectionView.setContentOffset(CGPoint(x: 0, y: offset), animated: true)
-//        } else {
-//            fireSegueWithSelectedCell()
-//        }
-//
-//
-//    }
+
 //    
 //    /// scroll behaviors (e.g. show / hide nav bar)
 //    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -171,17 +162,7 @@ extension CatalogListCollectionViewController: PhotoListViewModelDelegate {
 //    }
 //    
 //    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == storyboardValues.venueDetailSegue {
-////            print("Sending data as venue")
-//            let detailController = segue.destination as! VenueDetailViewController
-//            let selectedVenue = sender as! Venue
-//            detailController.itemData = selectedVenue
-//            
-// 
-//            
-//        }
-//    }
+
 //    
 
     
@@ -224,7 +205,7 @@ extension CatalogListCollectionViewController: PhotoListViewModelDelegate {
 //    
 //}
 
-// MARK: - List Sorting
+
 
 // showing hiding status bar
 extension CatalogListCollectionViewController  {

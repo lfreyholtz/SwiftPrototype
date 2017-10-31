@@ -11,7 +11,7 @@ import UIKit
 
 class VenueCell: UICollectionViewCell {
     
-    
+      
 
     @IBOutlet weak var venueImage: UIImageView!
     @IBOutlet weak var heroGroup: UIView!
@@ -55,7 +55,7 @@ class VenueCell: UICollectionViewCell {
  
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
-        self.layoutIfNeeded()
+//        self.layoutIfNeeded()
         
     }
     

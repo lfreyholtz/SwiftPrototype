@@ -19,6 +19,7 @@ class VenueDetailViewController: UIViewController {
     
     
     
+    @IBOutlet weak var contentOffsetLabel: UILabel!
     struct storyboardValues {
         static let venueCellID = "venueCell"
         static let venueCellNibName = "VenueCell"
@@ -73,6 +74,7 @@ class VenueDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
 
         
 
@@ -90,10 +92,11 @@ class VenueDetailViewController: UIViewController {
         tableView.register(ExpandableHeader.nib, forHeaderFooterViewReuseIdentifier: ExpandableHeader.identifier)
         
         // register section header types
-        let headerViewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        
-        // UITableView Header
-        tableView.tableHeaderView?.frame = headerViewFrame
+//        let headerViewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+//
+//        // UITableView Header
+//        tableView.tableHeaderView?.frame = headerViewFrame
+//        tableView.layoutIfNeeded()
         
         
         // data switch
@@ -117,17 +120,54 @@ class VenueDetailViewController: UIViewController {
                     let info = infoView as! VenueInfoView
                     info.viewModel = viewModel?.headerInfoModel
                     
+                    print("venue detail view controller venue set, running layout, subviews, constriants")
+//                    info.layoutIfNeeded()
+//                    info.layoutSubviews()
+//                    info.updateConstraints()
+                    print("venue detail view controller layout updates complete")
                     // for collapse / expand headers
                     viewModel?.reloadSections = { [weak self] (section: Int) in
+//                        self?.tableView?.reloadData()
+                        let startingTableHeaderHeight = self?.tableView?.tableHeaderView?.frame.height
+                         let startingContentHeight = self?.tableView?.contentSize.height
+                        let startingOffset = self?.tableView?.contentOffset
+                        let sectionHeight = self?.tableView.rect(forSection: section).height
+//                        let sectionHeaderHeight = self?.tableView?.sectionHeaderHeight
+                        
+                        print("starting header height: \(startingTableHeaderHeight)")
+                        print("starting content height: \(startingContentHeight)")
+                        print("starting offset height: \(startingOffset)")
+                        print("starting section rect height: \(sectionHeight)")
+//                        print("starting section header height: \(sectionHeaderHeight)")
 //                        print("Fire reload sections")
-                        self?.tableView?.beginUpdates()
-                        self?.tableView?.reloadSections([section], with: .fade)
-                        self?.tableView?.endUpdates()
+//                        let lastScrollOffset = self?.tableView?.contentOffset
+//
+//                        self?.tableView?.beginUpdates()
+//                        self?.tableView?.reloadSections([section], with: .automatic)
+//                        self?.tableView?.endUpdates()
+//                        self?.tableView?.layer.removeAllAnimations()
+//                        self?.tableView?.setContentOffset(lastScrollOffset!, animated: false)
+                        self?.tableView?.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
+
+                        let endingTableHeaderHeight = self?.tableView?.tableHeaderView?.frame.height
+                        let endingContentHeight = self?.tableView?.contentSize.height
+                        let endingOffset = self?.tableView?.contentOffset
+                        let endingsectionHeight = self?.tableView.rect(forSection: section).height
+                        let endingsectionHeaderHeight = self?.tableView?.sectionHeaderHeight
+                        
+                        print("ending header height: \(endingTableHeaderHeight)")
+                        print("ending content height: \(endingContentHeight)")
+                        print("ending offset height: \(endingOffset)")
+                        print("ending section rect height: \(endingsectionHeight)")
+//                        print("ending section header height: \(endingsectionHeaderHeight)")
+
+                        
                     }
-        
                     
                     
                     self.bookingButton.isHidden = itemData.isBookable.value!
+                    sizeTableViewHeader(tableView:tableView)
+                self.tableView.setContentOffset(CGPoint.zero, animated: false)
                 default:
                     fatalError("data type not recognized")
             }
@@ -158,11 +198,22 @@ class VenueDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         tableView.reloadData()
+//        print("viewDidAppear venue detail view controller reload data run")
     }
     
 
     func back(_ sender:UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func sizeTableViewHeader(tableView:UITableView) {
+        if let headerView = tableView.tableHeaderView {
+            let frame = UIScreen.main.bounds
+            headerView.frame = frame
+            tableView.tableHeaderView = headerView
+            headerView.setNeedsLayout()
+            headerView.layoutIfNeeded()
+        }
     }
   
 }
@@ -172,6 +223,7 @@ class VenueDetailViewController: UIViewController {
 
 extension VenueDetailViewController : VenueDetailModelDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        contentOffsetLabel.text = String(describing: tableView.contentOffset.y)
         let info = infoView as! VenueInfoView
         info.scrollViewDidScroll(scrollView: scrollView)
     }

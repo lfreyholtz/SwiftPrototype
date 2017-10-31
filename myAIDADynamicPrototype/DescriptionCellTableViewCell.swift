@@ -34,8 +34,7 @@ import UIKit
             self.articleBody.text = article.body
             self.articleBody.textContainerInset = UIEdgeInsets.zero
             self.articleBody.textContainer.lineFragmentPadding = 0
-//            self.articleBody.translatesAutoresizingMaskIntoConstraints = true
-//            self.articleBody.sizeToFit()
+
             
             // TODO: Author
             

@@ -21,8 +21,19 @@ class VenueCoverViewModel : NSObject {
     var keyImageName: String?
     
 
-    var rating: CGFloat
-    var totalRatings: Int
+    var rating:Double {
+        guard let venue = venue else { return 0 }
+        if venue.ratings.count > 0 {
+            return venue.ratings.average(ofProperty: "ratingValue")!
+        } else {
+            return 0
+        }
+    }
+    
+    var totalRatings: Int {
+        guard let venue = venue else { return 0 }
+        return venue.ratings.count
+    }
 //    var isOpen:Bool
     var openMessage:String?
     
@@ -120,13 +131,14 @@ class VenueCoverViewModel : NSObject {
                 
             }
 
-        print(openingString)
+//        print(openingString)
         return openingString
     }
 
     
     init(venue:Venue) {
         super.init()
+//        print("venue view model init run")
         self.venue = venue
 //        guard let venue = venue else { return }
         self.venueName = venue.name
@@ -134,6 +146,8 @@ class VenueCoverViewModel : NSObject {
         self.venueType = venue.type?.typeName
         self.typeDescription = venue.type?.typeDescription
         self.keyImageName = venue.images.first?.imageName
+        
+        
 //        self.isOpen = venue.isOpen()
         
 //        setUpOpenStringFor(venue: venue)

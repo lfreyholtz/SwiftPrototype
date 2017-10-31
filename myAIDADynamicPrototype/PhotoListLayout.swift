@@ -101,14 +101,20 @@ class PhotoListLayout:UICollectionViewLayout{
             if indexPath.item == featuredItemIndex {
                 let yOffset = (standardHeight * nextItemPercentageOffset)
                 y = collectionView!.contentOffset.y - yOffset
+//                let deltaY = fabs(scrollOffset.y)
+//                height = featuredHeight + deltaY
+//                y = frame.minY - deltaY
                 
                 // sticky header
                 if (scrollOffset.y < 0) {
+                    print("Layout set Sticky Header")
                     let deltaY = fabs(scrollOffset.y)
+                    height = featuredHeight + deltaY
                     height = max(0, featuredHeight + deltaY)
                     y = frame.minY - deltaY
-                    
+
                 } else {
+                    print("layout set to featured height")
                     height = featuredHeight
                 }
                 

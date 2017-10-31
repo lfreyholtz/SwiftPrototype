@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="CatalogDetailHeader" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljL-Ky-KRe">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Op-Zg-pFc">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" restorationIdentifier="infoView" translatesAutoresizingMaskIntoConstraints="NO" id="h4h-g2-zSA" customClass="VenueInfoView" customModule="myAIDADynamicPrototype" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzM-JQ-XGL">
+                                    <rect key="frame" x="0.0" y="608" width="414" height="59"/>
+                                    <color key="backgroundColor" cyan="0.75" magenta="0.22" yellow="0.029999999999999999" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="999" constant="59" identifier="buttonHeight" id="Tlm-vY-MHq"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                    <state key="normal" title="JETZT BUCHEN">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.95158297479999998" blue="7.621079918e-05" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="xzM-JQ-XGL" firstAttribute="leading" secondItem="9Op-Zg-pFc" secondAttribute="leading" id="4gr-dz-X8C"/>
+                                <constraint firstAttribute="trailing" secondItem="h4h-g2-zSA" secondAttribute="trailing" id="S4M-2T-jU6"/>
+                                <constraint firstItem="h4h-g2-zSA" firstAttribute="top" secondItem="9Op-Zg-pFc" secondAttribute="top" id="cqx-WP-qiU"/>
+                                <constraint firstItem="xzM-JQ-XGL" firstAttribute="top" secondItem="h4h-g2-zSA" secondAttribute="bottom" id="kOI-qp-scl"/>
+                                <constraint firstAttribute="trailing" secondItem="xzM-JQ-XGL" secondAttribute="trailing" id="q4x-gd-O8X"/>
+                                <constraint firstItem="h4h-g2-zSA" firstAttribute="leading" secondItem="9Op-Zg-pFc" secondAttribute="leading" id="zBv-0Y-Idc"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="9Op-Zg-pFc" firstAttribute="top" secondItem="ljL-Ky-KRe" secondAttribute="top" id="4Ug-ee-POm"/>
+                        <constraint firstAttribute="bottom" secondItem="9Op-Zg-pFc" secondAttribute="bottom" id="OZY-Ak-G5k"/>
+                        <constraint firstItem="9Op-Zg-pFc" firstAttribute="leading" secondItem="ljL-Ky-KRe" secondAttribute="leading" id="XxN-8Z-2OM"/>
+                        <constraint firstAttribute="trailing" secondItem="9Op-Zg-pFc" secondAttribute="trailing" id="aBc-yj-48G"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="ljL-Ky-KRe" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="CNy-I9-h9q"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="ljL-Ky-KRe" secondAttribute="bottom" id="JU2-fk-9QI"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="ljL-Ky-KRe" secondAttribute="trailing" id="RAb-0U-06L"/>
+                <constraint firstItem="ljL-Ky-KRe" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="SHQ-F4-fdp"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="venueDetail" destination="h4h-g2-zSA" id="eus-om-xFB"/>
+            </connections>
+            <point key="canvasLocation" x="64" y="-66"/>
+        </collectionReusableView>
+    </objects>
+</document>

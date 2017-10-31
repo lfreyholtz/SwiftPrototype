@@ -20,11 +20,14 @@ struct DataUtils {
         let exists: Bool
         do {
             exists = try to.checkPromisedItemIsReachable()
+            print(exists)
         } catch {
+            print("copying file")
             copy()
             return
         }
         if !exists {
+            print("copying file")
             copy()
         }
     }
